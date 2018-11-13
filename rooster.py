@@ -1,5 +1,6 @@
 
 import csv
+<<<<<<< HEAD
 from zalen import Zalen
 from courses import Courses
 from tijd import Tijden
@@ -7,30 +8,39 @@ from tijd import Tijden
 
 INPUT_COURSES = "data.courses.csv"
 INPUT_ZALEN = "zalen.csv"
+=======
+from room import Room
+from vakken import Vakken
+from tijd import Tijden
+
+
+INPUT_VAKKEN = "vakken.csv"
+INPUT_ROOM = "data.rooms.csv"
+>>>>>>> 135a05e2e234ed802b200764046f47851e0f6b91
 INPUT_TIJDEN = "tijdslot.csv"
 INPUT_OVERLAP = "overlapping.csv"
 
-def open_zalen(INPUT_ZALEN):
+def open_room(INPUT_ROOM):
     """
-    Openen van de informatie van alle zaken. Returns een dictionary.
-    """
-    # open zalen
-    with open(INPUT_ZALEN) as zalen:
-        zaal_reader = csv.DictReader(zalen)
-        # lijst met alle zalen
-        zalen = []
-        for row in zaal_reader:
-            nummer = row['Zaalnummber']
-            aantal = row['Max. capaciteit']
-            zaal = Zalen(nummer, aantal)
-            zalen.append(zaal)
 
-        for i in range(len(zalen)):
+    """
+    #
+    with open(INPUT_ROOM) as rooms:
+        room_reader = csv.DictReader(rooms)
+        #
+        rooms = []
+        for row in room_reader:
+            number = row['Roomnumber']
+            capacity = row['Max. capacity']
+            room = Room(number, capacity)
+            rooms.append(room)
+
+        for i in range(len(rooms)):
         #     print(zalen[i].naam)
         #     print(zalen[i].capaciteit)
-            print(zalen[i])
+            print(rooms[i])
 
-    return zalen
+    return rooms
 
 def open_courses(INPUT_COURSES):
     """
@@ -90,11 +100,11 @@ def open_overlapping(INPUT_OVERLAP):
     #
     return data_dict
 
-def main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_OVERLAP):
+def main(INPUT_ROOM, INPUT_VAKKEN, INPUT_OVERLAP):
     """
 
     """
-    zalen = open_zalen(INPUT_ZALEN)
+    rooms = open_room(INPUT_ROOM)
 
     vak_lijst = open_vakken(INPUT_VAKKEN)
 
@@ -104,4 +114,4 @@ def main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_OVERLAP):
 
 
 if __name__ == "__main__":
-    main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_TIJDEN, INPUT_OVERLAP)
+    main(INPUT_ROOM, INPUT_VAKKEN, INPUT_TIJDEN, INPUT_OVERLAP)
