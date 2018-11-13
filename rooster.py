@@ -1,22 +1,12 @@
 
 import csv
-<<<<<<< HEAD
-from zalen import Zalen
-from courses import Courses
-from tijd import Tijden
-
-
-INPUT_COURSES = "data.courses.csv"
-INPUT_ZALEN = "zalen.csv"
-=======
 from room import Room
 from vakken import Vakken
 from tijd import Tijden
 
 
-INPUT_VAKKEN = "vakken.csv"
+INPUT_COURSES = "courses.csv"
 INPUT_ROOM = "data.rooms.csv"
->>>>>>> 135a05e2e234ed802b200764046f47851e0f6b91
 INPUT_TIJDEN = "tijdslot.csv"
 INPUT_OVERLAP = "overlapping.csv"
 
