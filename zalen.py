@@ -10,5 +10,5 @@ class Zalen(object):
         self.capaciteit = capaciteit
 
     def __str__(self):
-        return f"{self.naam}: {self.capaciteit}"
+        return f"{self.naam}, {self.capaciteit}"
         pass
