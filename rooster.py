@@ -5,7 +5,7 @@ import csv
 INPUT_VAKKEN = "vakken.csv"
 INPUT_ZALEN = "zalen.csv"
 
-def files(INPUT_ZALEN, INPUT_VAKKEN):
+def open_zalen(INPUT_ZALEN):
 
     # open zalen
     with open(INPUT_ZALEN) as zalen:
@@ -16,17 +16,32 @@ def files(INPUT_ZALEN, INPUT_VAKKEN):
             nummer = row['Zaalnummber']
             aantal = row['Max. capaciteit']
             zalen[nummer] = aantal
-        print(zalen)
+
+    return zalen
+
+def open_vakken(INPUT_ZALEN):
 
     # open Vakken
     with open(INPUT_VAKKEN) as vakken:
         vak_reader = csv.DictReader(vakken)
         # lijst met alle vakken
-        vak_namen = []
+        vak_naam = []
         for row in vak_reader:
             vak = row['Vakken voor periode 4']
-            vak_namen.append(vak)
-        # print(vak_namen)
+            vak_naam.append(vak)
+
+    return vak_naam
+
+def main(INPUT_ZALEN, INPUT_VAKKEN):
+    """
+    Main function to control other functions
+    """
+    zalen = open_zalen(INPUT_ZALEN)
+
+    vak_naam = open_vakken(INPUT_VAKKEN)
+
+    print(vak_naam)
+
 
 if __name__ == "__main__":
-    files(INPUT_ZALEN, INPUT_VAKKEN)
+    main(INPUT_ZALEN, INPUT_VAKKEN)
