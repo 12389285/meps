@@ -1,12 +1,14 @@
 # class met alle zalen en zaalgrootte
 
-class zalen()
-    ""Definieer de grootte van iedere zaal"
+class Zalen(object):
+    """
+    Definieer de grootte van iedere zaal
+    """
 
-    def __init__(self, naam, grootte):
+    def __init__(self, naam, capaciteit):
         self.naam = naam
-        self.grootte = zaalgrootte
+        self.capaciteit = capaciteit
 
     def __str__(self):
-        return f"{self.naam}: {self.grootte}"
+        return f"{self.naam}: {self.capaciteit}"
         pass

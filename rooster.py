@@ -1,5 +1,6 @@
 
 import csv
+from zalen import Zalen
 
 
 INPUT_VAKKEN = "vakken.csv"
@@ -13,11 +14,12 @@ def open_zalen(INPUT_ZALEN):
     with open(INPUT_ZALEN) as zalen:
         zaal_reader = csv.DictReader(zalen)
         # lijst met alle zalen
-        zalen = {}
+        zalen = []
         for row in zaal_reader:
             nummer = row['Zaalnummber']
             aantal = row['Max. capaciteit']
-            zalen[nummer] = aantal
+            zaal = Zalen(nummer, aantal)
+            zalen.append(zaal)
 
     return zalen
 
@@ -45,7 +47,7 @@ def main(INPUT_ZALEN, INPUT_VAKKEN):
 
     vak_naam = open_vakken(INPUT_VAKKEN)
 
-    print(vak_naam)
+    print(zalen)
 
 
 if __name__ == "__main__":
