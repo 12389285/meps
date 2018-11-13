@@ -2,7 +2,6 @@
 import csv
 from room import Room
 from courses import Courses
-from tijd import Tijden
 
 INPUT_COURSES = "data.courses.csv"
 INPUT_ROOM = "data.rooms.csv"
