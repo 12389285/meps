@@ -12,6 +12,4 @@ class Zalen(object):
         self.E_studenten = E_studenten
 
 
-
     def __str__(self):
-    

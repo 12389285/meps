@@ -6,7 +6,9 @@ INPUT_VAKKEN = "vakken.csv"
 INPUT_ZALEN = "zalen.csv"
 
 def open_zalen(INPUT_ZALEN):
-
+    """
+    Openen van de informatie van alle zaken. Returns een dictionary.
+    """
     # open zalen
     with open(INPUT_ZALEN) as zalen:
         zaal_reader = csv.DictReader(zalen)
@@ -20,6 +22,9 @@ def open_zalen(INPUT_ZALEN):
     return zalen
 
 def open_vakken(INPUT_ZALEN):
+    """
+    Openen van de informatie van alle vakken.
+    """
 
     # open Vakken
     with open(INPUT_VAKKEN) as vakken:
