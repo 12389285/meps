@@ -8,6 +8,7 @@ from tijd import Tijden
 INPUT_VAKKEN = "vakken.csv"
 INPUT_ZALEN = "zalen.csv"
 INPUT_TIJDEN = "tijdslot.csv"
+INPUT_OVERLAP = "overlapping.csv"
 
 def open_zalen(INPUT_ZALEN):
     """
@@ -58,7 +59,7 @@ def open_vakken(INPUT_ZALEN):
 
     return vak_lijst
 
-def tijdsloten(INPUT_TIJDEN):
+def open_tijdsloten(INPUT_TIJDEN):
 
     with open(INPUT_TIJDEN) as tijden:
         tijdslot_reader = csv.DictReader(tijden)
@@ -74,7 +75,37 @@ def tijdsloten(INPUT_TIJDEN):
 
     return tijd_lijst
 
-def main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_TIJDEN):
+def open_overlapping(INPUT_OVERLAP):
+
+    # open overlapping
+    with open(INPUT_OVERLAP) as overlap:
+        overlap_reader = csv.DictReader(overlap)
+
+        # lijst met alle zalen
+        data_dict = {}
+        dubbelen = []
+
+        for row in overlap_reader:
+            vak = row['0']
+            for i in row:
+                if not row[i]:
+                    continue
+                elif row[i] != row['0']:
+                    dubbelen.append(row[i])
+            data_dict[vak] = dubbelen
+            dubbelen = []
+
+        print(data_dict)
+
+
+    #     for i in range(len(zalen)):
+    #     #     print(zalen[i].naam)
+    #     #     print(zalen[i].capaciteit)
+    #         print(zalen[i])
+    #
+    return data_dict
+
+def main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_TIJDEN, INPUT_OVERLAP):
     """
     Main function to control other functions
     """
@@ -82,10 +113,12 @@ def main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_TIJDEN):
 
     vak_lijst = open_vakken(INPUT_VAKKEN)
 
-    tijd_lijst = tijdsloten(INPUT_TIJDEN)
+    tijd_lijst = open_tijdsloten(INPUT_TIJDEN)
+
+    data_dict = open_overlapping(INPUT_OVERLAP)
 
 
 
 
 if __name__ == "__main__":
-    main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_TIJDEN)
+    main(INPUT_ZALEN, INPUT_VAKKEN, INPUT_TIJDEN, INPUT_OVERLAP)
