@@ -1,11 +1,11 @@
 
 import csv
 from zalen import Zalen
-from vakken import Vakken
+from courses import Courses
 from tijd import Tijden
 
 
-INPUT_VAKKEN = "vakken.csv"
+INPUT_COURSES = "data.courses.csv"
 INPUT_ZALEN = "zalen.csv"
 INPUT_TIJDEN = "tijdslot.csv"
 INPUT_OVERLAP = "overlapping.csv"
@@ -32,32 +32,32 @@ def open_zalen(INPUT_ZALEN):
 
     return zalen
 
-def open_vakken(INPUT_ZALEN):
+def open_courses(INPUT_COURSES):
     """
     Openen van de informatie van alle vakken.
     """
 
     # open Vakken
-    with open(INPUT_VAKKEN) as vakken:
-        vak_reader = csv.DictReader(vakken)
+    with open(INPUT_COURSES) as courses:
+        course_reader = csv.DictReader(courses)
         # lijst met alle vakken
-        vak_lijst = []
-        for row in vak_reader:
-            vak_naam = row['Vakken voor periode 4']
-            vak_hc = row['#Hoorcolleges']
-            vak_wc = row['#Werkcolleges']
-            vak_pr = row['#Practica']
-            vak = Vakken(vak_naam, vak_hc, vak_wc, vak_pr)
-            vak_lijst.append(vak)
+        course_list = []
+        for row in course_reader:
+            course_name = row['Vakken voor periode 4']
+            course_hc = row['#Hoorcolleges']
+            course_wc = row['#Werkcolleges']
+            course_pr = row['#Practica']
+            course = Courses(course_name, course_hc, course_wc, course_pr)
+            course_list.append(course)
 
-        for i in range(len(vak_lijst)):
+        for i in range(len(course_list)):
             # print(vak_lijst[i].vak)
             # print(vak_lijst[i].vak_hc)
             # print(vak_lijst[i].vak_wc)
             # print(vak_lijst[i].vak_pr)
-            print(vak_lijst[i])
+            print(course_list[i])
 
-    return vak_lijst
+    return course_list
 
 
 def open_overlapping(INPUT_OVERLAP):
