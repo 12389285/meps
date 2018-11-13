@@ -5,17 +5,14 @@ from courses import Courses
 
 INPUT_COURSES = "data.courses.csv"
 INPUT_ROOM = "data.rooms.csv"
-INPUT_TIJDEN = "tijdslot.csv"
 INPUT_OVERLAP = "overlapping.csv"
 
 def open_room(INPUT_ROOM):
     """
 
     """
-    #
     with open(INPUT_ROOM) as rooms:
         room_reader = csv.DictReader(rooms)
-        #
         rooms = []
         for row in room_reader:
             number = row['Roomnumber']
@@ -24,8 +21,6 @@ def open_room(INPUT_ROOM):
             rooms.append(room)
 
         for i in range(len(rooms)):
-        #     print(zalen[i].naam)
-        #     print(zalen[i].capaciteit)
             print(rooms[i])
 
     return rooms
@@ -88,13 +83,13 @@ def open_overlapping(INPUT_OVERLAP):
     #
     return data_dict
 
-def main(INPUT_ROOM, INPUT_VAKKEN, INPUT_OVERLAP):
+def main(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
     """
 
     """
     rooms = open_room(INPUT_ROOM)
 
-    vak_lijst = open_vakken(INPUT_VAKKEN)
+    course_list = open_courses(INPUT_COURSES)
 
     data_dict = open_overlapping(INPUT_OVERLAP)
 
@@ -102,4 +97,4 @@ def main(INPUT_ROOM, INPUT_VAKKEN, INPUT_OVERLAP):
 
 
 if __name__ == "__main__":
-    main(INPUT_ROOM, INPUT_VAKKEN, INPUT_TIJDEN, INPUT_OVERLAP)
+    main(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP)
