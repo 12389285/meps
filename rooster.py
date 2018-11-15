@@ -26,7 +26,7 @@ def open_room(INPUT_ROOM):
         for i in range(len(rooms)):
             print(rooms[i])
 
-#check
+
     return rooms
 
 def open_courses(INPUT_COURSES):
@@ -34,7 +34,7 @@ def open_courses(INPUT_COURSES):
 
     """
 
-    # 
+    #
     with open(INPUT_COURSES) as courses:
         course_reader = csv.DictReader(courses)
         #
