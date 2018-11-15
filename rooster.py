@@ -23,8 +23,8 @@ def open_room(INPUT_ROOM):
             room = Room(number, capacity)
             rooms.append(room)
 
-        for i in range(len(rooms)):
-            print(rooms[i])
+        # for i in range(len(rooms)):
+        #     print(rooms[i])
 
 
     return rooms
@@ -33,7 +33,6 @@ def open_courses(INPUT_COURSES):
     """
 
     """
-
     #
     with open(INPUT_COURSES) as courses:
         course_reader = csv.DictReader(courses)
@@ -41,17 +40,34 @@ def open_courses(INPUT_COURSES):
         course_list = []
         for row in course_reader:
             course_name = row['Vakken voor periode 4']
-            course_hc = row['#Hoorcolleges']
-            course_wc = row['#Werkcolleges']
-            course_pr = row['#Practica']
-            course = Courses(course_name, course_hc, course_wc, course_pr)
+            course_lec = row['#Hoorcolleges']
+            course_tut = row['#Werkcolleges']
+            course_prac = row['#Practica']
+            course = Courses(course_name, course_lec, course_tut, course_prac)
             course_list.append(course)
 
         for i in range(len(course_list)):
-            print(course_list[i])
+            lecs = int(course_list[i].course_lec)
+            if lecs > 0:
+                for j in range(lecs):
+                    activity = course_list[i].course_name
+                    activity = activity + ' lec' + str(j+1)
+                    course_list[i].add(activity)
+            tuts = int(course_list[i].course_tut)
+            if tuts > 0:
+                for k in range(tuts):
+                    activity = course_list[i].course_name
+                    activity = activity + ' tut' + str(k+1)
+                    course_list[i].add(activity)
+            pracs = int(course_list[i].course_prac)
+            if pracs > 0:
+                for l in range(pracs):
+                    activity = course_list[i].course_name
+                    activity = activity + ' prac' + str(l+1)
+                    course_list[i].add(activity)
+            print(course_list[i].activities)
 
     return course_list
-
 
 def open_overlapping(INPUT_OVERLAP):
     """
@@ -76,7 +92,7 @@ def open_overlapping(INPUT_OVERLAP):
             overlap_dict[course] = dubbels
             dubbels = []
 
-        print(overlap_dict)
+        # print(overlap_dict)
 
     return overlap_dict
 
@@ -89,8 +105,6 @@ def load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
     course_list = open_courses(INPUT_COURSES)
 
     overlap_dict = open_overlapping(INPUT_OVERLAP)
-
-
 
 
 if __name__ == "__main__":
