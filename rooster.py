@@ -5,7 +5,7 @@ from courses import Courses
 
 INPUT_COURSES = "data.courses.csv"
 INPUT_ROOM = "data.rooms.csv"
-INPUT_OVERLAP = "overlapping.csv"
+INPUT_OVERLAP = "data.overlapping.csv"
 
 def open_room(INPUT_ROOM):
     """
@@ -27,7 +27,7 @@ def open_room(INPUT_ROOM):
 
 def open_courses(INPUT_COURSES):
     """
-    Openen van de informatie van alle vakken.
+
     """
 
     # open Vakken
@@ -54,26 +54,29 @@ def open_courses(INPUT_COURSES):
 
 
 def open_overlapping(INPUT_OVERLAP):
+    """
 
-    # open overlapping
+    """
+
+    #
     with open(INPUT_OVERLAP) as overlap:
         overlap_reader = csv.DictReader(overlap)
 
-        # lijst met alle zalen
-        data_dict = {}
-        dubbelen = []
+        #
+        overlap_dict = {}
+        dubbels = []
 
         for row in overlap_reader:
-            vak = row['0']
+            course = row['0']
             for i in row:
                 if not row[i]:
                     continue
                 elif row[i] != row['0']:
-                    dubbelen.append(row[i])
-            data_dict[vak] = dubbelen
-            dubbelen = []
+                    dubbels.append(row[i])
+            overlap_dict[vak] = dubbels
+            dubbels = []
 
-        print(data_dict)
+        print(overlap_dict)
 
 
     #     for i in range(len(zalen)):
@@ -81,9 +84,9 @@ def open_overlapping(INPUT_OVERLAP):
     #     #     print(zalen[i].capaciteit)
     #         print(zalen[i])
     #
-    return data_dict
+    return overlap_dict
 
-def main(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
+def load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
     """
 
     """
@@ -91,10 +94,10 @@ def main(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
 
     course_list = open_courses(INPUT_COURSES)
 
-    data_dict = open_overlapping(INPUT_OVERLAP)
+    overlap_dict = open_overlapping(INPUT_OVERLAP)
 
 
 
 
 if __name__ == "__main__":
-    main(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP)
+    load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP)
