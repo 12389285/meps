@@ -33,10 +33,10 @@ def open_courses(INPUT_COURSES):
 
     """
 
-    # open Vakken
+    # 
     with open(INPUT_COURSES) as courses:
         course_reader = csv.DictReader(courses)
-        # lijst met alle vakken
+        #
         course_list = []
         for row in course_reader:
             course_name = row['Vakken voor periode 4']
@@ -47,10 +47,6 @@ def open_courses(INPUT_COURSES):
             course_list.append(course)
 
         for i in range(len(course_list)):
-            # print(vak_lijst[i].vak)
-            # print(vak_lijst[i].vak_hc)
-            # print(vak_lijst[i].vak_wc)
-            # print(vak_lijst[i].vak_pr)
             print(course_list[i])
 
     return course_list
