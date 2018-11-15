@@ -1,11 +1,14 @@
 
 import csv
+import sys
+
+sys.path.insert(0, 'code/classes/')
 from room import Room
 from courses import Courses
 
-INPUT_COURSES = "data.courses.csv"
-INPUT_ROOM = "data.rooms.csv"
-INPUT_OVERLAP = "data.overlapping.csv"
+INPUT_COURSES = "data/courses.csv"
+INPUT_ROOM = "data/rooms.csv"
+INPUT_OVERLAP = "data/overlapping.csv"
 
 def open_room(INPUT_ROOM):
     """
@@ -73,17 +76,11 @@ def open_overlapping(INPUT_OVERLAP):
                     continue
                 elif row[i] != row['0']:
                     dubbels.append(row[i])
-            overlap_dict[vak] = dubbels
+            overlap_dict[course] = dubbels
             dubbels = []
 
         print(overlap_dict)
 
-
-    #     for i in range(len(zalen)):
-    #     #     print(zalen[i].naam)
-    #     #     print(zalen[i].capaciteit)
-    #         print(zalen[i])
-    #
     return overlap_dict
 
 def load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
