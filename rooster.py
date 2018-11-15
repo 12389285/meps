@@ -26,6 +26,7 @@ def open_room(INPUT_ROOM):
         for i in range(len(rooms)):
             print(rooms[i])
 
+#check
     return rooms
 
 def open_courses(INPUT_COURSES):
