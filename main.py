@@ -1,4 +1,3 @@
-
 import csv
 import sys
 
@@ -6,121 +5,100 @@ import sys
 from code.classes.room import Room
 from code.classes.courses import Courses
 import code.algorithms.random_algorithm as rd
+from code.classes.schedule import Schedule
 
-INPUT_COURSES = "data/courses.csv"
-INPUT_ROOM = "data/rooms.csv"
-INPUT_OVERLAP = "data/overlapping.csv"
+class Main():
 
-def open_room(INPUT_ROOM):
-    """
+    def __init__(self):
+        self.rooms = self.open_room("data/rooms.csv")
+        self.courses = self.open_courses("data/courses.csv")
+        self.overlap = self.open_overlapping("data/overlapping.csv")
+        self.schedule = Schedule()
+        self.empty = self.schedule.create()
 
-    """
-    with open(INPUT_ROOM) as rooms:
-        room_reader = csv.DictReader(rooms)
-        rooms = []
-        for row in room_reader:
-            number = row['Roomnumber']
-            capacity = row['Max. capacity']
-            room = Room(number, capacity)
-            rooms.append(room)
+    def open_room(self, filename):
+        """
 
-        for i in range(len(rooms)):
-            print(rooms[i])
+        """
+        with open(filename) as rooms:
+            room_reader = csv.DictReader(rooms)
+            rooms = []
+            for row in room_reader:
+                number = row['Roomnumber']
+                capacity = row['Max. capacity']
+                room = Room(number, capacity)
+                rooms.append(room)
 
-    return rooms
+        return rooms
 
-def open_courses(INPUT_COURSES):
-    """
+    def open_courses(self, filename):
+        """
 
-    """
-    #
-    with open(INPUT_COURSES) as courses:
-        course_reader = csv.DictReader(courses)
+        """
+
+        with open(filename) as courses:
+            course_reader = csv.DictReader(courses)
+            #
+            course_list = []
+            for row in course_reader:
+                course_name = row['Vakken voor periode 4']
+                course_lec = row['#Hoorcolleges']
+                course_tut = row['#Werkcolleges']
+                course_prac = row['#Practica']
+                course = Courses(course_name, course_lec, course_tut, course_prac)
+                course_list.append(course)
+
+            for i in range(len(course_list)):
+                lecs = int(course_list[i].course_lec)
+                if lecs > 0:
+                    for j in range(lecs):
+                        activity = course_list[i].course_name
+                        activity = activity + ' lec' + str(j+1)
+                        course_list[i].add(activity)
+                tuts = int(course_list[i].course_tut)
+                if tuts > 0:
+                    for k in range(tuts):
+                        activity = course_list[i].course_name
+                        activity = activity + ' tut' + str(k+1)
+                        course_list[i].add(activity)
+                pracs = int(course_list[i].course_prac)
+                if pracs > 0:
+                    for l in range(pracs):
+                        activity = course_list[i].course_name
+                        activity = activity + ' prac' + str(l+1)
+                        course_list[i].add(activity)
+
+        return course_list
+
+    def open_overlapping(self, filename):
+        """
+
+        """
         #
-        course_list = []
-        for row in course_reader:
-            course_name = row['Vakken voor periode 4']
-            course_lec = row['#Hoorcolleges']
-            course_tut = row['#Werkcolleges']
-            course_prac = row['#Practica']
-            course = Courses(course_name, course_lec, course_tut, course_prac)
-            course_list.append(course)
+        with open(filename) as overlap:
+            overlap_reader = csv.DictReader(overlap)
 
-        for i in range(len(course_list)):
-            lecs = int(course_list[i].course_lec)
-            if lecs > 0:
-                for j in range(lecs):
-                    activity = course_list[i].course_name
-                    activity = activity + ' lec' + str(j+1)
-                    course_list[i].add(activity)
-            tuts = int(course_list[i].course_tut)
-            if tuts > 0:
-                for k in range(tuts):
-                    activity = course_list[i].course_name
-                    activity = activity + ' tut' + str(k+1)
-                    course_list[i].add(activity)
-            pracs = int(course_list[i].course_prac)
-            if pracs > 0:
-                for l in range(pracs):
-                    activity = course_list[i].course_name
-                    activity = activity + ' prac' + str(l+1)
-                    course_list[i].add(activity)
-
-
-def open_overlapping(INPUT_OVERLAP):
-    """
-
-    """
-
-    #
-    with open(INPUT_OVERLAP) as overlap:
-        overlap_reader = csv.DictReader(overlap)
-
-        #
-        overlap_dict = {}
-        dubbels = []
-
-        for row in overlap_reader:
-            course = row['0']
-            for i in row:
-                if not row[i]:
-                    continue
-                elif row[i] != row['0']:
-                    dubbels.append(row[i])
-            overlap_dict[course] = dubbels
+            #
+            overlap_dict = {}
             dubbels = []
 
-        print(overlap_dict)
+            for row in overlap_reader:
+                course = row['0']
+                for i in row:
+                    if not row[i]:
+                        continue
+                    elif row[i] != row['0']:
+                        dubbels.append(row[i])
+                overlap_dict[course] = dubbels
+                dubbels = []
 
-    return overlap_dict
+        return overlap_dict
 
-def empty_schedule(queue):
-
-    # create empty schedule
-    time_locks = [None] * 5
-    for i in range(4):
-        time_locks[i] = [None] * 7
-    time_locks[4] = [None]
-
-    week = [None] * 5
-    for i in range(5):
-        week[i] = time_locks
-
-    print(week)
-
-    return(week)
-
-def load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
-    """
-
-    """
-    rooms = open_room(INPUT_ROOM)
-
-    course_list = open_courses(INPUT_COURSES)
-
-    overlap_dict = open_overlapping(INPUT_OVERLAP)
+    def fill_schedule(self):
+        print(self.empty)
 
 
 if __name__ == "__main__":
-    load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP)
-    print(rooms)
+    main = Main()
+    rd.random(main.courses)
+    main.fill_schedule()
