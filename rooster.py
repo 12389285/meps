@@ -136,12 +136,16 @@ def create_schedule(queue):
 
     print(week)
 
-    for activity in queue:
-        for day in week:
-            for time_lock in day:
-                for i in range(len(time_lock)):
-                    if time_lock[i] == None:
-                        time_lock[i] = activity
+    i = 0
+
+    for day in week:
+        for time_lock in day:
+            for j in range(len(time_lock)):
+                if time_lock[j] == None:
+                    time_lock[j] = queue[i]
+                    i = i + 1
+                    if i > len(queue) -1 :
+                        break
 
     print(week)
 
