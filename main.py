@@ -2,9 +2,10 @@
 import csv
 import sys
 
-sys.path.insert(0, 'code/classes/')
-from room import Room
-from courses import Courses
+# sys.path.insert(0, 'code/classes/')
+from code.classes.room import Room
+from code.classes.courses import Courses
+import code.algorithms.random_algorithm as rd
 
 INPUT_COURSES = "data/courses.csv"
 INPUT_ROOM = "data/rooms.csv"
@@ -65,34 +66,6 @@ def open_courses(INPUT_COURSES):
                     activity = activity + ' prac' + str(l+1)
                     course_list[i].add(activity)
 
-    # create a queue
-    act_5 = []
-    act_4 = []
-    act_3 = []
-    act_2 = []
-    act_1 = []
-    activities_queue = []
-    for course in course_list:
-        if len(course.activities) == 5:
-            act_5.append(', '.join(str(act) for act in course.activities))
-        elif len(course.activities) == 4:
-            act_4.append(', '.join(str(act) for act in course.activities))
-        elif len(course.activities) == 3:
-            act_3.append(', '.join(str(act) for act in course.activities))
-        elif len(course.activities) == 2:
-            act_2.append(', '.join(str(act) for act in course.activities))
-        elif len(course.activities) == 1:
-            act_1.append(', '.join(str(act) for act in course.activities))
-
-    activities_queue.append(', '.join(str(act) for act in act_5))
-    activities_queue.append(', '.join(str(act) for act in act_4))
-    activities_queue.append(', '.join(str(act) for act in act_3))
-    activities_queue.append(', '.join(str(act) for act in act_2))
-    activities_queue.append(', '.join(str(act) for act in act_1))
-
-    create_schedule(activities_queue)
-
-    return activities_queue
 
 def open_overlapping(INPUT_OVERLAP):
     """
@@ -121,7 +94,7 @@ def open_overlapping(INPUT_OVERLAP):
 
     return overlap_dict
 
-def create_schedule(queue):
+def empty_schedule(queue):
 
     # create empty schedule
     time_locks = [None] * 5
@@ -132,19 +105,6 @@ def create_schedule(queue):
     week = [None] * 5
     for i in range(5):
         week[i] = time_locks
-
-    print(week)
-
-    i = 0
-
-    for day in week:
-        for time_lock in day:
-            for j in range(len(time_lock)):
-                if time_lock[j] == None:
-                    time_lock[j] = queue[i]
-                    i = i + 1
-                    if i > len(queue) -1 :
-                        break
 
     print(week)
 
@@ -161,7 +121,6 @@ def load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP):
     overlap_dict = open_overlapping(INPUT_OVERLAP)
 
 
-
-
 if __name__ == "__main__":
     load(INPUT_ROOM, INPUT_COURSES, INPUT_OVERLAP)
+    print(rooms)
