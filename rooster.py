@@ -23,9 +23,8 @@ def open_room(INPUT_ROOM):
             room = Room(number, capacity)
             rooms.append(room)
 
-        # for i in range(len(rooms)):
-        #     print(rooms[i])
-
+        for i in range(len(rooms)):
+            print(rooms[i])
 
     return rooms
 
@@ -118,7 +117,7 @@ def open_overlapping(INPUT_OVERLAP):
             overlap_dict[course] = dubbels
             dubbels = []
 
-        # print(overlap_dict)
+        print(overlap_dict)
 
     return overlap_dict
 
