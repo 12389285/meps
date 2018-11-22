@@ -101,4 +101,4 @@ class Main():
 if __name__ == "__main__":
     main = Main()
     (rd.list(main.courses, main.empty))
-    print(main.overlap)
+    print(main.courses[0].course_name)

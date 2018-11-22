@@ -39,15 +39,16 @@ def list(list, schedule):
 def create_schedule(activities_queue, schedule):
 
     i = 0
+    print(activities_queue)
+    # for day in schedule:
+    #     for time_lock in day:
+    #         for i in range(len(time_lock)):
+    #             if activities_queue != []:
+    #                 if activities[0]
+    #                 time_lock[i] = activities_queue[0]
+    #                 activities_queue.remove(activities_queue[0])
 
-    for day in schedule:
-        for time_lock in day:
-            for i in range(len(time_lock)):
-                if activities_queue != []:
-                    time_lock[i] = activities_queue[0]
-                    activities_queue.remove(activities_queue[0])
 
-
-    print(schedule[1][2][4])
+    print(schedule)
 
     return(schedule)
