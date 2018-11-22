@@ -100,5 +100,5 @@ class Main():
 
 if __name__ == "__main__":
     main = Main()
-    rd.random(main.courses)
-    main.fill_schedule()
+    (rd.list(main.courses, main.empty))
+    print(main.overlap)

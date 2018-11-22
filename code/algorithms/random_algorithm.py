@@ -1,4 +1,4 @@
-def random(list):
+def list(list, schedule):
     # create a queue
     act_5 = []
     act_4 = []
@@ -8,35 +8,46 @@ def random(list):
     activities_queue = []
     for course in list:
         if len(course.activities) == 5:
-            act_5.append(', '.join(str(act) for act in course.activities))
+            for activity in course.activities:
+                act_5.append(activity)
         elif len(course.activities) == 4:
-            act_4.append(', '.join(str(act) for act in course.activities))
+            for activity in course.activities:
+                act_4.append(activity)
         elif len(course.activities) == 3:
-            act_3.append(', '.join(str(act) for act in course.activities))
+            for activity in course.activities:
+                act_3.append(activity)
         elif len(course.activities) == 2:
-            act_2.append(', '.join(str(act) for act in course.activities))
+            for activity in course.activities:
+                act_2.append(activity)
         elif len(course.activities) == 1:
-            act_1.append(', '.join(str(act) for act in course.activities))
+            for activity in course.activities:
+                act_1.append(activity)
 
-    activities_queue.append(', '.join(str(act) for act in act_5))
-    activities_queue.append(', '.join(str(act) for act in act_4))
-    activities_queue.append(', '.join(str(act) for act in act_3))
-    activities_queue.append(', '.join(str(act) for act in act_2))
-    activities_queue.append(', '.join(str(act) for act in act_1))
 
-    # create_schedule(activities_queue)
+    for activity in act_5:
+        activities_queue.append(activity)
+    for activity in act_4:
+        activities_queue.append(activity)
+    for activity in act_3:
+        activities_queue.append(activity)
+    for activity in act_2:
+        activities_queue.append(activity)
+    for activity in act_1:
+        activities_queue.append(activity)
+    return(create_schedule(activities_queue, schedule))
 
-    return activities_queue
+def create_schedule(activities_queue, schedule):
 
-# def create_schedule(activities_queue):
-#
-#     i = 0
-#
-#     for day in week:
-#         for time_lock in day:
-#             for j in range(len(time_lock)):
-#                 if time_lock[j] == None:
-#                     time_lock[j] = queue[i]
-#                     i = i + 1
-#                     if i > len(queue) -1 :
-                        # break
+    i = 0
+
+    for day in schedule:
+        for time_lock in day:
+            for i in range(len(time_lock)):
+                if activities_queue != []:
+                    time_lock[i] = activities_queue[0]
+                    activities_queue.remove(activities_queue[0])
+
+
+    print(schedule[1][2][4])
+
+    return(schedule)
