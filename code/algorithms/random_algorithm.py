@@ -1,4 +1,4 @@
-def list(list, schedule):
+def list(list, schedule, dict):
     # create a queue
     act_5 = []
     act_4 = []
@@ -34,20 +34,39 @@ def list(list, schedule):
         activities_queue.append(activity)
     for activity in act_1:
         activities_queue.append(activity)
-    return(create_schedule(activities_queue, schedule))
+    return(create_schedule(activities_queue, schedule, dict))
 
-def create_schedule(activities_queue, schedule):
-
+def create_schedule(activities_queue, schedule, dict):
     i = 0
-    print(activities_queue)
-    # for day in schedule:
-    #     for time_lock in day:
-    #         for i in range(len(time_lock)):
-    #             if activities_queue != []:
-    #                 if activities[0]
-    #                 time_lock[i] = activities_queue[0]
-    #                 activities_queue.remove(activities_queue[0])
 
+
+
+    # check if queue is not empy
+    while activities_queue != []:
+        # select day i
+        for i in range(len(schedule)):
+            # select timelock j
+            for j in range(len(schedule[i])):
+                # select room lock k
+                for k in range(len(schedule[i][j])):
+                    if schedule[i][j][k] is None:
+                        # select activity
+                        for l in range(len(activities_queue)):
+                            # not same course at time lock
+                            if activities_queue[l] not in schedule[i][j]:
+                                # not overlapping course at time_lock, loop through time lock courses
+                                for m in range(len(dict[activities_queue[l]])):
+                                    if dict[activities_queue[l]][m] not in schedule[i][j]:
+                                        if m == (len(dict[activities_queue[l]]) - 1):
+                                            schedule[i][j][k] = activities_queue[l]
+                                            activities_queue.remove(activities_queue[l])
+                                            print(schedule)
+                                            break
+                                        break
+                                    else:
+                                        break
+                            else:
+                                continue
 
     print(schedule)
 
