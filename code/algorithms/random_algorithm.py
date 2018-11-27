@@ -1,3 +1,5 @@
+from .constrains.overlap import overlapping
+
 def list(list, schedule, dict):
     # create a queue
     act_5 = []
@@ -48,22 +50,17 @@ def create_schedule(activities_queue, schedule, dict):
                     for k in range(len(schedule[i][j])):
                         if schedule[i][j][k] is None:
                             for l in range(len(activities_queue)):
-                                # not same course at time lock
-                                if activities_queue[l] not in schedule[i][j]:
-                                    # not overlapping course at time_lock, loop through time lock courses
-                                    for m in range(len(dict[activities_queue[l]])):
-                                        if dict[activities_queue[l]][m] not in schedule[i][j]:
-                                            if m == (len(dict[activities_queue[l]]) - 1):
-                                                schedule[i][j][k] = activities_queue[l]
-                                                activities_queue.remove(activities_queue[l])
-                                                break
-
-                                        else:
-                                            break
-                                    if schedule[i][j][k] is not None:
-                                        break
+                                if overlapping(activities_queue[l],schedule[i][j],dict) == True:
+                                    schedule[i][j][k] = activities_queue[l]
+                                    activities_queue.remove(activities_queue[l])
+                                    break
                                 else:
                                     continue
+
+    print(schedule)
+    return(schedule)
+
+
 
 
     print(schedule)
