@@ -60,7 +60,7 @@ class Main():
                 if tuts > 0:
                     for k in range(tuts):
                         activity = course_list[i].course_name
-                        activity §= activity + '_tut' + str(k+1)
+                        activity = activity + '_tut' + str(k+1)
                         course_list[i].add(activity)
                 pracs = int(course_list[i].course_prac)
                 if pracs > 0:
@@ -86,10 +86,7 @@ class Main():
             for row in overlap_reader:
                 course = row['0']
                 for i in row:
-                    if not row[i]:
-                        continue
-                    elif row[i] != row['0']:
-                        dubbels.append(row[i])
+                    dubbels.append(row[i])
                 overlap_dict[course] = dubbels
                 dubbels = []
         # print(overlap_dict)
@@ -104,5 +101,5 @@ class Main():
 if __name__ == "__main__":
     main = Main()
     dict = main.overlap
-    # (rd.list(main.courses, main.empty,dict))
-    (rdb.list(main.courses, main.empty,dict))
+    (rd.list(main.courses, main.empty,dict))
+    # (rdb.list(main.courses, main.empty,dict))
