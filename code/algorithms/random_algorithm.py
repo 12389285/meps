@@ -38,8 +38,11 @@ def list(list, schedule, dict):
 
 def create_schedule(activities_queue, schedule, dict):
     i = 0
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> aaddd3aa4cd3fa8a15113fb0d02487c539058608
     # check if queue is not empy
     while activities_queue != []:
             # select day i
@@ -66,4 +69,12 @@ def create_schedule(activities_queue, schedule, dict):
                                         break
                                 else:
                                     continue
+<<<<<<< HEAD
+=======
+
+
+
+    # print(schedule)
+
+>>>>>>> aaddd3aa4cd3fa8a15113fb0d02487c539058608
     return(schedule)
