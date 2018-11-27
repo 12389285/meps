@@ -1,22 +1,20 @@
 class Schedule(object):
 
     def __init__(self):
-        self.empty_schedule = []
+        self.empty_schedule = self.create()
 
     def create(self):
         # create empty schedule
-        time_locks = [None] * 5
-        for i in range(4):
-            time_locks[i] = [None] * 7
-        time_locks[4] = [None]
-
-        week = [None] * 5
+        list = []
         for i in range(5):
-            week[i] = time_locks
+            time_locks = [None] * 5
+            for i in range(4):
+                time_locks[i] = [None] * 7
+            time_locks[4] = [None]
+            list.append(time_locks)
 
-        self.empty_schedule.append(week)
+        return list
 
-        return self.empty_schedule
 
     def __str__(self):
         return f"{self.empty_schedule}"
