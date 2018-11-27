@@ -41,7 +41,6 @@ def create_schedule(activities_queue, schedule, dict):
     for l in range(len(activities_queue)):
         # check length of course
         if len(activities_queue[l].activities) == 5:
-            print(activities_queue[l].activities[0])
             # go through every activity of course
             for i in range(5):
                 # select time slot of day
@@ -63,9 +62,8 @@ def create_schedule(activities_queue, schedule, dict):
                         else:
                             continue
                     break
-            print(schedule)
+
         elif len(activities_queue[l].activities) == 4:
-            print(activities_queue[l].activities[0])
             # go through every activity of course
             for i in range(4):
                 # select time slot of day
@@ -87,10 +85,8 @@ def create_schedule(activities_queue, schedule, dict):
                         else:
                                 continue
                     break
-            print(schedule)
 
         elif len(activities_queue[l].activities) == 3:
-            print(activities_queue[l].activities[0])
             # go through every activity of course
             for i in range(3):
                 d = i * 2
@@ -112,7 +108,70 @@ def create_schedule(activities_queue, schedule, dict):
                                 break # out of k
                         else:
                             continue
-                    break
-            print(schedule)
+                    if None in schedule[d][j] or schedule[d][j][k] == activities_queue[l].activities[i]:
+                        break
+
+                    else:
+                        continue
+
+        elif len(activities_queue[l].activities) == 2:
+            # go through every activity of course
+            for i in range(2):
+                d = i * 2 + 1
+                # select time slot of day
+                for j in range(len(schedule[d])):
+                    # select room lock
+                    for k in range(len(schedule[d][j])):
+                        # check if room lock is empty
+                        if schedule[d][j][k] is None:
+                            # not overlapping course at time_lock, loop through time lock courses
+                            for m in range(len(dict[activities_queue[l].activities[i]])):
+                                    if dict[activities_queue[l].activities[i]][m] not in schedule[d][j]:
+                                        if m == (len(dict[activities_queue[l].activities[i]]) - 1):
+                                            schedule[d][j][k] = activities_queue[l].activities[i]
+                                            break # out of m
+                                    else:
+                                        break # out of m
+                            if schedule[d][j][k] is not None:
+                                break # out of k
+                        else:
+                            continue
+                    if None in schedule[d][j] or schedule[d][j][k] == activities_queue[l].activities[i]:
+                        break
+
+                    else:
+                        continue
+
+        elif len(activities_queue[l].activities) == 1:
+            # go through every activity of course
+            for i in range(len(schedule)):
+                # select time slot of day
+                for j in range(len(schedule[i])):
+                    # select room lock
+                    for k in range(len(schedule[i][j])):
+                        # check if room lock is empty
+                        if schedule[i][j][k] is None:
+                            # not overlapping course at time_lock, loop through time lock courses
+                            for m in range(len(dict[activities_queue[l].activities[0]])):
+                                    if dict[activities_queue[l].activities[0]][m] not in schedule[i][j]:
+                                        if m == (len(dict[activities_queue[l].activities[0]]) - 1):
+                                            schedule[i][j][k] = activities_queue[l].activities[0]
+                                            break # out of m
+                                    else:
+                                        break # out of m
+                            if schedule[i][j][k] is not None:
+                                break # out of k
+                        else:
+                            continue
+
+                    if None in schedule[i][j] or schedule[i][j][k] == activities_queue[l].activities[0]:
+                        break
+
+                    else:
+                        continue
+                break
+
+
+    print(schedule)
 
     return(schedule)
