@@ -59,10 +59,3 @@ def create_schedule(activities_queue, schedule, dict):
 
     print(schedule)
     return(schedule)
-
-
-
-
-    print(schedule)
-
-    return(schedule)
