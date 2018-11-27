@@ -39,10 +39,8 @@ class Main():
 
         with open(filename) as courses:
             course_reader = csv.DictReader(courses)
-            #
             course_list = []
             for row in course_reader:
-                print(row)
                 course_name = row['\ufeffCourses Period 4']
                 course_lec = row['#lec']
                 course_tut = row['#tut']
@@ -61,21 +59,18 @@ class Main():
                     for j in range(lecs):
                         activity = course_list[i].course_name
                         activity = activity + '_lec' + str(j+1)
-                        print(activity)
                         course_list[i].add(activity)
                 tuts = int(course_list[i].course_tuttot)
                 if tuts > 0:
                     for k in range(tuts):
                         activity = course_list[i].course_name
                         activity = activity + '_tut' + str(k+1)
-                        print(activity)
                         course_list[i].add(activity)
                 pracs = int(course_list[i].course_practot)
                 if pracs > 0:
                     for l in range(pracs):
                         activity = course_list[i].course_name
                         activity = activity + '_prac' + str(l+1)
-                        print(activity)
                         course_list[i].add(activity)
 
         return course_list
@@ -102,7 +97,6 @@ class Main():
                         dubbels.append(row[i])
                 overlap_dict[course] = dubbels
                 dubbels = []
-        # print(overlap_dict)
 
         return overlap_dict
 
@@ -114,6 +108,6 @@ class Main():
 
 if __name__ == "__main__":
     main = Main()
-    dict = main.overlap
-    (rd.list(main.courses, main.empty,dict))
+    overlap_dict = main.overlap
+    (rd.list(main.courses, main.empty, main.rooms, overlap_dict))
     # (rdb.list(main.courses, main.empty, dict))

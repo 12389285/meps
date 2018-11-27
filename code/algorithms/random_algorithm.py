@@ -1,44 +1,18 @@
-from .constrains.overlap import overlapping
+from code.constraints.overlap import overlapping
+from code.constraints.capacity import capacity
 
-def list(list, schedule, dict):
+def list(list, schedule, rooms, overlap_dict):
     # create a queue
-    act_5 = []
-    act_4 = []
-    act_3 = []
-    act_2 = []
-    act_1 = []
     activities_queue = []
+
     for course in list:
-        if len(course.activities) == 5:
-            for activity in course.activities:
-                act_5.append(activity)
-        elif len(course.activities) == 4:
-            for activity in course.activities:
-                act_4.append(activity)
-        elif len(course.activities) == 3:
-            for activity in course.activities:
-                act_3.append(activity)
-        elif len(course.activities) == 2:
-            for activity in course.activities:
-                act_2.append(activity)
-        elif len(course.activities) == 1:
-            for activity in course.activities:
-                act_1.append(activity)
+        for i in range(len(course.activities)):
+            print(course.activities[i])
+            activities_queue.append(course.activities[i])
 
+    return(create_schedule(activities_queue, schedule, rooms, overlap_dict, list))
 
-    for activity in act_5:
-        activities_queue.append(activity)
-    for activity in act_4:
-        activities_queue.append(activity)
-    for activity in act_3:
-        activities_queue.append(activity)
-    for activity in act_2:
-        activities_queue.append(activity)
-    for activity in act_1:
-        activities_queue.append(activity)
-    return(create_schedule(activities_queue, schedule, dict))
-
-def create_schedule(activities_queue, schedule, dict):
+def create_schedule(activities_queue, schedule, rooms, overlap_dict, list):
     i = 0
     # check if queue is not empy
     while activities_queue != []:
@@ -50,10 +24,13 @@ def create_schedule(activities_queue, schedule, dict):
                     for k in range(len(schedule[i][j])):
                         if schedule[i][j][k] is None:
                             for l in range(len(activities_queue)):
-                                if overlapping(activities_queue[l],schedule[i][j],dict) == True:
-                                    schedule[i][j][k] = activities_queue[l]
-                                    activities_queue.remove(activities_queue[l])
-                                    break
+                                if overlapping(activities_queue[l],schedule[i][j], overlap_dict) == True:
+                                    if capacity(activities_queue[l], rooms[k], list):
+                                        schedule[i][j][k] = activities_queue[l]
+                                        activities_queue.remove(activities_queue[l])
+                                        break
+                                    else:
+                                        continue
                                 else:
                                     continue
 
