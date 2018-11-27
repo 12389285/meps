@@ -159,8 +159,10 @@ def create_schedule(activities_queue, schedule, dict):
                                             break # out of m
                                     else:
                                         break # out of m
+
                             if schedule[i][j][k] is not None:
                                 break # out of k
+
                         else:
                             continue
 

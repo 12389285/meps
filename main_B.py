@@ -104,5 +104,5 @@ class Main():
 if __name__ == "__main__":
     main = Main()
     dict = main.overlap
-    (rd.list(main.courses, main.empty,dict))
+    # (rd.list(main.courses, main.empty,dict))
     (rdb.list(main.courses, main.empty, dict))
