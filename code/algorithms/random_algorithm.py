@@ -39,4 +39,4 @@ def random(list):
 #                     time_lock[j] = queue[i]
 #                     i = i + 1
 #                     if i > len(queue) -1 :
-                        # break
+#                         break
