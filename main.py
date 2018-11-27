@@ -54,19 +54,19 @@ class Main():
                 if lecs > 0:
                     for j in range(lecs):
                         activity = course_list[i].course_name
-                        # activity = activity + ' lec' + str(j+1)
+                        activity = activity + '_lec' + str(j+1)
                         course_list[i].add(activity)
                 tuts = int(course_list[i].course_tut)
                 if tuts > 0:
                     for k in range(tuts):
                         activity = course_list[i].course_name
-                        # activity = activity + ' tut' + str(k+1)
+                        activity §= activity + '_tut' + str(k+1)
                         course_list[i].add(activity)
                 pracs = int(course_list[i].course_prac)
                 if pracs > 0:
                     for l in range(pracs):
                         activity = course_list[i].course_name
-                        # activity = activity + ' prac' + str(l+1)
+                        activity = activity + '_prac' + str(l+1)
                         course_list[i].add(activity)
 
         return course_list
