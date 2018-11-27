@@ -1,4 +1,6 @@
 def overlapping(activity, timelock, dict):
+    print(activity)
+    print(timelock)
     activity = activity.split('_')
     for i in range(len(timelock)):
         activity_timelock = timelock[i]
