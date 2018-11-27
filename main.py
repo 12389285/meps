@@ -96,6 +96,7 @@ class Main():
 
     def fill_schedule(self):
         print(self.empty[1][2][4])
+        #aanpassing
 
 
 if __name__ == "__main__":
