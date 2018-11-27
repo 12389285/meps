@@ -40,7 +40,6 @@ def create_schedule(activities_queue, schedule, dict):
     i = 0
 
 
-
     # check if queue is not empy
     while activities_queue != []:
             # select day i
@@ -59,15 +58,12 @@ def create_schedule(activities_queue, schedule, dict):
                                             if m == (len(dict[activities_queue[l]]) - 1):
                                                 schedule[i][j][k] = activities_queue[l]
                                                 activities_queue.remove(activities_queue[l])
-                                                print(schedule)
                                                 break
+
                                         else:
                                             break
+                                    if schedule[i][j][k] is not None:
+                                        break
                                 else:
                                     continue
-
-
-
-    print(schedule)
-
     return(schedule)

@@ -5,6 +5,7 @@ import sys
 from code.classes.room import Room
 from code.classes.courses import Courses
 import code.algorithms.random_algorithm as rd
+import code.algorithms.random_algorithm_B as rdb
 from code.classes.schedule import Schedule
 
 class Main():
@@ -91,14 +92,17 @@ class Main():
                         dubbels.append(row[i])
                 overlap_dict[course] = dubbels
                 dubbels = []
+        # print(overlap_dict)
 
         return overlap_dict
 
+
     def fill_schedule(self):
-        print(self.empty)
+        print(self.empty[1][2][4])
 
 
 if __name__ == "__main__":
     main = Main()
     dict = main.overlap
-    (rd.list(main.courses, main.empty,dict))
+    # (rd.list(main.courses, main.empty,dict))
+    (rdb.list(main.courses, main.empty,dict))
