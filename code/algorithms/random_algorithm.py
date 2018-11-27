@@ -20,32 +20,6 @@ def list(list, schedule, dict):
             for activity in course.activities:
                 act_2.append(activity)
         elif len(course.activities) == 1:
-<<<<<<< HEAD
-            act_1.append(', '.join(str(act) for act in course.activities))
-
-    activities_queue.append(', '.join(str(act) for act in act_5))
-    activities_queue.append(', '.join(str(act) for act in act_4))
-    activities_queue.append(', '.join(str(act) for act in act_3))
-    activities_queue.append(', '.join(str(act) for act in act_2))
-    activities_queue.append(', '.join(str(act) for act in act_1))
-
-    # create_schedule(activities_queue)
-
-    return activities_queue
-
-# def create_schedule(activities_queue):
-#
-#     i = 0
-#
-#     for day in week:
-#         for time_lock in day:
-#             for j in range(len(time_lock)):
-#                 if time_lock[j] == None:
-#                     time_lock[j] = queue[i]
-#                     i = i + 1
-#                     if i > len(queue) -1 :
-#                         break
-=======
             for activity in course.activities:
                 act_1.append(activity)
 
@@ -64,9 +38,6 @@ def list(list, schedule, dict):
 
 def create_schedule(activities_queue, schedule, dict):
     i = 0
-
-
-
     # check if queue is not empy
     while activities_queue != []:
             # select day i
@@ -94,7 +65,6 @@ def create_schedule(activities_queue, schedule, dict):
 
 
 
-    print(schedule)
+    # print(schedule)
 
     return(schedule)
->>>>>>> 6d2f38758f6a81bb042b4d6809e81ef1286e23ad
