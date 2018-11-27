@@ -42,11 +42,17 @@ class Main():
             #
             course_list = []
             for row in course_reader:
-                course_name = row['Vakken voor periode 4']
-                course_lec = row['#Hoorcolleges']
-                course_tut = row['#Werkcolleges']
-                course_prac = row['#Practica']
-                course = Courses(course_name, course_lec, course_tut, course_prac)
+                print(row)
+                course_name = row['\ufeffCourses Period 4']
+                course_lec = row['#lec']
+                course_tut = row['#tut']
+                course_prac = row['#pr']
+                course_tuttot = row['#tuttot']
+                course_practot = row['#prtot']
+                course_maxtut = row['#max stud tut']
+                course_maxprac = row['#max stud pr']
+                course_expstud = row['E(students)']
+                course = Courses(course_name, course_lec, course_tut, course_prac, course_tuttot, course_practot, course_maxtut, course_maxprac, course_expstud)
                 course_list.append(course)
 
             for i in range(len(course_list)):
@@ -55,21 +61,25 @@ class Main():
                     for j in range(lecs):
                         activity = course_list[i].course_name
                         activity = activity + '_lec' + str(j+1)
+                        print(activity)
                         course_list[i].add(activity)
-                tuts = int(course_list[i].course_tut)
+                tuts = int(course_list[i].course_tuttot)
                 if tuts > 0:
                     for k in range(tuts):
                         activity = course_list[i].course_name
                         activity = activity + '_tut' + str(k+1)
+                        print(activity)
                         course_list[i].add(activity)
-                pracs = int(course_list[i].course_prac)
+                pracs = int(course_list[i].course_practot)
                 if pracs > 0:
                     for l in range(pracs):
                         activity = course_list[i].course_name
                         activity = activity + '_prac' + str(l+1)
+                        print(activity)
                         course_list[i].add(activity)
 
         return course_list
+
 
     def open_overlapping(self, filename):
         """
@@ -86,7 +96,10 @@ class Main():
             for row in overlap_reader:
                 course = row['0']
                 for i in row:
-                    dubbels.append(row[i])
+                    if not row[i]:
+                        continue
+                    elif row[i] != row['0']:
+                        dubbels.append(row[i])
                 overlap_dict[course] = dubbels
                 dubbels = []
         # print(overlap_dict)
@@ -102,7 +115,4 @@ if __name__ == "__main__":
     main = Main()
     dict = main.overlap
     (rd.list(main.courses, main.empty,dict))
-
-    # (rdb.list(main.courses, main.empty,dict))
-
     # (rdb.list(main.courses, main.empty, dict))
