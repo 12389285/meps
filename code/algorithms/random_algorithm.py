@@ -66,6 +66,6 @@ def create_schedule(activities_queue, schedule, dict):
                                     continue
 
 
-    # print(schedule)
+    print(schedule)
 
     return(schedule)
