@@ -54,19 +54,19 @@ class Main():
                 if lecs > 0:
                     for j in range(lecs):
                         activity = course_list[i].course_name
-                        activity = activity + '_lec' + str(j+1)
+                        # activity = activity + '_lec' + str(j+1)
                         course_list[i].add(activity)
                 tuts = int(course_list[i].course_tut)
                 if tuts > 0:
                     for k in range(tuts):
                         activity = course_list[i].course_name
-                        activity = activity + '_tut' + str(k+1)
+                        # activity = activity + '_tut' + str(k+1)
                         course_list[i].add(activity)
                 pracs = int(course_list[i].course_prac)
                 if pracs > 0:
                     for l in range(pracs):
                         activity = course_list[i].course_name
-                        activity = activity + '_prac' + str(l+1)
+                        # activity = activity + '_prac' + str(l+1)
                         course_list[i].add(activity)
 
         return course_list
@@ -86,7 +86,10 @@ class Main():
             for row in overlap_reader:
                 course = row['0']
                 for i in row:
-                    dubbels.append(row[i])
+                    if not row[i]:
+                        continue
+                    elif row[i] != row['0']:
+                        dubbels.append(row[i])
                 overlap_dict[course] = dubbels
                 dubbels = []
         # print(overlap_dict)
@@ -101,8 +104,5 @@ class Main():
 if __name__ == "__main__":
     main = Main()
     dict = main.overlap
-    (rd.list(main.courses, main.empty,dict))
-
-    # (rdb.list(main.courses, main.empty,dict))
-
-    # (rdb.list(main.courses, main.empty, dict))
+    # (rd.list(main.courses, main.empty,dict))
+    (rdb.list(main.courses, main.empty, dict))
