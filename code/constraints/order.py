@@ -1,31 +1,47 @@
+#
+# Checks if the lectures are first
+#
 
 def order(schedule, activity, daylock, timelock):
-    course, sort = activity.split("_")
 
-    if tut in sort or prac in sort:
+    if activity == None:
+        print('None')
+        return True
 
-        str = course + '_lec'
+    else:
+        course, sort = activity.split("_")
+        print(course)
+        print(sort)
 
-        for i in range(timelock + 1, 5)
-            if str in schedule[daylock][i]:
-                return False
+        if 'tut' in sort or 'prac' in sort:
 
-        for j in range(daylock + 1, 5):
-            for k in range(0, 5):
-                if str in schedule[j][k]:
+            str = course + '_lec'
+
+            for i in range(timelock + 1, 5):
+                if str in schedule[daylock][i]:
                     return False
 
-    elif lec in sort:
+            for j in range(daylock + 1, 5):
+                for k in range(0, 5):
+                    if str in schedule[j][k]:
+                        return False
 
-        str1 = course + '_prac'
-        str2 = course + '_tut'
+        elif 'lec' in sort:
 
-        for i in range(0, timelock):
-            if str1 in schedule[daylock][i] or str2 in schedule[daylock][i]:
-                return False
+            str1 = course + '_prac'
+            str2 = course + '_tut'
 
-        for j in range(0, daylock):
-            for k in range(0, 5):
-                if str1 in schedule[j][k] or str2 in schedule[j][k]:
+            for i in range(0, timelock):
+                if str1 in schedule[daylock][i]:
                     return False
-    return True
+                elif str2 in schedule[daylock][i]:
+                    return False
+
+            for j in range(0, daylock):
+                for k in range(0, 5):
+                    if str1 in schedule[j][k]:
+                        return False
+                    elif str2 in schedule[j][k]:
+                        return False
+
+        return True
