@@ -22,6 +22,7 @@ def lecfirst_queue(courses):
 
     lectures = []
     others = []
+    queue = []
 
     for i in range(len(len_queue)):
         if '_lec' in len_queue[i]:
@@ -34,6 +35,8 @@ def lecfirst_queue(courses):
 
     for i in range(len(others)):
         queue.append(others[i])
+
+    return(queue)
 
 def length_queue(courses):
 
