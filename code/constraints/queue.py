@@ -31,15 +31,7 @@ def lecfirst_queue(courses):
             others.append(alphab_queue[i])
 
     queue = []
-    queue.append(lectures)
-    queue.append(others)
+    queue.append(', '.join(lectures))
+    queue.append(', '.join(others))
 
     return(queue)
-
-def length_queue(courses):
-
-    alphab_queue = alphabetic_queue(courses)
-
-    queue = sorted(alphab_queue, key=operator.attrgetter('act_tot')
-
-    return(alphab_queue)

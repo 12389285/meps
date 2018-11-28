@@ -11,13 +11,13 @@ def make_queue(courses, schedule, rooms, overlap_dict):
 
     queue = lecfirst_queue(courses)
 
-    print(queue)
-
-    # return(create_schedule(courses, schedule, rooms, overlap_dict, queue,))
+    return(create_schedule(courses, schedule, rooms, overlap_dict, queue,))
 
 def create_schedule(courses, schedule, rooms, overlap_dict, queue):
     i = 0
     # check if queue is not empy
+    malus = 0
+
     while queue != []:
             # select day i
             for i in range(len(schedule)):
@@ -27,15 +27,15 @@ def create_schedule(courses, schedule, rooms, overlap_dict, queue):
                     for k in range(len(schedule[i][j])):
                         if schedule[i][j][k] is None:
                             for l in range(len(queue)):
+                                print(queue[l])
                                 if overlapping(queue[l],schedule[i][j], overlap_dict):
-                                    if capacity(queue[l], rooms[k], courses):
-                                        schedule[i][j][k] = queue[l]
-                                        queue.remove(queue[l])
-                                        break
-                                    else:
-                                        continue
+                                    malus = malus + capacity(queue[l], rooms[k], courses)
+                                    schedule[i][j][k] = queue[l]
+                                    queue.remove(queue[l])
+                                    break
                                 else:
                                     continue
 
-    print(schedule)
+    print(malus)
+    # (schedule)
     return(schedule)
