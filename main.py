@@ -1,10 +1,16 @@
+#
+# MEPS Lecture making
+# Main file
+# by Eefje Roelfsema, Max Simons and Pascalle Veltman
+#
+
 import csv
 import sys
 
 # sys.path.insert(0, 'code/classes/')
 from code.classes.room import Room
 from code.classes.courses import Courses
-import code.algorithms.random_algorithm as rd
+import code.algorithms.basic_algorithm as ba
 import code.algorithms.random_algorithm_B as rdb
 from code.classes.schedule import Schedule
 
@@ -14,8 +20,8 @@ class Main():
         self.rooms = self.open_room("data/rooms.csv")
         self.courses = self.open_courses("data/courses.csv")
         self.overlap = self.open_overlapping("data/overlapping.csv")
-        self.schedule = Schedule()
-        self.empty = self.schedule.create()
+        self.sched = Schedule()
+        self.schedule = self.sched.create()
 
     def open_room(self, filename):
         """
@@ -41,37 +47,40 @@ class Main():
             course_reader = csv.DictReader(courses)
             course_list = []
             for row in course_reader:
-                course_name = row['\ufeffCourses Period 4']
-                course_lec = row['#lec']
-                course_tut = row['#tut']
-                course_prac = row['#pr']
-                course_tuttot = row['#tuttot']
-                course_practot = row['#prtot']
-                course_maxtut = row['#max stud tut']
-                course_maxprac = row['#max stud pr']
-                course_expstud = row['E(students)']
-                course = Courses(course_name, course_lec, course_tut, course_prac, course_tuttot, course_practot, course_maxtut, course_maxprac, course_expstud)
+                name = row['\ufeffCourses Period 4']
+                lec = row['#lec']
+                tut = row['#tut']
+                prac = row['#pr']
+                tut_tot = row['#tuttot']
+                prac_tot = row['#prtot']
+                max_tut = row['#max stud tut']
+                max_prac = row['#max stud pr']
+                exp_stud = row['E(students)']
+                act_tot = int(row['#lec']) + int(row['#tuttot']) + int(row['#prtot'])
+                course = Courses(name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot)
                 course_list.append(course)
 
             for i in range(len(course_list)):
-                lecs = int(course_list[i].course_lec)
+                lecs = int(course_list[i].lec)
                 if lecs > 0:
                     for j in range(lecs):
-                        activity = course_list[i].course_name
+                        activity = course_list[i].name
                         activity = activity + '_lec' + str(j+1)
                         course_list[i].add(activity)
-                tuts = int(course_list[i].course_tuttot)
+                tuts = int(course_list[i].tut_tot)
                 if tuts > 0:
                     for k in range(tuts):
-                        activity = course_list[i].course_name
+                        activity = course_list[i].name
                         activity = activity + '_tut' + str(k+1)
                         course_list[i].add(activity)
-                pracs = int(course_list[i].course_practot)
+                pracs = int(course_list[i].prac_tot)
                 if pracs > 0:
                     for l in range(pracs):
-                        activity = course_list[i].course_name
+                        activity = course_list[i].name
                         activity = activity + '_prac' + str(l+1)
                         course_list[i].add(activity)
+
+        print(course_list)
 
         return course_list
 
@@ -100,14 +109,13 @@ class Main():
 
         return overlap_dict
 
-
     def fill_schedule(self):
-        print(self.empty[1][2][4])
+        print(self.schedule[1][2][4])
         #aanpassing
 
 
 if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
-    (rd.list(main.courses, main.empty, main.rooms, overlap_dict))
-    # (rdb.list(main.courses, main.empty, dict))
+    (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    # (rdb.list(main.courses, main.schedule, dict))

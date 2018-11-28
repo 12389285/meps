@@ -1,16 +1,21 @@
+#
+#   Classifies all courses.
+#
+
 class Courses(object):
 
-    def __init__(self, course_name, course_lec, course_tut, course_prac, course_tuttot, course_practot, course_maxtut, course_maxprac, course_expstud):
+    def __init__(self, name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot):
 
-        self.course_name = course_name
-        self.course_lec = course_lec
-        self.course_tut = course_tut
-        self.course_prac = course_prac
-        self.course_tuttot = course_tuttot
-        self.course_practot = course_practot
-        self.course_maxtut = course_maxtut
-        self.course_maxprac = course_maxprac
-        self.course_expstud = course_expstud
+        self.name = name
+        self.lec = lec
+        self.tut = tut
+        self.prac = prac
+        self.tut_tot = tut_tot
+        self.prac_tot = prac_tot
+        sels.act_tot = act_tot
+        self.max_tut = max_tut
+        self.max_prac = max_prac
+        self.exp_stud = exp_stud
         self.activities = []
 
     def add(self, activity):

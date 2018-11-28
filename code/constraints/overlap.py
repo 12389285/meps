@@ -1,3 +1,8 @@
+#
+#   Checks for overlapping.
+#   Returns True or False
+#
+
 def overlapping(activity, timelock, overlap_dict):
     activity = activity.split('_')
     for i in range(len(timelock)):
