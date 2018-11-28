@@ -13,7 +13,7 @@ def make_queue(courses, schedule, rooms, overlap_dict):
 
     queue = lecfirst_queue(courses)
 
-    return(create_schedule(courses, schedule, rooms, overlap_dict, queue,))
+    # return(create_schedule(courses, schedule, rooms, overlap_dict, queue,))
 
 def create_schedule(courses, schedule, rooms, overlap_dict, queue):
     i = 0
