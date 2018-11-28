@@ -29,11 +29,11 @@ def lecfirst_queue(courses):
         else:
             others.append(len_queue[i])
 
-    queue = []
-    queue.append(','.join(lectures))
-    queue.append(','.join(others))
+    for i in range(len(lectures)):
+        queue.append(lectures[i])
 
-    return(queue)
+    for i in range(len(others)):
+        queue.append(others[i])
 
 def length_queue(courses):
 

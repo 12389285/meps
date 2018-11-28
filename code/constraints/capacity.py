@@ -22,15 +22,15 @@ def capacity(course, room, courses):
                 print('not found')
 
     room_capacity = room.capacity
+    #
+    # if int(room_capacity) < int(students_activity):
+    #     return False
+    # else:
+    #     return True
 
     if int(room_capacity) < int(students_activity):
-        return False
+        malus = int(students_activity) - int(room_capacity)
+        return malus
     else:
-        return True
-
-    # if int(room_capacity) < int(students_activity):
-    #     malus = 0
-    #     return (malus)
-    # else:
-    #     malus = int(students_activity) - int(room_capacity)
-    #     return (malus)
+        malus = 0
+        return malus
