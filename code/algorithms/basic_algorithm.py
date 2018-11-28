@@ -35,5 +35,6 @@ def create_schedule(courses, schedule, rooms, overlap_dict, queue):
                                     break
                                 else:
                                     continue
+
     print(scorefunction(schedule, rooms, courses))
     return(schedule)
