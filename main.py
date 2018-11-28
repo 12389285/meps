@@ -100,10 +100,7 @@ class Main():
             for row in overlap_reader:
                 course = row['0']
                 for i in row:
-                    if not row[i]:
-                        continue
-                    elif row[i] != row['0']:
-                        dubbels.append(row[i])
+                    dubbels.append(row[i])
                 overlap_dict[course] = dubbels
                 dubbels = []
 

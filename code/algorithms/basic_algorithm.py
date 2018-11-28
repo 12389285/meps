@@ -27,7 +27,6 @@ def create_schedule(courses, schedule, rooms, overlap_dict, queue):
                     for k in range(len(schedule[i][j])):
                         if schedule[i][j][k] is None:
                             for l in range(len(queue)):
-                                print(queue[l])
                                 if overlapping(queue[l],schedule[i][j], overlap_dict):
                                     malus = malus + capacity(queue[l], rooms[k], courses)
                                     schedule[i][j][k] = queue[l]
@@ -36,6 +35,7 @@ def create_schedule(courses, schedule, rooms, overlap_dict, queue):
                                 else:
                                     continue
 
+    print(queue)
     print(malus)
-    # (schedule)
+    print(schedule)
     return(schedule)

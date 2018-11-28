@@ -29,8 +29,8 @@ def capacity(course, room, courses):
     #     return True
 
     if int(room_capacity) < int(students_activity):
-        malus = 0
+        malus = int(students_activity) - int(room_capacity)
         return malus
     else:
-        malus = int(students_activity) - int(room_capacity)
+        malus = 0
         return malus

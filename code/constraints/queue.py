@@ -16,22 +16,23 @@ def alphabetic_queue(courses):
 
     return(alphab_queue)
 
-
 def lecfirst_queue(courses):
 
     alphab_queue = alphabetic_queue(courses)
 
     lectures = []
     others = []
-
+    queue = []
     for i in range(len(alphab_queue)):
         if '_lec' in alphab_queue[i]:
             lectures.append(alphab_queue[i])
         else:
             others.append(alphab_queue[i])
 
-    queue = []
-    queue.append(', '.join(lectures))
-    queue.append(', '.join(others))
+    for i in range(len(lectures)):
+        queue.append(lectures[i])
 
-    return(queue)
+    for i in range(len(others)):
+        queue.append(others[i])
+
+    return queue
