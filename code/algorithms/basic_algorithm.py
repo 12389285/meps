@@ -6,6 +6,7 @@ from code.constraints.overlap import overlapping
 from code.constraints.capacity import capacity
 from code.constraints.queue import alphabetic_queue
 from code.constraints.queue import lecfirst_queue
+from code.constraints.queue import length_queue
 from .scorefunction import scorefunction
 
 def make_queue(courses, schedule, rooms, overlap_dict):

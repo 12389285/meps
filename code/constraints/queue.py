@@ -18,16 +18,16 @@ def alphabetic_queue(courses):
 
 def lecfirst_queue(courses):
 
-    alphab_queue = alphabetic_queue(courses)
+    len_queue = length_queue(courses)
 
     lectures = []
     others = []
-    queue = []
-    for i in range(len(alphab_queue)):
-        if '_lec' in alphab_queue[i]:
-            lectures.append(alphab_queue[i])
+
+    for i in range(len(len_queue)):
+        if '_lec' in len_queue[i]:
+            lectures.append(len_queue[i])
         else:
-            others.append(alphab_queue[i])
+            others.append(len_queue[i])
 
     for i in range(len(lectures)):
         queue.append(lectures[i])
@@ -35,4 +35,15 @@ def lecfirst_queue(courses):
     for i in range(len(others)):
         queue.append(others[i])
 
-    return queue
+def length_queue(courses):
+
+    courses.sort(key=lambda x: x.act_tot)
+    courses = list(reversed(courses))
+
+    queue = []
+
+    for course in courses:
+        for i in range(len(course.activities)):
+            queue.append(course.activities[i])
+
+    return(queue)
