@@ -18,4 +18,4 @@ def scorefunction(schedule, rooms, courses):
                 else:
                     continue
 
-    print(malus)
+    return malus
