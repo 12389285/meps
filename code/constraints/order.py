@@ -1,0 +1,31 @@
+
+def order(schedule, activity, daylock, timelock):
+    course, sort = activity.split("_")
+
+    if tut in sort or prac in sort:
+
+        str = course + '_lec'
+
+        for i in range(timelock + 1, 5)
+            if str in schedule[daylock][i]:
+                return False
+
+        for j in range(daylock + 1, 5):
+            for k in range(0, 5):
+                if str in schedule[j][k]:
+                    return False
+
+    elif lec in sort:
+
+        str1 = course + '_prac'
+        str2 = course + '_tut'
+
+        for i in range(0, timelock):
+            if str1 in schedule[daylock][i] or str2 in schedule[daylock][i]:
+                return False
+
+        for j in range(0, daylock):
+            for k in range(0, 5):
+                if str1 in schedule[j][k] or str2 in schedule[j][k]:
+                    return False
+    return True
