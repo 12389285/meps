@@ -114,5 +114,5 @@ class Main():
 if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
-    (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
     # (rdb.list(main.courses, main.schedule, dict))
