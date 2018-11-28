@@ -13,6 +13,7 @@ from code.classes.courses import Courses
 import code.algorithms.basic_algorithm as ba
 import code.algorithms.random_algorithm_B as rdb
 from code.classes.schedule import Schedule
+from code.algorithms.hillclimber import hillclimber
 
 class Main():
 
@@ -114,4 +115,6 @@ if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
     schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    hillclimber(schedule, 1000, main.rooms, main.courses)
+
     # (rdb.list(main.courses, main.schedule, dict))

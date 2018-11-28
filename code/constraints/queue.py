@@ -36,11 +36,7 @@ def lecfirst_queue(courses):
     for i in range(len(others)):
         queue.append(others[i])
 
-<<<<<<< HEAD
     return queue
-=======
-    return(queue)
->>>>>>> f1a4a1f9b2f4f3d28e88b030492fda5e63eda0a5
 
 def length_queue(courses):
 
