@@ -80,7 +80,6 @@ class Main():
                         activity = activity + '_prac' + str(l+1)
                         course_list[i].add(activity)
 
-        print(course_list)
 
         return course_list
 
