@@ -12,7 +12,7 @@ class Courses(object):
         self.prac = prac
         self.tut_tot = tut_tot
         self.prac_tot = prac_tot
-        sels.act_tot = act_tot
+        self.act_tot = act_tot
         self.max_tut = max_tut
         self.max_prac = max_prac
         self.exp_stud = exp_stud
