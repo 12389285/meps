@@ -7,7 +7,7 @@ from code.constraints.overlap import overlapping
 from code.constraints.order import order
 from .scorefunction import scorefunction
 import random
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
     score = []
@@ -79,3 +79,5 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
     # plt.show()
 
     print(schedule)
+
+    return(schedule)
