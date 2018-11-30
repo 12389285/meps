@@ -7,8 +7,12 @@ from code.constraints.overlap import overlapping
 from code.constraints.order import order
 from .scorefunction import scorefunction
 import random
+import matplotlib.pyplot as plt
 
 def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
+    score = []
+    swaps = []
+    swaps_num = 0
     for i in range(number_swaps):
 
         score1 = scorefunction(schedule, rooms, courses)
@@ -57,9 +61,21 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
         else:
             print('no switch :(')
 
+        # data for plot show
+        swaps_num += 1
+        swaps.append(swaps_num)
+        score_data = scorefunction(schedule, rooms, courses)
+        score.append(score_data)
+
         print(scorefunction(schedule, rooms, courses))
 
-        # print(scorefunction(schedule, rooms, courses))
-
+    # plot show of maluspoints
+    # plt.plot(swaps, score)
+    # plt.axis([0, max(swaps), 0, max(score) + 50])
+    # plt.text(max(swaps) + 1, min(score), min(score))
+    # plt.title('Hillclimber algorithm')
+    # plt.xlabel('Number of swaps')
+    # plt.ylabel('Malus points')
+    # plt.show()
 
     print(schedule)
