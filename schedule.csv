@@ -1,40 +1,40 @@
 "sep=,"
 Maandag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-Software Engineering_lec1,Informatie- en organisatieontwerp_lec1,,Data Mining_tut1,Webprogrammeren en databases_lec1,Autonomous Agents 2_lec1,Technology for games_lec1
-Kansrekenen 2_lec2,,,Heuristieken 2_tut2,Autonomous Agents 2_lec2,Algoritmen en complexiteit_lec1,Collectieve Intelligentie_lec1
-Collectieve Intelligentie_lec3,Bioinformatica_lec3,,,Heuristieken 2_lec1,Reflectie op de digitale cultuur_tut3,Interactie-ontwerp_lec2
-Kansrekenen 2_lec1,,Advanced Heuristics_lec1,,Data Mining_lec1,Heuristieken 1_lec1,Moderne Databases_lec1
+Collectieve Intelligentie_lec1,Informatie- en organisatieontwerp_lec1,,Heuristieken 2_tut2,Lineaire Algebra_lec2,Programmeren in Java 2_prac1,Technology for games_lec1
+Collectieve Intelligentie_lec2,Informatie- en organisatieontwerp_lec2,Autonomous Agents 2_lec2,Heuristieken 2_tut1,Architectuur en computerorganisatie_lec2,Algoritmen en complexiteit_tut1,
+Collectieve Intelligentie_lec3,Bioinformatica_lec3,,Programmeren in Java 2_prac3,Algoritmen en complexiteit_lec1,Heuristieken 1_lec1,Reflectie op de digitale cultuur_tut3
+Data Mining_lec1,,Advanced Heuristics_lec1,Autonomous Agents 2_lec1,Machine Learning_lec1,,Kansrekenen 2_lec1
 ""
 
 Dinsdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-Compilerbouw_lec2,,Informatie- en organisatieontwerp_prac3,Data Mining_prac2,Calculus 2_tut2,Interactie-ontwerp_lec1,Analysemethoden en -technieken_lec1
-Databases 2_lec1,Collectieve Intelligentie_tut1,Informatie- en organisatieontwerp_tut1,Moderne Databases_tut1,Bioinformatica_tut1,Webprogrammeren en databases_tut1,Autonomous Agents 2_tut1
+Compilerbouw_lec2,Data Mining_lec2,Informatie- en organisatieontwerp_prac3,,Heuristieken 1_tut1,Interactie-ontwerp_lec1,Analysemethoden en -technieken_lec1
+Interactie-ontwerp_lec2,Collectieve Intelligentie_tut1,Informatie- en organisatieontwerp_tut1,Moderne Databases_tut1,Bioinformatica_tut1,Webprogrammeren en databases_tut1,Autonomous Agents 2_tut1
 Architectuur en computerorganisatie_lec1,Collectieve Intelligentie_tut2,Informatie- en organisatieontwerp_tut2,Webprogrammeren en databases_tut2,Compilerbouw_tut1,Technology for games_tut1,Software Engineering_tut1
-Architectuur en computerorganisatie_lec2,Collectieve Intelligentie_tut3,Informatie- en organisatieontwerp_tut3,Webprogrammeren en databases_prac1,Compilerbouw_tut2,Technology for games_tut2,Software Engineering_tut2
-""
+Moderne Databases_lec1,Databases 2_tut1,Informatie- en organisatieontwerp_tut3,Webprogrammeren en databases_prac1,Compilerbouw_tut2,Technology for games_tut2,Software Engineering_tut2
+Calculus 2_lec1
 
 Woensdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
 Collectieve Intelligentie_prac1,Informatie- en organisatieontwerp_prac1,Moderne Databases_tut2,Bioinformatica_tut2,Webprogrammeren en databases_prac2,Autonomous Agents 2_tut2,Technology for games_tut3
-Collectieve Intelligentie_prac2,Informatie- en organisatieontwerp_prac2,Moderne Databases_tut3,Bioinformatica_prac1,Autonomous Agents 2_prac1,Software Engineering_prac1,Programmeren in Java 2_prac1
-Collectieve Intelligentie_lec2,Machine Learning_lec2,Moderne Databases_prac1,Bioinformatica_prac2,Autonomous Agents 2_prac2,Software Engineering_prac2,Programmeren in Java 2_prac2
-Collectieve Intelligentie_prac4,Moderne Databases_prac2,Heuristieken 2_tut1,Reflectie op de digitale cultuur_tut1,Algoritmen en complexiteit_tut1,Zoeken sturen en bewegen_prac1,Compilerbouw_prac1
-""
+Collectieve Intelligentie_prac2,Informatie- en organisatieontwerp_prac2,Moderne Databases_tut3,Bioinformatica_prac1,Autonomous Agents 2_prac1,Software Engineering_prac1,
+Collectieve Intelligentie_prac3,Machine Learning_lec2,Moderne Databases_prac1,Bioinformatica_prac2,Autonomous Agents 2_prac2,Software Engineering_prac2,Programmeren in Java 2_prac2
+Collectieve Intelligentie_prac4,Moderne Databases_prac2,,Reflectie op de digitale cultuur_tut1,Technology for games_lec2,Zoeken sturen en bewegen_prac1,Webprogrammeren en databases_lec2
+Data Mining_tut1
 
 Donderdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-Data Mining_tut2,Moderne Databases_prac3,Programmeren in Java 2_prac5,Advanced Heuristics_prac1,Zoeken sturen en bewegen_prac2,Project Numerical Recipes_prac1,Databases 2_tut1
-Data Mining_tut3,Programmeren in Java 2_prac3,Advanced Heuristics_prac2,Zoeken sturen en bewegen_prac3,Project Numerical Recipes_prac2,Project Genetic Algorithms_prac2,Informatie- en organisatieontwerp_lec2
-Data Mining_prac1,Programmeren in Java 2_prac4,Advanced Heuristics_prac3,Project Numerical Recipes_prac3,Project Genetic Algorithms_prac3,Netwerken en systeembeveiliging_prac1,Heuristieken 1_tut1
-Data Mining_lec2,Compilerbouw_prac2,Netwerken en systeembeveiliging_prac2,,Compilerbouw (practicum)_prac1,Machine Learning_lec1,Lineaire Algebra_lec1
-""
+Data Mining_tut2,Moderne Databases_prac3,,Advanced Heuristics_prac1,Zoeken sturen en bewegen_prac2,Project Numerical Recipes_prac1,Project Genetic Algorithms_prac1
+Data Mining_tut3,Heuristieken 2_lec1,Advanced Heuristics_prac2,Zoeken sturen en bewegen_prac3,Project Numerical Recipes_prac2,Project Genetic Algorithms_prac2,Bioinformatica_lec1
+Kansrekenen 2_lec2,Programmeren in Java 2_prac4,Advanced Heuristics_prac3,Project Numerical Recipes_prac3,Project Genetic Algorithms_prac3,Netwerken en systeembeveiliging_prac1,Data Mining_prac1
+Data Mining_prac2,Programmeren in Java 2_prac5,Netwerken en systeembeveiliging_prac2,,Compilerbouw (practicum)_prac1,Calculus 2_tut1,Lineaire Algebra_lec1
+Data Mining_prac3
 
 Vrijdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-Reflectie op de digitale cultuur_tut2,Algoritmen en complexiteit_tut2,Netwerken en systeembeveiliging_prac3,Compilerbouw (practicum)_prac2,Lineaire Algebra_lec2,,Collectieve Intelligentie_prac3
-Reflectie op de digitale cultuur_lec1,Algoritmen en complexiteit_prac1,Project Genetic Algorithms_prac1,Compilerbouw (practicum)_prac3,,Heuristieken 1_tut2,Compilerbouw_lec1
-Algoritmen en complexiteit_prac2,Databases 2_tut2,,Collectieve Intelligentie_tut4,Webprogrammeren en databases_lec2,Bioinformatica_lec2,Reflectie op de digitale cultuur_lec2
-,Calculus 2_tut1,Data Mining_prac3,,Technology for games_lec2,Bioinformatica_lec1,
-Calculus 2_lec1
+Reflectie op de digitale cultuur_lec1,Algoritmen en complexiteit_tut2,Netwerken en systeembeveiliging_prac3,Compilerbouw (practicum)_prac2,Calculus 2_tut2,Bioinformatica_lec2,Heuristieken 1_tut2
+Databases 2_lec1,Algoritmen en complexiteit_prac1,Collectieve Intelligentie_tut3,Compilerbouw (practicum)_prac3,Compilerbouw_prac1,Reflectie op de digitale cultuur_tut2,
+Algoritmen en complexiteit_prac2,Databases 2_tut2,,,,Compilerbouw_prac2,Reflectie op de digitale cultuur_lec2
+Software Engineering_lec1,,,,Compilerbouw_lec1,Collectieve Intelligentie_tut4,Webprogrammeren en databases_lec1
+""
