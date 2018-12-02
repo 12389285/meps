@@ -3,25 +3,25 @@
 #
 
 def order(schedule, activity, daylock, timelock):
-
+    print(activity)
+    print(f'daylock', daylock)
+    print(f'timelock', timelock)
     if activity == None:
-        print('None')
         return True
 
     else:
         course, sort = activity.split("_")
-        print(course)
-        print(sort)
 
         if 'tut' in sort or 'prac' in sort:
 
             str = course + '_lec'
 
+
             for i in range(timelock + 1, 5):
                 if str in schedule[daylock][i]:
                     return False
 
-            for j in range(daylock + 1, 5):
+            for j in range(daylock + 1, 5)
                 for k in range(0, 5):
                     if str in schedule[j][k]:
                         return False

@@ -67,19 +67,19 @@ class Main():
                 if lecs > 0:
                     for j in range(lecs):
                         activity = course_list[i].name
-                        activity = activity + '_lec' + str(j+1)
+                        activity = activity + '_lec'
                         course_list[i].add(activity)
                 tuts = int(course_list[i].tut_tot)
                 if tuts > 0:
                     for k in range(tuts):
                         activity = course_list[i].name
-                        activity = activity + '_tut' + str(k+1)
+                        activity = activity + '_tut'
                         course_list[i].add(activity)
                 pracs = int(course_list[i].prac_tot)
                 if pracs > 0:
                     for l in range(pracs):
                         activity = course_list[i].name
-                        activity = activity + '_prac' + str(l+1)
+                        activity = activity + '_prac'
                         course_list[i].add(activity)
 
 
@@ -116,7 +116,11 @@ if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
     schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+<<<<<<< HEAD
+    hillclimber(schedule, 1, main.rooms, main.courses, overlap_dict)
+=======
     schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
     csvconverter(schedule_best)
+>>>>>>> 4a6ad06b0851ee692addc406a34ed26cfb0ff081
 
     # (rdb.list(main.courses, main.schedule, dict))
