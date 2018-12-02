@@ -116,11 +116,8 @@ if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
     schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
-<<<<<<< HEAD
     hillclimber(schedule, 1, main.rooms, main.courses, overlap_dict)
-=======
     schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
     csvconverter(schedule_best)
->>>>>>> 4a6ad06b0851ee692addc406a34ed26cfb0ff081
 
     # (rdb.list(main.courses, main.schedule, dict))
