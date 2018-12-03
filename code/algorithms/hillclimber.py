@@ -1,22 +1,20 @@
 #
 # Hillclimber algorihm switches rendom activities
 #
-
 import copy
 from code.constraints.overlap import overlapping
 from code.constraints.order import order
 from .scorefunction import scorefunction
 import random
-# import matplotlib.pyplot as plt
 
 def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
+
     score = []
     swaps = []
     swaps_num = 0
     for i in range(number_swaps):
 
         score1 = scorefunction(schedule, rooms, courses)
-        print(score1)
 
         day_lock1 = random.randint(0, 4)
         time_lock1 = random.randint(0, 4)
@@ -57,9 +55,7 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
             score2 = scorefunction(schedule2, rooms, courses)
             if score2 < score1:
                 schedule = schedule2
-                print('switched!')
-        else:
-            print('no switch :(')
+
 
         # data for plot show
         swaps_num += 1
@@ -67,9 +63,10 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
         score_data = scorefunction(schedule, rooms, courses)
         score.append(score_data)
 
-        print(scorefunction(schedule, rooms, courses))
-
-    # plot show of maluspoints
+        print(score_data)
+    #
+    #
+    # # plot show of maluspoints
     # plt.plot(swaps, score)
     # plt.axis([0, max(swaps), 0, max(score) + 50])
     # plt.text(max(swaps) + 1, min(score), min(score))
@@ -77,7 +74,5 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
     # plt.xlabel('Number of swaps')
     # plt.ylabel('Malus points')
     # plt.show()
-
-    print(schedule)
 
     return(schedule)
