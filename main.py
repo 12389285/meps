@@ -174,6 +174,7 @@ class Main():
 if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
+
     # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
     # start_time = time.time()
     # schedule_best = hillclimber(schedule, 100, main.rooms, main.courses, overlap_dict)
@@ -183,6 +184,11 @@ if __name__ == "__main__":
     print(main.simulated)
     simulated_annealing(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
 
+
+    schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    hillclimber(schedule, 1, main.rooms, main.courses, overlap_dict)
+    schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
+    csvconverter(schedule_best)
 
 
     # (rdb.list(main.courses, main.schedule, dict))
