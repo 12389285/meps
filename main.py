@@ -62,8 +62,9 @@ class Main():
                 max_tut = row['#max stud tut']
                 max_prac = row['#max stud pr']
                 exp_stud = row['E(students)']
+                dif_total = int(row['#lec']) + int(row['#tut']) + int(row['#pr'])
                 act_tot = int(row['#lec']) + int(row['#tuttot']) + int(row['#prtot'])
-                course = Courses(name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot)
+                course = Courses(name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot, dif_total)
                 course_list.append(course)
 
                 course_list_simulated = []
@@ -113,7 +114,8 @@ class Main():
                 max_prac = row['#max stud pr']
                 exp_stud = row['E(students)']
                 act_tot = int(row['#lec']) + int(row['#tuttot']) + int(row['#prtot'])
-                course = Courses(name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot)
+                dif_total = int(row['#lec']) + int(row['#tut']) + int(row['#pr'])
+                course = Courses(name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot, dif_total)
                 course_list.append(course)
 
                 course_list_simulated = []
@@ -177,17 +179,10 @@ if __name__ == "__main__":
 
     # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
     # start_time = time.time()
-    # schedule_best = hillclimber(schedule, 100, main.rooms, main.courses, overlap_dict)
     # print("--- %s seconds ---" % (time.time() - start_time))
-    # def scorefunction2(schedule, course_list, course_list_courses, rooms, overlap_dict):
-    # csvconverter(schedule_best)
-    print(main.simulated)
-    simulated_annealing(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
-
-
+    schedule_best = simulated_annealing(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
     schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
-    hillclimber(schedule, 1, main.rooms, main.courses, overlap_dict)
-    schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
+    # schedule_best = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
     csvconverter(schedule_best)
 
 

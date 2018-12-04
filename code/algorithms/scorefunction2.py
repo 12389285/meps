@@ -14,9 +14,9 @@ def scorefunction2(schedule, course_list, course_list_courses, rooms, overlap_di
     for i in range(len(schedule)):
         for j in range(len(schedule[i])):
             for k in range(len(schedule[i][j])):
-                # if schedule[i][j][k] != None:
-                #     if j == 4:
-                #         malus = malus + 20
+                if schedule[i][j][k] != None:
+                    if j == 4:
+                        malus = malus + 20
                 # start_time = time.time()
                 dict[schedule[i][j][k]] = int(dict[schedule[i][j][k]]) + int(1)
                 malus = malus + capacity(schedule[i][j][k], rooms[k], course_list_courses)
