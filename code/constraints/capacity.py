@@ -8,20 +8,36 @@ from code.classes.courses import Courses
 
 def capacity(course, room, courses):
 
-    course_kind, activity_kind = course.split("_")
+    if course != None:
+        course_kind, activity_kind = course.split("_")
 
-    for i in range(len(courses)):
-        if course_kind == courses[i].name:
-            if 'lec' in activity_kind:
-                students_activity = courses[i].exp_stud
-            elif 'tut' in activity_kind:
-                students_activity = courses[i].max_tut
-            elif 'prac' in activity_kind:
-                students_activity = courses[i].max_prac
-            else:
-                print('not found')
+    if course != None:
+        for i in range(len(courses)):
+                if course_kind == courses[i].name:
+                    if 'lec' in activity_kind:
+                        students_activity = courses[i].exp_stud
 
-    room_capacity = room.capacity
+                    elif 'tut' in activity_kind:
+                        students_activity = courses[i].max_tut
+
+                    elif 'prac' in activity_kind:
+                        students_activity = courses[i].max_prac
+
+                    else:
+                        print('not found')
+
+
+        room_capacity = room.capacity
+        malus = 0
+        if int(room_capacity) < int(students_activity):
+            malus = malus + int(students_activity) - int(room_capacity)
+            return malus
+        else:
+            return malus
+    else:
+        return 0
+
+
     #
     # if int(room_capacity) < int(students_activity):
     #     return False
@@ -29,10 +45,3 @@ def capacity(course, room, courses):
     #     return True
 
     # scoreboard maluspunten
-    malus = 0
-
-    if int(room_capacity) < int(students_activity):
-        malus = malus + int(students_activity) - int(room_capacity)
-        return malus
-    else:
-        return malus

@@ -4,7 +4,7 @@
 
 class Courses(object):
 
-    def __init__(self, name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot):
+    def __init__(self, name, lec, tut, prac, tut_tot, prac_tot, max_tut, max_prac, exp_stud, act_tot, dif_total):
 
         self.name = name
         self.lec = lec
@@ -16,6 +16,7 @@ class Courses(object):
         self.max_tut = max_tut
         self.max_prac = max_prac
         self.exp_stud = exp_stud
+        self.dif_total = dif_total
         self.activities = []
 
     def add(self, activity):

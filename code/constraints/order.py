@@ -3,18 +3,18 @@
 #
 
 def order(schedule, activity, daylock, timelock):
+<<<<<<< HEAD
 
     print(daylock)
     print(timelock)
 
+=======
+>>>>>>> fee251c3d515878a686971146a5690b666425ad5
     if activity == None:
-        print('None')
         return True
 
     else:
         course, sort = activity.split("_")
-        print(course)
-        print(sort)
 
         if 'tut' in sort or 'prac' in sort:
 
