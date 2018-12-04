@@ -1,4 +1,4 @@
-### Data
+# Data
 
 To make the schedule we have used 3 data files. These data files can be found in this folder. The data files are CSV formatted files.
 
