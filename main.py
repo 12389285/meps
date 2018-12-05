@@ -180,10 +180,10 @@ if __name__ == "__main__":
     # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
     # start_time = time.time()
     # print("--- %s seconds ---" % (time.time() - start_time))
-    schedule_best = simulated_annealing(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
+    # schedule_best = simulated_annealing(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
     schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
-    # schedule_best = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
-    csvconverter(schedule_best)
+    schedule_best = hillclimber(schedule, 1000, main.rooms, main.courses, overlap_dict)
+    # csvconverter(schedule_best)
 
 
     # (rdb.list(main.courses, main.schedule, dict))

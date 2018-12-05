@@ -3,13 +3,6 @@
 #
 
 def order(schedule, activity, daylock, timelock):
-<<<<<<< HEAD
-
-    print(daylock)
-    print(timelock)
-
-=======
->>>>>>> fee251c3d515878a686971146a5690b666425ad5
     if activity == None:
         return True
 
