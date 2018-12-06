@@ -1,5 +1,3 @@
-
-
 def distribution(schedule, courses):
 
     malus = 0
