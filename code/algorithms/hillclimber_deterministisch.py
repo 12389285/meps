@@ -4,6 +4,7 @@ import time
 import math
 from code.constraints.queue import alphabetic_queue
 from code.algorithms.scorefunction2 import scorefunction2
+from code.algorithms.scorefunction_show import scorefunction_show
 
 def hillclimber_determin(courses, schedule, rooms, overlap_dict):
 
@@ -22,7 +23,7 @@ def hillclimber_determin(courses, schedule, rooms, overlap_dict):
     score = scorefunction2(schedule, courses, rooms, overlap_dict)
 
     # print(schedule)
-    for bigloop in range(10):
+    for bigloop in range(3):
         for i in range(len(schedule)):
             for j in range(len(schedule[i])):
                 for k in range(len(schedule[i][j])):
@@ -58,5 +59,6 @@ def hillclimber_determin(courses, schedule, rooms, overlap_dict):
                         print(bigloop)
                         print(f"score: ", score )
 
-
-    return schedule_save
+    scorefunction_show(schedule, courses, rooms, overlap_dict)
+    print(schedule)
+    return schedule

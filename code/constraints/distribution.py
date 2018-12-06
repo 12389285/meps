@@ -4,7 +4,6 @@ def distribution(schedule, courses):
 
     for i in range(len(courses)):
         name = courses[i].name
-        print(name)
         number_activities = courses[i].dif_total
         day_lec_1 = None
         day_lec_2 = None
@@ -40,8 +39,6 @@ def distribution(schedule, courses):
                 total_days.append(day_pr[i])
 
         diff_days = list(set(total_days))
-
-        print(diff_days)
 
         if len(diff_days) == number_activities - 1:
             malus = malus + 10
