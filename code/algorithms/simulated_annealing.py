@@ -2,25 +2,29 @@ import random
 import copy
 import time
 import math
-
+from code.constraints.queue import alphabetic_queue
 from code.algorithms.scorefunction2 import scorefunction2
 
-def simulated_annealing(course_list, schedule, course_list_simulated, rooms, overlap_dict):
+def simulated_annealing(course_list, schedule, rooms, overlap_dict):
 
-    course_list_simulated.append(None)
-    length = len(course_list_simulated)
+    course_list_alphabetic = alphabetic_queue(course_list)
+    print(course_list_alphabetic)
 
     for i in range(len(schedule)):
         for j in range(len(schedule[i])):
             for k in range(len(schedule[i][j])):
-                schedule[i][j][k] = course_list_simulated[random.randint(0, (length - 1))]
+                if course_list_alphabetic != []:
+                    length = len(course_list_alphabetic)
+                    list_place = random.randint(0, (length - 1))
+                    schedule[i][j][k] = course_list_alphabetic[list_place]
+                    course_list_alphabetic.remove(course_list_alphabetic[list_place])
 
 
-    malus = scorefunction2(schedule, course_list_simulated, course_list, rooms, overlap_dict)
+    malus = scorefunction2(schedule, course_list, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
     # print(schedule)
     score_save = 1000000
-    temp = 750
+    temp = 500
     for bigloop in range(10):
         temp = temp * 0.75
         for i in range(len(schedule)):
@@ -30,24 +34,17 @@ def simulated_annealing(course_list, schedule, course_list_simulated, rooms, ove
                     e_score_sum = 0
                     new = 0
                     tmp2 = 0
-                    schedule_copy = copy.deepcopy(schedule)
-                    for l in range(len(course_list_simulated)):
-                        schedule_copy[i][j][k] = course_list_simulated[l]
-                        score = scorefunction2(schedule_copy, course_list_simulated, course_list, rooms, overlap_dict)
-                        list_scores.append(score)
                     array_a = []
                     array_b = []
                     array_c = []
-                    check = []
                     for a in range(len(schedule)):
                         for b in range(len(schedule[a])):
                             for c in range(len(schedule[a][b])):
-                                schedule_copy2 = copy.deepcopy(schedule)
-                                schedule_copy2[i][j][k] = schedule[a][b][c]
-                                schedule_copy2[a][b][c] = schedule[i][j][k]
-                                score2 = scorefunction2(schedule_copy2, course_list_simulated, course_list, rooms, overlap_dict)
-                                list_scores.append(score2)
-                                check.append(score2)
+                                schedule_copy = copy.deepcopy(schedule)
+                                schedule_copy[i][j][k] = schedule[a][b][c]
+                                schedule_copy[a][b][c] = schedule[i][j][k]
+                                score = scorefunction2(schedule_copy, course_list, rooms, overlap_dict)
+                                list_scores.append(score)
                                 array_a.append(a)
                                 array_b.append(b)
                                 array_c.append(c)
@@ -55,10 +52,10 @@ def simulated_annealing(course_list, schedule, course_list_simulated, rooms, ove
                     e_scores = []
                     for z in range(len(list_scores)):
                         list_scores[z] = list_scores[z] - min_score
-                        tmp2 = -list_scores[z]/temp
-                        if tmp2 > 100:
-                            tmp2=100
-                        e_score = math.exp(tmp2)
+                        tmp = -list_scores[z]/temp
+                        if tmp > 100:
+                            tmp=100
+                        e_score = math.exp(tmp)
                         e_scores.append(e_score)
                         e_score_sum = e_score_sum + e_score
                     # print(list_scores)
@@ -73,18 +70,13 @@ def simulated_annealing(course_list, schedule, course_list_simulated, rooms, ove
                             new = m
                             break
 
-                    if new < len(course_list_simulated):
-                        schedule[i][j][k] = course_list_simulated[new]
-                    else:
-                        print('swap')
-                        new = new - len(course_list_simulated)
-                        a = array_a[new]
-                        b = array_b[new]
-                        c = array_c[new]
-                        temporary = schedule[i][j][k]
-                        schedule[i][j][k] = schedule[a][b][c]
-                        schedule[a][b][c] = temporary
-                    score_check = scorefunction2(schedule, course_list_simulated, course_list, rooms, overlap_dict)
+                    a = array_a[new]
+                    b = array_b[new]
+                    c = array_c[new]
+                    temporary = schedule[i][j][k]
+                    schedule[i][j][k] = schedule[a][b][c]
+                    schedule[a][b][c] = temporary
+                    score_check = scorefunction2(schedule, course_list, rooms, overlap_dict)
                     if score_check < score_save:
                         score_save = score_check
                         schedule_save = schedule
@@ -94,4 +86,4 @@ def simulated_annealing(course_list, schedule, course_list_simulated, rooms, ove
                     list_scores = []
                     e_scores = []
 
-    print(schedule_save)
+    return schedule_save
