@@ -1,7 +1,6 @@
 #
 #   Algorithm for create schedule by queue
 #
-
 from code.constraints.overlap import overlapping
 from code.constraints.capacity import capacity
 from code.constraints.queue import alphabetic_queue
@@ -10,12 +9,11 @@ from code.constraints.queue import length_queue
 from code.constraints.queue import random_queue
 from code.constraints.queue import lecfirst_random_queue
 from code.constraints.order import order
-from code.constraints.distribution import distribution
 from .scorefunction import scorefunction
 
 def make_queue(courses, schedule, rooms, overlap_dict):
 
-    queue = lecfirst_random_queue(courses)
+    queue = lecfirst_queue(courses)
 
     return(create_schedule(courses, schedule, rooms, overlap_dict, queue))
 
@@ -45,8 +43,4 @@ def create_schedule(courses, schedule, rooms, overlap_dict, queue):
 
     print(scorefunction(schedule, rooms, courses))
     print(schedule)
-
-    malus = distribution(schedule, courses)
-    print(malus)
-
     return(schedule)

@@ -5,7 +5,7 @@ import math
 from code.constraints.queue import alphabetic_queue
 from code.algorithms.scorefunction2 import scorefunction2
 
-def simulated_annealing(courses, schedule, rooms, overlap_dict):
+def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
 
     course_list_alphabetic = alphabetic_queue(courses)
     print(course_list_alphabetic)
