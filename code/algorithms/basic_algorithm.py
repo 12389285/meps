@@ -14,9 +14,7 @@ from .scorefunction import scorefunction
 
 def make_queue(courses, schedule, rooms, overlap_dict):
 
-    queue = lecfirst_random_queue(courses)
-
-    print(queue)
+    queue = lecfirst_queue(courses)
 
     return(create_schedule(courses, schedule, rooms, overlap_dict, queue))
 
@@ -35,7 +33,7 @@ def create_schedule(courses, schedule, rooms, overlap_dict, queue):
                         if schedule[i][j][k] is None:
                             for l in range(len(queue)):
                                 if overlapping(queue[l],schedule[i][j], overlap_dict):
-                                    if order(schedule, queue[l], i, j, queue):
+                                    if order(schedule, queue[l], i, j):
                                         schedule[i][j][k] = queue[l]
                                         queue.remove(queue[l])
                                         break

@@ -55,7 +55,7 @@ def lecfirst_random_queue(courses):
 
     shuffle(lectures)
     shuffle(others)
-    
+
     for i in range(len(lectures)):
         queue.append(lectures[i])
 
