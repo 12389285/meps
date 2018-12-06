@@ -67,19 +67,10 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
         score.append(score_data)
 
         print(score_data)
-    #
-    #
-    # # plot show of maluspoints
-    # plt.plot(swaps, score)
-    # plt.axis([0, max(swaps), 0, max(score) + 50])
-    # plt.text(max(swaps) + 1, min(score), min(score))
-    # plt.title('Hillclimber algorithm')
-    # plt.xlabel('Number of swaps')
-    # plt.ylabel('Malus points')
-    # plt.show()
 
         print(scorefunction(schedule, rooms, courses))
 
+    print(schedule)
     # plot show of maluspoints
     plt.plot(swaps, score)
     plt.axis([0, max(swaps), 0, max(score) + 50])

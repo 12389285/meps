@@ -182,8 +182,9 @@ if __name__ == "__main__":
     # start_time = time.time()
     # print("--- %s seconds ---" % (time.time() - start_time))
     # schedule_best = simulated_annealing(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
+    print(main.schedule)
     schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
-    # schedule_best = hillclimber(schedule, 10, main.rooms, main.courses, overlap_dict)
+    schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
     # csvconverter(schedule_best)
 
 
