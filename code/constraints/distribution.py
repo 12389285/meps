@@ -39,11 +39,25 @@ def distribution(schedule, courses):
             for i in range(len(day_pr)):
                 total_days.append(day_pr[i])
 
-        if len(total_days) == number_activities - 1:
+        diff_days = list(set(total_days))
+
+        print(diff_days)
+
+        if len(diff_days) == number_activities - 1:
             malus = malus + 10
-        elif len(total_days) == number_activities - 2:
+        elif len(diff_days) == number_activities - 2:
             malus = malus + 20
-        elif len(total_days) == number_activities - 3:
+        elif len(diff_days) == number_activities - 3:
             malus = malus + 30
+
+        if number_activities == 2:
+            if diff_days == [0, 3] or diff_days == [1, 4]:
+                malus = malus - 20
+        if number_activities == 3:
+            if diff_days == [0, 2, 4]:
+                malus = malus - 20
+        if number_activities == 4:
+            if diff_days == [0, 1, 3, 4]:
+                malus = malus - 20
 
     return malus
