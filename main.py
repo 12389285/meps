@@ -12,6 +12,7 @@ import time
 from code.classes.room import Room
 from code.classes.courses import Courses
 import code.algorithms.basic_algorithm as ba
+import code.algorithms.random_algorithm as ra
 import code.algorithms.random_algorithm_B as rdb
 from code.classes.schedule import Schedule
 from code.algorithms.hillclimber import hillclimber
@@ -182,7 +183,7 @@ if __name__ == "__main__":
     # print("--- %s seconds ---" % (time.time() - start_time))
     # schedule_best = simulated_annealing(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
     schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
-    schedule_best = hillclimber(schedule, 1000, main.rooms, main.courses, overlap_dict)
+    # schedule_best = hillclimber(schedule, 10, main.rooms, main.courses, overlap_dict)
     # csvconverter(schedule_best)
 
 

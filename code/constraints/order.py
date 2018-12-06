@@ -2,7 +2,8 @@
 # Checks if the lectures are first
 #
 
-def order(schedule, activity, daylock, timelock):
+def order(schedule, activity, daylock, timelock, queue):
+
     if activity == None:
         return True
 
@@ -13,37 +14,41 @@ def order(schedule, activity, daylock, timelock):
 
             str = course + '_lec'
 
-            for i in range(timelock + 1, 5):
-                if str in schedule[daylock][i]:
-                    print('lec found!')
-                    return False
+            if str not in queue:
+                return True
 
-            for j in range(daylock + 1, 5):
-                for k in range(0, 5):
-                    if str in schedule[j][k]:
-                        print('lec found!')
+            else:
+
+                for i in range(timelock + 1, 5):
+                    if str in schedule[daylock][i]:
                         return False
+
+                for j in range(daylock + 1, 5):
+                    for k in range(0, 5):
+                        if str in schedule[j][k]:
+                            return False
 
         elif 'lec' in sort:
 
             str1 = course + '_prac'
             str2 = course + '_tut'
 
-            for i in range(0, timelock):
-                if str1 in schedule[daylock][i]:
-                    print('prac/tut found!')
-                    return False
-                elif str2 in schedule[daylock][i]:
-                    print('prac/tut found!')
-                    return False
+            if str1 not in queue and str2 not in queue:
+                return True
 
-            for j in range(0, daylock):
-                for k in range(0, 5):
-                    if str1 in schedule[j][k]:
-                        print('prac/tut found!')
+            else:
+                
+                for i in range(0, timelock):
+                    if str1 in schedule[daylock][i]:
                         return False
-                    elif str2 in schedule[j][k]:
-                        print('prac/tut found!')
+                    elif str2 in schedule[daylock][i]:
                         return False
+
+                for j in range(0, daylock):
+                    for k in range(0, 5):
+                        if str1 in schedule[j][k]:
+                            return False
+                        elif str2 in schedule[j][k]:
+                            return False
 
         return True
