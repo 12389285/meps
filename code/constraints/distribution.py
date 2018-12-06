@@ -1,9 +1,7 @@
-
-
 def distribution(schedule, courses):
 
     malus = 0
-    
+
     for i in range(len(courses)):
         name = courses[i].name
         print(name)

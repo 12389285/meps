@@ -5,9 +5,9 @@ import math
 from code.constraints.queue import alphabetic_queue
 from code.algorithms.scorefunction2 import scorefunction2
 
-def simulated_annealing(course_list, schedule, rooms, overlap_dict):
+def simulated_annealing(courses, schedule, rooms, overlap_dict):
 
-    course_list_alphabetic = alphabetic_queue(course_list)
+    course_list_alphabetic = alphabetic_queue(courses)
     print(course_list_alphabetic)
 
     for i in range(len(schedule)):
@@ -19,8 +19,7 @@ def simulated_annealing(course_list, schedule, rooms, overlap_dict):
                     schedule[i][j][k] = course_list_alphabetic[list_place]
                     course_list_alphabetic.remove(course_list_alphabetic[list_place])
 
-
-    malus = scorefunction2(schedule, course_list, rooms, overlap_dict)
+    malus = scorefunction2(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
     # print(schedule)
     score_save = 1000000
@@ -43,7 +42,7 @@ def simulated_annealing(course_list, schedule, rooms, overlap_dict):
                                 schedule_copy = copy.deepcopy(schedule)
                                 schedule_copy[i][j][k] = schedule[a][b][c]
                                 schedule_copy[a][b][c] = schedule[i][j][k]
-                                score = scorefunction2(schedule_copy, course_list, rooms, overlap_dict)
+                                score = scorefunction2(schedule_copy, courses, rooms, overlap_dict)
                                 list_scores.append(score)
                                 array_a.append(a)
                                 array_b.append(b)
@@ -76,7 +75,7 @@ def simulated_annealing(course_list, schedule, rooms, overlap_dict):
                     temporary = schedule[i][j][k]
                     schedule[i][j][k] = schedule[a][b][c]
                     schedule[a][b][c] = temporary
-                    score_check = scorefunction2(schedule, course_list, rooms, overlap_dict)
+                    score_check = scorefunction2(schedule, courses, rooms, overlap_dict)
                     if score_check < score_save:
                         score_save = score_check
                         schedule_save = schedule
