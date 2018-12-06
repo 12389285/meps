@@ -13,7 +13,6 @@ def scorefunction2(schedule, courses, rooms, overlap_dict):
                 if schedule[i][j][k] != None:
                     if j == 4:
                         malus = malus + 20
-                dict[schedule[i][j][k]] = int(dict[schedule[i][j][k]]) + int(1)
                 malus = malus + capacity(schedule[i][j][k], rooms[k], courses)
                 if overlapping(schedule[i][j][k], schedule[i][j], overlap_dict) == False:
                     malus = malus + 800
