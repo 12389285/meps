@@ -4,6 +4,7 @@
 import copy
 from code.constraints.overlap import overlapping
 from code.constraints.order import order
+from code.constraints.distribution import distribution
 from .scorefunction import scorefunction
 import random
 

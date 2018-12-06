@@ -7,13 +7,18 @@ from code.constraints.capacity import capacity
 from code.constraints.queue import alphabetic_queue
 from code.constraints.queue import lecfirst_queue
 from code.constraints.queue import length_queue
+from code.constraints.queue import random_queue
+from code.constraints.queue import lecfirst_random_queue
+from code.constraints.order import order
 from .scorefunction import scorefunction
 
 def make_queue(courses, schedule, rooms, overlap_dict):
 
-    queue = lecfirst_queue(courses)
+    queue = lecfirst_random_queue(courses)
 
-    return(create_schedule(courses, schedule, rooms, overlap_dict, queue,))
+    print(queue)
+
+    return(create_schedule(courses, schedule, rooms, overlap_dict, queue))
 
 def create_schedule(courses, schedule, rooms, overlap_dict, queue):
     i = 0
@@ -30,11 +35,15 @@ def create_schedule(courses, schedule, rooms, overlap_dict, queue):
                         if schedule[i][j][k] is None:
                             for l in range(len(queue)):
                                 if overlapping(queue[l],schedule[i][j], overlap_dict):
-                                    schedule[i][j][k] = queue[l]
-                                    queue.remove(queue[l])
-                                    break
+                                    if order(schedule, queue[l], i, j, queue):
+                                        schedule[i][j][k] = queue[l]
+                                        queue.remove(queue[l])
+                                        break
+                                    else:
+                                        continue
                                 else:
                                     continue
 
     print(scorefunction(schedule, rooms, courses))
+    print(schedule)
     return(schedule)

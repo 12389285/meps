@@ -5,6 +5,7 @@
 
 import operator
 from operator import attrgetter
+from random import shuffle
 
 def alphabetic_queue(courses):
 
@@ -38,6 +39,31 @@ def lecfirst_queue(courses):
 
     return queue
 
+def lecfirst_random_queue(courses):
+
+    len_queue = length_queue(courses)
+
+    lectures = []
+    others = []
+    queue = []
+
+    for i in range(len(len_queue)):
+        if '_lec' in len_queue[i]:
+            lectures.append(len_queue[i])
+        else:
+            others.append(len_queue[i])
+
+    shuffle(lectures)
+    shuffle(others)
+    
+    for i in range(len(lectures)):
+        queue.append(lectures[i])
+
+    for i in range(len(others)):
+        queue.append(others[i])
+
+    return queue
+
 def length_queue(courses):
 
     courses.sort(key=lambda x: x.act_tot)
@@ -50,3 +76,11 @@ def length_queue(courses):
             queue.append(course.activities[i])
 
     return queue
+
+def random_queue(courses):
+
+    queue = alphabetic_queue(courses)
+
+    shuffle(queue)
+
+    return(queue)
