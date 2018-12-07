@@ -5,11 +5,15 @@ import math
 from code.constraints.queue import alphabetic_queue
 from code.algorithms.scorefunction2 import scorefunction2
 from code.algorithms.scorefunction_show import scorefunction_show
+import matplotlib.pyplot as plt
 
 def hillclimber_determin(courses, schedule, rooms, overlap_dict):
 
+    score_plt = []
+    loops_list = []
+    loops = 0
     course_list_alphabetic = alphabetic_queue(courses)
-    print(course_list_alphabetic)
+    # print(course_list_alphabetic)
 
     for i in range(len(schedule)):
         for j in range(len(schedule[i])):
@@ -58,7 +62,18 @@ def hillclimber_determin(courses, schedule, rooms, overlap_dict):
                         schedule[a][b][c] = temporary
                         print(bigloop)
                         print(f"score: ", score )
+                        score_plt.append(score)
+                        loops = loops + 1
+                        loops_list.append(loops)
 
     scorefunction_show(schedule, courses, rooms, overlap_dict)
-    print(schedule)
+
+    plt.plot(loops_list, score_plt)
+    plt.axis([0, max(loops_list), 0, max(score_plt) + 50])
+    plt.text(max(loops_list) + 1, min(score_plt), min(score_plt))
+    plt.title('Hillclimber deterministisch')
+    plt.xlabel('loops')
+    plt.ylabel('Malus points')
+    plt.show()
+    # print(schedule)
     return schedule

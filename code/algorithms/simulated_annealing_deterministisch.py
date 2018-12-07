@@ -24,7 +24,7 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
     # print(schedule)
     score_save = 1000000
     temp = 500
-    for bigloop in range(10):
+    for bigloop in range(2):
         temp = temp * 0.75
         for i in range(len(schedule)):
             for j in range(len(schedule[i])):
