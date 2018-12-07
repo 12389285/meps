@@ -20,10 +20,10 @@ def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
     temp_number = 0
 
     for i in range(number_swaps):
-        temp = 30
+        temp = 5
         if temp_number == 100:
             temp_number = 0
-            temp = temp * 0.85
+            temp = temp * 0.75
 
         score1 = scorefunction(schedule, rooms, courses)
 
@@ -71,8 +71,8 @@ def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
             probability = random.uniform(0,1)
             prob_1 = e_score1 / sum
             if prob_1 < probability:
-                    schedule = schedule2
-                    temp_number += 1
+                schedule = schedule2
+                temp_number += 1
 
         # data for plot show
         swaps_num += 1

@@ -27,7 +27,7 @@ def hillclimber_determin(courses, schedule, rooms, overlap_dict):
     score = scorefunction2(schedule, courses, rooms, overlap_dict)
 
     # print(schedule)
-    for bigloop in range(3):
+    for bigloop in range(10):
         for i in range(len(schedule)):
             for j in range(len(schedule[i])):
                 for k in range(len(schedule[i][j])):

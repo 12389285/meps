@@ -4,8 +4,13 @@ import time
 import math
 from code.constraints.queue import alphabetic_queue
 from code.algorithms.scorefunction2 import scorefunction2
+import matplotlib.pyplot as plt
 
 def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
+
+    score_plt = []
+    loops_list = []
+    loops = 0
 
     course_list_alphabetic = alphabetic_queue(courses)
     print(course_list_alphabetic)
@@ -23,8 +28,8 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
     schedule_save = copy.deepcopy(schedule)
     # print(schedule)
     score_save = 1000000
-    temp = 500
-    for bigloop in range(2):
+    temp = 20
+    for bigloop in range(10):
         temp = temp * 0.75
         for i in range(len(schedule)):
             for j in range(len(schedule[i])):
@@ -84,5 +89,16 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
                     print(f"scoresave: ", score_save)
                     list_scores = []
                     e_scores = []
+                    score_plt.append(score_check)
+                    loops = loops + 1
+                    loops_list.append(loops)
+
+    plt.plot(loops_list, score_plt)
+    plt.axis([0, max(loops_list), 0, max(score_plt) + 50])
+    plt.text(max(loops_list) + 1, min(score_plt), min(score_plt))
+    plt.title('simulated annealing deterministisch')
+    plt.xlabel('loops')
+    plt.ylabel('Malus points')
+    plt.show()
 
     return schedule_save
