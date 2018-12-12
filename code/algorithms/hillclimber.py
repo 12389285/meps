@@ -80,4 +80,4 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
     plt.ylabel('Malus points')
     plt.show()
 
-    return(schedule)
+    return schedule

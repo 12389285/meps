@@ -135,6 +135,7 @@ if __name__ == "__main__":
     # print("--- %s seconds ---" % (time.time() - start_time))
     # schedule_best = simulated_annealing(main.courses, main.schedule, main.rooms, overlap_dict)
     # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+<<<<<<< HEAD
     # schedule_best = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
     schedule_best = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
     # print(main.schedule)
@@ -145,6 +146,18 @@ if __name__ == "__main__":
     # schedule = hillclimber_determin(main.courses, main.schedule, main.rooms, overlap_dict)
     # schedule_best = simulated_annealing(schedule, 200000, main.rooms, main.courses, overlap_dict )
     csvconverter(schedule_best)
+=======
+    # schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
+    schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
+    # print(main.schedule)
+    schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    # schedule = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
+    # csvconverter(schedule_best)
+    # print(overlap_dict)
+    # schedule = hillclimber_determin(main.courses, main.schedule, main.rooms, overlap_dict)
+    # schedule_best = simulated_annealing(schedule, 100000, main.rooms, main.courses, overlap_dict )
+    # csvconverter(schedule_best)
+>>>>>>> c9de3e7801093ae8cb13bfd9f0670ad7053f8545
 
 
     # (rdb.list(main.courses, main.schedule, dict))

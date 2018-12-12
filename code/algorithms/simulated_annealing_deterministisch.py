@@ -4,10 +4,18 @@ import time
 import math
 from code.constraints.queue import alphabetic_queue
 from code.algorithms.scorefunction2 import scorefunction2
+import matplotlib.pyplot as plt
 
 def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
 
+<<<<<<< HEAD
     # make a list of courses in alphabetical order
+=======
+    score_plt = []
+    loops_list = []
+    loops = 0
+
+>>>>>>> c9de3e7801093ae8cb13bfd9f0670ad7053f8545
     course_list_alphabetic = alphabetic_queue(courses)
     print(course_list_alphabetic)
 
@@ -35,6 +43,7 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
     print(malus)
     # make a copy of the random schedule
     schedule_save = copy.deepcopy(schedule)
+<<<<<<< HEAD
     # save the best score (it starts with the malus points of the random schedule)
     score_save = malus
     # determine temperature for simmulated annealing
@@ -46,6 +55,13 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
         # with every extra bigloop temperature drops with factor 0.75
         temp = temp * 0.5
         # loop over days in schedule
+=======
+    # print(schedule)
+    score_save = 1000000
+    temp = 20
+    for bigloop in range(10):
+        temp = temp * 0.75
+>>>>>>> c9de3e7801093ae8cb13bfd9f0670ad7053f8545
         for i in range(len(schedule)):
             # loop over timelock in days
             for j in range(len(schedule[i])):
@@ -135,6 +151,21 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
                     print(f"scorecheck: ", score_check)
                     print(f"scoresave: ", score_save)
                     list_scores = []
+<<<<<<< HEAD
 
+=======
+                    e_scores = []
+                    score_plt.append(score_check)
+                    loops = loops + 1
+                    loops_list.append(loops)
+
+    plt.plot(loops_list, score_plt)
+    plt.axis([0, max(loops_list), 0, max(score_plt) + 50])
+    plt.text(max(loops_list) + 1, min(score_plt), min(score_plt))
+    plt.title('simulated annealing deterministisch')
+    plt.xlabel('loops')
+    plt.ylabel('Malus points')
+    plt.show()
+>>>>>>> c9de3e7801093ae8cb13bfd9f0670ad7053f8545
 
     return schedule_save

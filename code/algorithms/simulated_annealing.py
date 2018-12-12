@@ -26,11 +26,11 @@ def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
     # iterate as many times as given when calling the function
     for i in range(number_swaps):
         # set temp beginning to 30
-        temp = 30
+        temp = 5
         # when a certain amount of swaps is reached, make temp lower
         if temp_number == 100:
             temp_number = 0
-            temp = temp * 0.85
+            temp = temp * 0.75
 
         # determine score of current schedule (hard constraints are satisfied, because that is dealt with by making the begin schedule)
         score1 = scorefunction(schedule, rooms, courses)
@@ -97,6 +97,8 @@ def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
                     # add temp_number with 1, needed to know when lowering temperature
                     temp_number += 1
 
+
+
         # data for plot show
         swaps_num += 1
         swaps.append(swaps_num)
@@ -115,12 +117,12 @@ def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
 
     # print(schedule)
     # # plot show of maluspoints
-    # plt.plot(swaps, score)
-    # plt.axis([0, max(swaps), 0, max(score) + 50])
-    # plt.text(max(swaps) + 1, min(score), min(score))
-    # plt.title('Hillclimber algorithm')
-    # plt.xlabel('Number of swaps')
-    # plt.ylabel('Malus points')
-    # plt.show()
+    plt.plot(swaps, score)
+    plt.axis([0, max(swaps), 0, max(score) + 50])
+    plt.text(max(swaps) + 1, min(score), min(score))
+    plt.title('simulated_annealing')
+    plt.xlabel('itteraties')
+    plt.ylabel('Malus points')
+    plt.show()
 
     return(schedule)
