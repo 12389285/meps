@@ -12,7 +12,7 @@ import random
 import matplotlib.pyplot as plt
 
 def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
-    # set score-best to a infinte high number
+    # set score-best to a really high number
     score_best = 100000
     # make copy of best schedule
     schedule_best = copy.deepcopy(schedule)
@@ -22,6 +22,8 @@ def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
     # determine variables and set to 0
     swaps_num = 0
     temp_number = 0
+
+    # start running hillclimber
 
     # iterate as many times as given when calling the function
     for i in range(number_swaps):
@@ -97,23 +99,20 @@ def simulated_annealing(schedule, number_swaps, rooms, courses, overlap_dict):
                     # add temp_number with 1, needed to know when lowering temperature
                     temp_number += 1
 
-
-
         # data for plot show
         swaps_num += 1
         swaps.append(swaps_num)
         score_data = scorefunction(schedule, rooms, courses)
         score.append(score_data)
 
+        # save best schedule
         if score_data < score_best:
             schedule_best = schedule
             score_best = score_data
 
-
+        # print to let consumer know what's going on
         print(f"score:", score_data)
         print(f"best:", score_best)
-
-        print(scorefunction(schedule, rooms, courses))
 
     # print(schedule)
     # # plot show of maluspoints
