@@ -1,10 +1,25 @@
+# Meps lectures
+# Eefje Roelsema – 10993673
+# Pascalle Veltman – 11025646
+# Max Simons – 12389285
+# Classifies a schedule.
+
 class Schedule(object):
+
+    """
+    Classifies an empty schedule.
+    """
 
     def __init__(self):
         self.empty_schedule = self.create()
 
     def create(self):
-        # create empty schedule
+
+        """
+        This function creates an empty schedule. First it creates an empty list
+        and fills the list with Nones. For every day it creates 5 time locks within
+        the first 4, 7 roomslocks. In the last time lock there is only one room lock.
+        """
         list = []
         for i in range(5):
             time_locks = [None] * 5
@@ -14,7 +29,6 @@ class Schedule(object):
             list.append(time_locks)
 
         return list
-
 
     def __str__(self):
         return f"{self.empty_schedule}"
