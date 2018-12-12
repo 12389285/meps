@@ -1,8 +1,8 @@
-#
-# MEPS Lecture making
-# Main file
-# by Eefje Roelfsema, Max Simons and Pascalle Veltman
-#
+# Meps lectures
+# Eefje Roelsema – 10993673
+# Pascalle Veltman – 11025646
+# Max Simons – 12389285
+# Main function to serve all other classes and funtions.
 
 import csv
 import sys
