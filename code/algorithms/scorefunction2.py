@@ -20,6 +20,6 @@ def scorefunction2(schedule, courses, rooms, overlap_dict):
                 if order(schedule, schedule[i][j][k], i, j) == False:
                     malus = malus + 600
 
-    # malus = malus + distribution(schedule, courses)
+    malus = malus + distribution(schedule, courses)
 
     return malus

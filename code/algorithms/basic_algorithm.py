@@ -13,7 +13,7 @@ from .scorefunction import scorefunction
 
 def make_queue(courses, schedule, rooms, overlap_dict):
 
-    queue = lecfirst_queue(courses)
+    queue = lecfirst_random_queue(courses)
 
     return(create_schedule(courses, schedule, rooms, overlap_dict, queue))
 
