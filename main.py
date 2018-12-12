@@ -136,14 +136,14 @@ if __name__ == "__main__":
     # schedule_best = simulated_annealing(main.courses, main.schedule, main.rooms, overlap_dict)
     # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
     # schedule_best = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
-    # schedule_best = simulated_annealing_deterministisch(main.courses, main.schedule, main.simulated, main.rooms, overlap_dict)
+    schedule_best = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
     # print(main.schedule)
-    schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
     # schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
     # csvconverter(schedule_best)
     # print(overlap_dict)
     # schedule = hillclimber_determin(main.courses, main.schedule, main.rooms, overlap_dict)
-    schedule_best = simulated_annealing(schedule, 200000, main.rooms, main.courses, overlap_dict )
+    # schedule_best = simulated_annealing(schedule, 200000, main.rooms, main.courses, overlap_dict )
     csvconverter(schedule_best)
 
 
