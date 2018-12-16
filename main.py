@@ -12,8 +12,6 @@ import time
 from code.classes.room import Room
 from code.classes.courses import Courses
 import code.algorithms.basic_algorithm as ba
-import code.algorithms.random_algorithm as ra
-import code.algorithms.random_algorithm_B as rdb
 from code.classes.schedule import Schedule
 from code.algorithms.hillclimber import hillclimber
 from code.schedule.schedulemaker import csvconverter
@@ -21,6 +19,7 @@ from code.algorithms.simulated_annealing_deterministisch import simulated_anneal
 from code.algorithms.scorefunction2 import scorefunction2
 from code.algorithms.hillclimber_deterministisch import hillclimber_determin
 from code.algorithms.simulated_annealing import simulated_annealing
+from code.algorithms.algorithm_deterministic import algorithm
 
 
 class Main():
@@ -146,10 +145,12 @@ if __name__ == "__main__":
     # schedule_best = simulated_annealing(schedule, 200000, main.rooms, main.courses, overlap_dict )
     # csvconverter(schedule_best)
     # schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
-    # schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
+    schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
     # print(main.schedule)
-    schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
-    schedule = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
+    # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    # schedule = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
+    # schedule = algorithm(main.courses, main.schedule, main.rooms, overlap_dict, True)
+
     # csvconverter(schedule_best)
     # print(overlap_dict)
     # schedule = hillclimber_determin(main.courses, main.schedule, main.rooms, overlap_dict)

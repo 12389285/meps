@@ -18,18 +18,25 @@ def hillclimber_determin(courses, schedule, rooms, overlap_dict):
     # fill the schedule in random, (don't take hard constraints into account)
     # loop over the days
     for i in range(len(schedule)):
+
         #loop over the timelocks in day
         for j in range(len(schedule[i])):
+
             # loop over the roomlocks in timelock
             for k in range(len(schedule[i][j])):
+
                 # while list of alphabetical courses is not empty
                 if course_list_alphabetic != []:
+
                     # determine lenght of alphabetical list
                     length = len(course_list_alphabetic)
+
                     # find random course index in alphabetical list
                     list_place = random.randint(0, (length - 1))
+
                     # fill the schedule timelock with the random course
                     schedule[i][j][k] = course_list_alphabetic[list_place]
+
                     # remove filled course from alphabetical list
                     course_list_alphabetic.remove(course_list_alphabetic[list_place])
 
