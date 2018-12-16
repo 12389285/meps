@@ -35,6 +35,6 @@ def scorefunction2(schedule, courses, rooms, overlap_dict):
                     # if not, add 600 maluspoints
                     malus = malus + 600
 
-    # malus = malus + distribution(schedule, courses)
+    malus = malus + distribution(schedule, courses)
 
     return malus

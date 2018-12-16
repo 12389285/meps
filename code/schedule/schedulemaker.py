@@ -1,3 +1,9 @@
+# Meps lectures
+# Eefje Roelsema – 10993673
+# Pascalle Veltman – 11025646
+# Max Simons – 12389285
+# Converts 3D list to csv file.
+
 import csv
 
 def csvconverter(schedule):

@@ -1,8 +1,8 @@
-#
-# MEPS Lecture making
-# Main file
-# by Eefje Roelfsema, Max Simons and Pascalle Veltman
-#
+# Meps lectures
+# Eefje Roelsema – 10993673
+# Pascalle Veltman – 11025646
+# Max Simons – 12389285
+# Main function to serve all other classes and funtions.
 
 import csv
 import sys
@@ -11,15 +11,23 @@ import time
 # sys.path.insert(0, 'code/classes/')
 from code.classes.room import Room
 from code.classes.courses import Courses
+<<<<<<< HEAD
 import code.algorithms.basic_algorithm as ba
+=======
+import code.algorithms.start_schedule_algorithm as sa
+>>>>>>> f732e5c5aa5743b205b1111c6950b2e6c2e7be9d
 from code.classes.schedule import Schedule
 from code.algorithms.hillclimber import hillclimber
 from code.schedule.schedulemaker import csvconverter
 from code.algorithms.simulated_annealing_deterministisch import simulated_annealing_deterministisch
 from code.algorithms.scorefunction2 import scorefunction2
-from code.algorithms.hillclimber_deterministisch import hillclimber_determin
+from code.algorithms.hillclimber_deterministisch import hillclimber_deterministisch
 from code.algorithms.simulated_annealing import simulated_annealing
+<<<<<<< HEAD
 from code.algorithms.algorithm_deterministic import algorithm
+=======
+from code.constraints.couple import couples
+>>>>>>> f732e5c5aa5743b205b1111c6950b2e6c2e7be9d
 
 
 class Main():
@@ -128,7 +136,26 @@ class Main():
 if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
+    print(sys.argv)
+    algorithm = sys.argv[1]
+    if len(sys.argv) > 2:
+        number_swaps = sys.argv[2]
 
+    if algorithm == 'hillclimber' or algorithm == 'simulated_annealing':
+        # queue = input('Queue for start schedule: ')
+        schedule = sa.create_start_schedule(main.courses, main.schedule, main.rooms, overlap_dict)
+        if algorithm == 'hillclimber':
+            schedule = hillclimber(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict)
+        elif algorithm == 'simulated_annealing':
+            schedule = simulated_annealing(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict)
+    elif algorithm == 'simulated_annealing_deterministisch':
+        schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
+    elif algorithm == 'hillclimber_deterministisch':
+        schedule = hillclimber_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
+    else:
+        print('Algorithm does not exist.')
+
+<<<<<<< HEAD
     # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
     # start_time = time.time()
     # print("--- %s seconds ---" % (time.time() - start_time))
@@ -155,7 +182,6 @@ if __name__ == "__main__":
     # print(overlap_dict)
     # schedule = hillclimber_determin(main.courses, main.schedule, main.rooms, overlap_dict)
     # schedule_best = simulated_annealing(schedule, 100000, main.rooms, main.courses, overlap_dict )
+=======
+>>>>>>> f732e5c5aa5743b205b1111c6950b2e6c2e7be9d
     print(schedule)
-
-
-    # (rdb.list(main.courses, main.schedule, dict))

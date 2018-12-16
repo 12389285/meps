@@ -3,6 +3,7 @@
 #
 import copy
 from code.constraints.overlap import overlapping
+from code.constraints.couple import couples
 from code.constraints.order import order
 from code.constraints.distribution import distribution
 from .scorefunction import scorefunction
@@ -81,8 +82,7 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
         score_data = scorefunction(schedule, rooms, courses)
         score.append(score_data)
 
-        # print so the user knows what's going on
-        print(score_data)
+        # print(score_data)
 
 
     print(schedule)
