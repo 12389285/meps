@@ -49,5 +49,6 @@ def couples(tut, prac, total_days, number_activities):
     best_points = numpy.min(points_list)
     best_points_index = numpy.argmin(points_list)
     couples = best_comb[best_points_index]
+    print(couples)
 
     return(malus)

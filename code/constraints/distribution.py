@@ -94,5 +94,4 @@ def distribution(schedule, courses):
                 bonus = bonus + spread_bonus(number_activities, all_days)
             malus = malus + bonus
 
-    print(malus)
     return malus
