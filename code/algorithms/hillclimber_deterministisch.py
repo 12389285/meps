@@ -7,7 +7,7 @@ from code.algorithms.scorefunction2 import scorefunction2
 from code.algorithms.scorefunction_show import scorefunction_show
 import matplotlib.pyplot as plt
 
-def hillclimber_determin(courses, schedule, rooms, overlap_dict):
+def hillclimber_deterministisch(courses, schedule, rooms, overlap_dict):
 
     score_plt = []
     loops_list = []
