@@ -4,6 +4,7 @@ from code.constraints.overlap import overlapping
 from code.constraints.order import order
 from code.constraints.distribution import distribution
 from .scorefunction import scorefunction
+from .plot import plot_scores
 import random
 
 def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulated_annealing_true):
@@ -65,15 +66,14 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
                     score_save = score_now
                     schedule_save = schedule
 
-                score_plot_list.append(score_save)
-
                 temp_number =+ 1
 
             else:
                 title_plot = 'Hillclimber'
                 schedule = hillclimber(schedule, schedule_swap, score_current, score_swap)
                 schedule_save = schedule
-                score_plot_list.append(scorefunction(schedule, rooms, courses))
+
+        score_plot_list.append(scorefunction(schedule_save, rooms, courses))
 
     plot_scores(score_plot_list, number_iterations, title_plot)
 

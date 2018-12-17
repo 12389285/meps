@@ -4,6 +4,7 @@ import time
 import math
 from code.algorithms.start_schedule_algorithm import alphabetic_queue
 from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
+from .plot import plot_scores
 
 def make_random_schedule(courses, schedule, rooms, overlap_dict):
     """
@@ -71,6 +72,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     score_save = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
     temp = 150
+    score_plot_list = []
 
 
     for bigloop in range(iterations):
@@ -87,6 +89,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                     list_scores, array_day, array_timelock, array_roomlock = swap_with_every(schedule, i, j, k, courses, rooms, overlap_dict)
 
                     if simulated_annealing_true == True:
+                        title_plot = 'Simulated Annealing Deterministic'
                         chosen_swap = simulated_annealing(list_scores, temp)
                         schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
 
@@ -96,19 +99,19 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                             score_save = malus
                             schedule_save = schedule
 
-                        # print(bigloop)
-                        # print(f"scorecheck: ", malus)
-                        # print(f"scoresave: ", score_save)
+                        score_plot_list.append(score_save)
 
                     else:
+                        title_plot = 'Hillclimber Deterministic'
                         score_current = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
                         chosen_swap = hillclimber(list_scores, score_current)
                         if chosen_swap != False:
                             schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
                         schedule_save = schedule
                         malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
-                        print(f"score: ", malus)
+                        score_plot_list.append(malus)
 
+    plot_scores(score_plot_list, iterations, title_plot)
 
     return schedule
 
