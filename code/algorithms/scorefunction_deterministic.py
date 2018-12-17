@@ -5,13 +5,12 @@ import time
 from code.constraints.distribution import distribution
 
 def scorefunction_deterministic(schedule, courses, rooms, overlap_dict):
-    # this scorefunction calculates the malus points for a schedule,
-    # where the hard constraints are not necessarily satisfied
+    """
+    this scorefunction calculates the malus points for a schedule,
+    where the hard constraints are not necessarily satisfied
+    """
 
-    # set maluspoints to 0
     malus = 0;
-
-    # go through whole schedule
 
     # loop over days
     for i in range(len(schedule)):

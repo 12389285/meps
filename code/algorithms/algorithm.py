@@ -45,14 +45,14 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
                     score_save = score_now
                     schedule_save = schedule
 
-                print(f'score: ', score_now)
-                print(f'minimum score', score_save)
+                # print(f'score: ', score_now)
+                # print(f'minimum score', score_save)
 
                 temp_number =+ 1
             else:
                 schedule = hillclimber(schedule, schedule_swap, score_current, score_swap)
                 schedule_save = schedule
-                print(f'score: ', scorefunction(schedule, rooms, courses))
+                # print(f'score: ', scorefunction(schedule, rooms, courses))
 
     return schedule_save
 

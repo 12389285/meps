@@ -6,7 +6,7 @@ from code.algorithms.start_schedule_algorithm import alphabetic_queue
 from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
 
 def make_random_schedule(courses, schedule, rooms, overlap_dict):
-    """""
+    """
     This function makes a random schedule (no hard constraints satisfied)
 
     This function takes as input arguments:
@@ -20,10 +20,9 @@ def make_random_schedule(courses, schedule, rooms, overlap_dict):
     - It iterates over every roomlock in the empty schedule, at each empty roomlock it places a random course acitivty.
     - Then it removes the chosen acitivy from the courselist.
     This proces is repeated untill the courselist is empty.
-    """""
+    """
 
     course_list_alphabetic = alphabetic_queue(courses)
-    print(course_list_alphabetic)
 
     for i in range(len(schedule)):
         for j in range(len(schedule[i])):
@@ -37,7 +36,7 @@ def make_random_schedule(courses, schedule, rooms, overlap_dict):
 
 
 def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulated_annealing_true):
-    """""
+    """
     This algorithm runs the deterministic algorithms
 
     This algorithm takes as input arguments:
@@ -69,7 +68,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     - When the user instructed hillclimber: the hillclimber function determines the index of swap.
     - The swap function swaps with the chosen swap index.
     - Then the score is printed.
-    """""
+    """
     schedule = make_random_schedule(courses, schedule_empty, rooms, overlap_dict)
     score_save = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
@@ -108,9 +107,9 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                             score_save = malus
                             schedule_save = schedule
 
-                        print(bigloop)
-                        print(f"scorecheck: ", malus)
-                        print(f"scoresave: ", score_save)
+                        # print(bigloop)
+                        # print(f"scorecheck: ", malus)
+                        # print(f"scoresave: ", score_save)
 
                     else:
                         score_current = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
@@ -118,12 +117,12 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                         if chosen_swap != False:
                             schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
                         malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
-                        print(f"score: ", malus)
+                        # print(f"score: ", malus)
 
     return schedule
 
 def hillclimber(list_scores, score):
-    """""
+    """
     Hillclimber determines the swap
 
     This function takes as input arguments:
@@ -135,7 +134,7 @@ def hillclimber(list_scores, score):
     - If the minimum score is lower than the current score:
       The minimum score is looked up in the score list and the corresponding index number is returned
     - Else, False is returned
-    """""
+    """
     min_score = min(list_scores)
 
     if min_score < score:
@@ -147,7 +146,7 @@ def hillclimber(list_scores, score):
 
 
 def simulated_annealing(list_scores, temp):
-    """"
+    """
     Simulated annealing determines the swap
 
     This function takes as input arguments:
@@ -159,7 +158,7 @@ def simulated_annealing(list_scores, temp):
     - If the minimum score is lower than the current score:
       The minimum score is looked up in the score list and the corresponding index number is returned
     - Else, False is returned
-    """"
+    """
 
     e_scores = []
     e_score_sum = 0
