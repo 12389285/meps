@@ -6,9 +6,7 @@ from code.classes.room import Room
 from code.classes.courses import Courses
 from code.algorithms.start_schedule_algorithm import create_start_schedule as sa
 from code.classes.schedule import Schedule
-from code.algorithms.hillclimber import hillclimber
 from code.schedule.schedulemaker import csvconverter
-from code.algorithms.simulated_annealing_deterministisch import simulated_annealing_deterministisch
 from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
 from code.algorithms.hillclimber_deterministisch import hillclimber_deterministisch
 from code.algorithms.simulated_annealing import simulated_annealing
@@ -132,21 +130,34 @@ if __name__ == "__main__":
     main = Main()
     overlap_dict = main.overlap
     print(sys.argv)
-    algorithm = sys.argv[1]
-    if len(sys.argv) > 2:
-        number_swaps = sys.argv[2]
+    if len(sys.argv) != 3:
+        print('Not enough input arguments')
+        exit(1)
+    algorithm_input = sys.argv[1]
+    number_swaps = sys.argv[2]
 
-    if algorithm == 'hillclimber' or algorithm == 'simulated_annealing':
-        # queue = input('Queue for start schedule: ')
-        schedule = sa(main.courses, main.schedule, main.rooms, overlap_dict)
-        if algorithm == 'hillclimber':
-            schedule = hillclimber(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict)
-        elif algorithm == 'simulated_annealing':
-            schedule = simulated_annealing(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict)
-    elif algorithm == 'simulated_annealing_deterministisch':
-        schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
-    elif algorithm == 'hillclimber_deterministisch':
-        schedule = hillclimber_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
+    if algorithm_input == 'hillclimber' or algorithm_input == 'simulated_annealing':
+        schedule_begin = sa(main.courses, main.schedule, main.rooms, overlap_dict)
+        if algorithm_input == 'hillclimber':
+            schedule = algorithm(schedule_begin, int(number_swaps), main.rooms, main.courses, overlap_dict, False)
+            print(schedule)
+            scorefunction_show(schedule)
+            csvconverter(schedule)
+        elif algorithm_input == 'simulated_annealing':
+            schedule = algorithm(schedule_begin, int(number_swaps), main.rooms, main.courses, overlap_dict, True)
+            print(schedule)
+            scorefunction_show(schedule)
+            csvconverter(schedule)
+    elif algorithm_input == 'simulated_annealing_deterministic':
+        schedule = algorithm_deterministic(main.courses, main.schedule, int(number_swaps), main.rooms, overlap_dict, True)
+        print(schedule)
+        scorefunction_show(schedule)
+        csvconverter(schedule)
+    elif algorithm_input == 'hillclimber_deterministic':
+        schedule = algorithm_deterministic(main.courses, main.schedule, int(number_swaps), main.rooms, overlap_dict, False)
+        print(schedule)
+        scorefunction_show(schedule)
+        csvconverter(schedule)
     else:
         print('Algorithm does not exist.')
 
