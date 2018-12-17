@@ -4,7 +4,8 @@ class Courses(object):
 
         """
         In this class the courses are classified. The courses are divided in Lectures,
-        Tutorials and Practials. Also the numbers of different courses are listed.
+        Tutorials and Practials. Also the numbers of different courses are listed and
+        the number of expected students.
         """
 
         self.name = name
