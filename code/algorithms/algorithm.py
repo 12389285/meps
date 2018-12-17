@@ -8,6 +8,21 @@ from .plot import plot_scores
 import random
 
 def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulated_annealing_true):
+    """""
+    This algorithm runs the non-deterministic algorithms
+
+    This function takes as input arguments:
+        - the courselist (classes)
+        - the empty schedule
+        - the roomlist
+        - the overlapping dictionary
+
+    This function works as follows:
+    - It makes a alphabetical courselist (by calling the alphabetic_queue function)
+    - It iterates over every roomlock in the empty schedule, at each empty roomlock it places a random course acitivty.
+    - Then it removes the chosen acitivy from the courselist.
+    This proces is repeated untill the courselist is empty.
+    """""
 
     score_save = scorefunction(schedule, rooms, courses)
     schedule_save = copy.deepcopy(schedule)
