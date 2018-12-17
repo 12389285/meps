@@ -3,13 +3,11 @@
 #
 from code.constraints.overlap import overlapping
 from code.constraints.capacity import capacity
-from code.constraints.queue import alphabetic_queue
-from code.constraints.queue import lecfirst_queue
-from code.constraints.queue import length_queue
-from code.constraints.queue import random_queue
-from code.constraints.queue import lecfirst_random_queue
 from code.constraints.order import order
 from .scorefunction import scorefunction
+import operator
+from operator import attrgetter
+from random import shuffle
 
 def create_start_schedule(courses, schedule, rooms, overlap_dict):
 
@@ -40,3 +38,33 @@ def create_start_schedule(courses, schedule, rooms, overlap_dict):
 
     print(scorefunction(schedule, rooms, courses))
     return(schedule)
+
+def lecfirst_random_queue(courses):
+    # creates a queue with lectures first in random order
+
+    alphabetic_queue = []
+
+    for course in courses:
+        for i in range(len(course.activities)):
+            alphabetic_queue.append(course.activities[i])
+
+    lectures = []
+    others = []
+    queue = []
+
+    for i in range(len(alphabetic_queue)):
+        if '_lec' in alphabetic_queue[i]:
+            lectures.append(alphabetic_queue[i])
+        else:
+            others.append(alphabetic_queue[i])
+
+    shuffle(lectures)
+    shuffle(others)
+
+    for i in range(len(lectures)):
+        queue.append(lectures[i])
+
+    for i in range(len(others)):
+        queue.append(others[i])
+
+    return queue
