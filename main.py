@@ -113,16 +113,7 @@ class Main():
                 dubbels = []
 
         return overlap_dict
-
-    #
-    # def fill_schedule(self):
-    #
-    #     """
-    #     This function fills an empty schedule.
-    #     """
-    #
-    #     print(self.schedule[1][2][4])
-
+        
 
 if __name__ == "__main__":
 
@@ -133,7 +124,7 @@ if __name__ == "__main__":
         exit(1)
     algorithm_input = sys.argv[1]
     number_swaps = sys.argv[2]
-
+    start_time = time.time()
     if algorithm_input == 'hillclimber' or algorithm_input == 'simulated_annealing':
         schedule_begin = sa(main.courses, main.schedule, main.rooms, overlap_dict)
         if algorithm_input == 'hillclimber':
@@ -159,5 +150,6 @@ if __name__ == "__main__":
 
     else:
         print('Algorithm does not exist.')
+    print("--- %s seconds ---" % (time.time() - start_time))
 
     # print(schedule)

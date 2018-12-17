@@ -9,9 +9,10 @@ def plot_scores(points, iterations, title):
     ymin = 0
     ymax = max(points) + 100
     xmin = 0
-    xmax = iterations
-    plt.plot(range(0, iterations), points)
+    xmax = len(points)
+    plt.plot(range(0, xmax), points)
     plt.axis([xmin, xmax, ymin, ymax])
+    plt.text(xmax + 1, min(points), min(points))
     plt.title(title)
     plt.xlabel('Iterations')
     plt.ylabel('Points')

@@ -4,6 +4,7 @@ import time
 import math
 from code.algorithms.start_schedule_algorithm import alphabetic_queue
 from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
+from .plot import plot_scores
 
 def make_random_schedule(courses, schedule, rooms, overlap_dict):
     """
@@ -102,7 +103,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                         malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
                         score_plot_list.append(malus)
 
-    plot_scores(score_plot_list, number_iterations, title_plot)
+    plot_scores(score_plot_list, iterations, title_plot)
 
     return schedule
 
