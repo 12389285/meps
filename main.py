@@ -141,9 +141,9 @@ if __name__ == "__main__":
     #     # queue = input('Queue for start schedule: ')
     #     schedule = sa.create_start_schedule(main.courses, main.schedule, main.rooms, overlap_dict)
     #     if algorithm == 'hillclimber':
-    #         schedule = hillclimber(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict)
+    #         schedule = algorithm(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict, False)
     #     elif algorithm == 'simulated_annealing':
-    #         schedule = simulated_annealing(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict)
+    #         schedule = algorithm(schedule, int(number_swaps), main.rooms, main.courses, overlap_dict, True)
     # elif algorithm == 'simulated_annealing_deterministisch':
     #     schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
     # elif algorithm == 'hillclimber_deterministisch':
@@ -169,17 +169,11 @@ if __name__ == "__main__":
     # schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
     # schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
     # print(main.schedule)
-<<<<<<< HEAD
     schedule = sa(main.courses, main.schedule, main.rooms, overlap_dict)
     # schedule = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
     # schedule = algorithm_deterministic(main.courses, main.schedule, main.rooms, overlap_dict, True)
-    schedule = algorithm(schedule, 100000, main.rooms, main.courses, overlap_dict,True)
+    schedule = algorithm(schedule, 1, main.rooms, main.courses, overlap_dict, False)
     scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
-=======
-    schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
-    schedule = hillclimber(schedule, 1000, main.rooms, main.courses, overlap_dict)
-    schedule = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
->>>>>>> a94f91f749a5359ae93a3ac8888a989945fca1e0
     # csvconverter(schedule_best)
     # print(overlap_dict)
     # schedule = hillclimber_determin(main.courses, main.schedule, main.rooms, overlap_dict)

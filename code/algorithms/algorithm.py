@@ -50,7 +50,8 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
                 temp_number =+ 1
             else:
                 schedule = hillclimber(schedule, schedule_swap, score_current, score_swap)
-                print(f'score: ', scorefuntion(schedule, rooms, courses))
+                schedule_save = schedule
+                print(f'score: ', scorefunction(schedule, rooms, courses))
 
     return schedule_save
 
@@ -67,18 +68,19 @@ def random_numbers():
     return [day_lock, time_lock, room_lock]
 
 def hard_constraints(schedule_swap, overlap_dict, activity1, activity2, day_lock1, day_lock2, time_lock1, time_lock2, room_lock1, room_lock2):
-    if order(schedule_swap, activity1, day_lock2, time_lock2):
-        schedule_swap[day_lock2][time_lock2][room_lock2] = activity1
-        if overlapping(activity2, schedule_swap[day_lock1][time_lock1], overlap_dict):
-            if order(schedule_swap, activity2, day_lock1, time_lock1):
-                schedule_swap[day_lock1][time_lock1][room_lock1] = activity2
-                return True
+    if overlapping(activity1, schedule_swap[day_lock2][time_lock2], overlap_dict):
+        if order(schedule_swap, activity1, day_lock2, time_lock2):
+            schedule_swap[day_lock2][time_lock2][room_lock2] = activity1
+            if overlapping(activity2, schedule_swap[day_lock1][time_lock1], overlap_dict):
+                if order(schedule_swap, activity2, day_lock1, time_lock1):
+                    schedule_swap[day_lock1][time_lock1][room_lock1] = activity2
+                    return True
+                else:
+                    return False
             else:
                 return False
         else:
             return False
-    else:
-        return False
 
 def simulated_annealing(schedule, schedule_swap, temp, score_current, score_swap):
     e_score_current = math.exp(-score_current / temp)
@@ -88,10 +90,6 @@ def simulated_annealing(schedule, schedule_swap, temp, score_current, score_swap
     probability = random.uniform(0,1)
     prob_current = e_score_current / e_score_sum
     prob_swap = e_score_swap / e_score_sum
-
-    # print(f'prob uniform', probability)
-    # print(f'prob current', prob_current)
-    # print(f'prob swap', prob_swap)
 
 
     if prob_current > probability:
