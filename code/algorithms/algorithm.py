@@ -30,6 +30,7 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
             schedule_swap[day_lock1][time_lock1][room_lock1] = activity2
             schedule_swap[day_lock2][time_lock2][room_lock2] = activity1
             score_swap = scorefunction(schedule_swap, rooms, courses)
+
             if simulated_annealing_true == True:
                 swaps_number += 1
                 if swaps_number == 1000:

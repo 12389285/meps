@@ -3,7 +3,7 @@ import copy
 import time
 import math
 from code.constraints.queue import alphabetic_queue
-from code.algorithms.scorefunction2 import scorefunction2
+from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
 
 def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
 
@@ -31,7 +31,7 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
 
 
     # determine malus is maluspoints of the random filled in schedule, (hard constraints are not satisfied, so given a lot of malus points to)
-    malus = scorefunction2(schedule, courses, rooms, overlap_dict)
+    malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     print(malus)
     # make a copy of the random schedule
     schedule_save = copy.deepcopy(schedule)
@@ -77,7 +77,7 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
                                 schedule_copy[i][j][k] = schedule[a][b][c]
                                 schedule_copy[a][b][c] = schedule[i][j][k]
                                 # caluclate score of swapped schedule
-                                score = scorefunction2(schedule_copy, courses, rooms, overlap_dict)
+                                score = scorefunction_deterministic(schedule_copy, courses, rooms, overlap_dict)
                                 # append score to list scores
                                 list_scores.append(score)
                                 # save inex of day, timelock and roomlock in the lists
@@ -125,7 +125,7 @@ def simulated_annealing_deterministisch(courses, schedule, rooms, overlap_dict):
                     temporary = schedule[i][j][k]
                     schedule[i][j][k] = schedule[a][b][c]
                     schedule[a][b][c] = temporary
-                    score_check = scorefunction2(schedule, courses, rooms, overlap_dict)
+                    score_check = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
                     # if new score is lower than the best-saved-score
                     if score_check < score_save:
                         # save this score as score-save

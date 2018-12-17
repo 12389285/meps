@@ -72,6 +72,7 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
             # calculate swapped score
             score2 = scorefunction(schedule2, rooms, courses)
             if score2 < score1:
+                print('swap!')
                 # if score 2 is lower than score1 (better), new schedule is schedule2
                 schedule = schedule2
 
@@ -82,17 +83,17 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
         score_data = scorefunction(schedule, rooms, courses)
         score.append(score_data)
 
-        # print(score_data)
+        print(score_data)
 
 
     print(schedule)
     # plot show of maluspoints
-    plt.plot(swaps, score)
-    plt.axis([0, max(swaps), 0, max(score) + 50])
-    plt.text(max(swaps) + 1, min(score), min(score))
-    plt.title('Hillclimber algorithm')
-    plt.xlabel('Number of swaps')
-    plt.ylabel('Malus points')
-    plt.show()
+    # plt.plot(swaps, score)
+    # plt.axis([0, max(swaps), 0, max(score) + 50])
+    # plt.text(max(swaps) + 1, min(score), min(score))
+    # plt.title('Hillclimber algorithm')
+    # plt.xlabel('Number of swaps')
+    # plt.ylabel('Malus points')
+    # plt.show()
 
     return schedule

@@ -1,5 +1,10 @@
+#
+#  Returns the malus or bonus points regarding the spread of the course
+#  activities over the week
+#
 
 def spread_malus(number_activities, diff_days):
+    # returns the malus points if not enough spread
 
     malus = 0
 
@@ -13,6 +18,7 @@ def spread_malus(number_activities, diff_days):
     return malus
 
 def spread_bonus(number_activities, diff_days):
+    # returns the bonus points if spread perfectly
 
     malus = 0
 

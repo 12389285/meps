@@ -12,7 +12,7 @@ def distribution(schedule, courses):
     # make variable to count malus points
     malus = 0
 
-    # make lists to see on what day different activities are scheduled
+    # make lists to see on what day the different activities are scheduled
     for i in range(len(courses)):
         name = courses[i].name
         number_activities = courses[i].dif_total
@@ -46,10 +46,6 @@ def distribution(schedule, courses):
                             elif 'pr' in sort:
                                 day_pr.append(i)
 
-        # if the lectures are on te same day it costs points
-        if double_lec == 1:
-            malus = malus + 10
-
         # set variable to count double days that cost points
         double = 0
 
@@ -60,6 +56,9 @@ def distribution(schedule, courses):
 
         # in case there are only tutorials and no practica
         elif day_tut and not day_pr:
+            # if the lectures are on te same day it costs points
+            if double_lec == 1:
+                malus = malus + 10
             # count malus points
             for i in range(len(day_tut)):
                 total_days.append(day_tut[i])
@@ -78,6 +77,9 @@ def distribution(schedule, courses):
 
         # in case there are only practica and no tutorials
         elif day_pr and not day_tut:
+            # if the lectures are on te same day it costs points
+            if double_lec == 1:
+                malus = malus + 10
             day_pr = list(set(day_pr))
             for i in range(len(day_pr)):
                 total_days.append(day_pr[i])

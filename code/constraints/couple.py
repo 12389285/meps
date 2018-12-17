@@ -1,6 +1,7 @@
 #
-# Returns malus points concidering all possible combinations
+# Returns malus points concidering best possible combinations of days
 #
+
 from itertools import permutations, repeat
 from .spreadpoints import spread_malus
 from .spreadpoints import spread_bonus
@@ -49,4 +50,6 @@ def couples(tut, prac, total_days, number_activities):
     best_points = numpy.min(points_list)
     best_points_index = numpy.argmin(points_list)
     couples = best_comb[best_points_index]
+    malus = best_points
+
     return(malus)
