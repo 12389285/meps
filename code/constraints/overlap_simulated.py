@@ -1,8 +1,20 @@
-
 def overlapping(activity, timelock, overlap_dict, roomlock):
+    """
+    This function returns True if the is no overlap with courses given in the
+    overlap matrix. Otherwise, it returns False.
+
+    This function takes as input arguments:
+        - activity
+        - time lock and room lock
+        - overlap matrix
+    """
+
+    # if it is None it is always true
     if activity == None:
         return True
+
     else:
+        # check if no other overlap-course is given in the same time lock
         activity = activity.split('_')
         for i in range(len(timelock)):
             activity_timelock = timelock[i]

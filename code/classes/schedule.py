@@ -1,9 +1,3 @@
-# Meps lectures
-# Eefje Roelsema – 10993673
-# Pascalle Veltman – 11025646
-# Max Simons – 12389285
-# Classifies a schedule.
-
 class Schedule(object):
 
     def __init__(self):

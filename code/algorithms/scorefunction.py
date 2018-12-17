@@ -26,6 +26,4 @@ def scorefunction(schedule, rooms, courses):
 
     malus = malus + distribution(schedule, courses)
 
-    print(malus)
-
     return malus
