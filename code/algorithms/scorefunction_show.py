@@ -14,16 +14,22 @@ def scorefunction_show(schedule, courses, rooms, overlap_dict):
                 if schedule[i][j][k] != None:
                     if j == 4:
                         malus = malus + 20
-                # print(f"capacity", capacity(schedule[i][j][k], rooms[k], courses))
+                        print('malus 20 points')
+                capacity_show = capacity(schedule[i][j][k], rooms[k], courses)
+                if capacity_show!= 0:
+                    print(f'capacity: ', schedule[i][j][k], capacity_show)
+
                 malus = malus + capacity(schedule[i][j][k], rooms[k], courses)
-                # print(f"overlapping", overlapping(schedule[i][j][k], schedule[i][j], overlap_dict, k))
                 if overlapping(schedule[i][j][k], schedule[i][j], overlap_dict, k) == False:
+                    print(f'overlapping', schedule[i][j][k])
                     malus = malus + 800
-                # print(f"order", order(schedule, schedule[i][j][k], i, j))
                 if order(schedule, schedule[i][j][k], i, j) == False:
+                    print(f'order', schedule[i][j][k])
                     malus = malus + 600
 
+
     # print(f"distribution", distribution(schedule,coureses))
-    # malus = malus + distribution(schedule, courses)
+    print(f'points ditribution: ',distribution(schedule, courses))
+    malus = malus + distribution(schedule, courses)
 
     return malus

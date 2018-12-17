@@ -1,5 +1,1 @@
-matplotlib
-random
-math
-time
-copy
+matplotlib==3.0.1
