@@ -11,7 +11,7 @@ import time
 # sys.path.insert(0, 'code/classes/')
 from code.classes.room import Room
 from code.classes.courses import Courses
-import code.algorithms.start_schedule_algorithm as sa
+from code.algorithms.start_schedule_algorithm import create_start_schedule as sa
 from code.classes.schedule import Schedule
 from code.algorithms.hillclimber import hillclimber
 from code.schedule.schedulemaker import csvconverter
@@ -20,7 +20,9 @@ from code.algorithms.scorefunction2 import scorefunction2
 from code.algorithms.hillclimber_deterministisch import hillclimber_deterministisch
 from code.algorithms.simulated_annealing import simulated_annealing
 from code.constraints.couple import couples
-from code.algorithms.algorithm_deterministic import algorithm
+from code.algorithms.algorithm_deterministic import algorithm as algorithm_deterministic
+from code.algorithms.algorithm import algorithm
+from code.algorithms.scorefunction_show import scorefunction_show
 
 
 class Main():
@@ -166,12 +168,13 @@ if __name__ == "__main__":
     # schedule_best = hillclimber(schedule, 10000, main.rooms, main.courses, overlap_dict)
     # schedule = simulated_annealing_deterministisch(main.courses, main.schedule, main.rooms, overlap_dict)
     # print(main.schedule)
-    # schedule = (ba.make_queue(main.courses, main.schedule, main.rooms, overlap_dict))
+    schedule = sa(main.courses, main.schedule, main.rooms, overlap_dict)
     # schedule = hillclimber(schedule, 100000, main.rooms, main.courses, overlap_dict)
-    schedule = algorithm(main.courses, main.schedule, main.rooms, overlap_dict, True)
-
+    # schedule = algorithm_deterministic(main.courses, main.schedule, main.rooms, overlap_dict, True)
+    schedule = algorithm(schedule, 100000, main.rooms, main.courses, overlap_dict,True)
+    scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
     # csvconverter(schedule_best)
     # print(overlap_dict)
     # schedule = hillclimber_determin(main.courses, main.schedule, main.rooms, overlap_dict)
-    # schedule_best = simulated_annealing(schedule, 100000, main.rooms, main.courses, overlap_dict )
+    # schedule_best = simulated_annealing(schedule, 100000, main.rooms,s main.courses, overlap_dict )
     print(schedule)
