@@ -126,6 +126,7 @@ class Main():
 
 
 if __name__ == "__main__":
+
     main = Main()
     overlap_dict = main.overlap
     print(sys.argv)
@@ -140,23 +141,24 @@ if __name__ == "__main__":
         if algorithm_input == 'hillclimber':
             schedule = algorithm(schedule_begin, int(number_swaps), main.rooms, main.courses, overlap_dict, False)
             print(schedule)
-            scorefunction_show(schedule)
+            scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
             csvconverter(schedule)
         elif algorithm_input == 'simulated_annealing':
             schedule = algorithm(schedule_begin, int(number_swaps), main.rooms, main.courses, overlap_dict, True)
             print(schedule)
-            scorefunction_show(schedule)
+            scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
             csvconverter(schedule)
     elif algorithm_input == 'simulated_annealing_deterministic':
         schedule = algorithm_deterministic(main.courses, main.schedule, int(number_swaps), main.rooms, overlap_dict, True)
         print(schedule)
-        scorefunction_show(schedule)
+        scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
         csvconverter(schedule)
     elif algorithm_input == 'hillclimber_deterministic':
         schedule = algorithm_deterministic(main.courses, main.schedule, int(number_swaps), main.rooms, overlap_dict, False)
         print(schedule)
-        scorefunction_show(schedule)
         csvconverter(schedule)
+        scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
+
     else:
         print('Algorithm does not exist.')
         exit(1)
