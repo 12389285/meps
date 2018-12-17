@@ -11,7 +11,7 @@ def plot_scores(points, iterations, title):
         ymin = 0
     if min(points) < 0:
         print("nee")
-        ymin = min(points)
+        ymin = -400
     ymax = max(points) + 100
     xmin = 0
     xmax = len(points)
