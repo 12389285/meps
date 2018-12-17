@@ -6,32 +6,18 @@ Interactie-ontwerp_lec,Calculus 2_lec,Technology for games_lec,Bioinformatica_le
 Kansrekenen 2_lec,Bioinformatica_lec,Machine Learning_lec,Software Engineering_lec,Collectieve Intelligentie_lec,Moderne Databases_lec,Interactie-ontwerp_lec
 Kansrekenen 2_lec,Collectieve Intelligentie_lec,Reflectie op de digitale cultuur_lec,Architectuur en computerorganisatie_lec,Machine Learning_lec,Heuristieken 2_lec,Heuristieken 1_lec
 Analysemethoden en -technieken_lec,Informatie- en organisatieontwerp_lec,Bioinformatica_lec,Webprogrammeren en databases_lec,Data Mining_lec,Advanced Heuristics_lec,Autonomous Agents 2_lec
-=======
-Kansrekenen 2_lec,Compilerbouw_lec,Software Engineering_lec,Interactie-ontwerp_lec,Heuristieken 2_lec,Data Mining_lec,Machine Learning_lec
-Databases 2_lec,Autonomous Agents 2_lec,Bioinformatica_lec,Lineaire Algebra_lec,Data Mining_lec,Informatie- en organisatieontwerp_lec,Interactie-ontwerp_lec
-Kansrekenen 2_lec,Autonomous Agents 2_lec,Machine Learning_lec,Technology for games_lec,Moderne Databases_lec,Webprogrammeren en databases_lec,Analysemethoden en -technieken_lec
-Technology for games_lec,Collectieve Intelligentie_lec,Lineaire Algebra_lec,Informatie- en organisatieontwerp_lec,Algoritmen en complexiteit_lec,Compilerbouw_lec,Calculus 2_lec
->>>>>>> 9d0216d37a9d40f1b08ed65c27092a58804d2609
 Reflectie op de digitale cultuur_lec
 
 Dinsdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-<<<<<<< HEAD
 Informatie- en organisatieontwerp_lec,Collectieve Intelligentie_lec,Compilerbouw_lec,Algoritmen en complexiteit_lec,Databases 2_lec,Lineaire Algebra_lec,Technology for games_lec
 Compilerbouw_lec,Webprogrammeren en databases_lec,Architectuur en computerorganisatie_lec,Algoritmen en complexiteit_prac,Reflectie op de digitale cultuur_tut,Zoeken sturen en bewegen_prac,Collectieve Intelligentie_prac
 Project Genetic Algorithms_prac,Bioinformatica_tut,Autonomous Agents 2_prac,Compilerbouw (practicum)_prac,Reflectie op de digitale cultuur_tut,Project Numerical Recipes_prac,Programmeren in Java 2_prac
 Project Genetic Algorithms_prac,Informatie- en organisatieontwerp_prac,Bioinformatica_prac,Programmeren in Java 2_prac,Moderne Databases_tut,Data Mining_tut,Advanced Heuristics_prac
-=======
-Reflectie op de digitale cultuur_lec,Architectuur en computerorganisatie_lec,Collectieve Intelligentie_lec,Heuristieken 1_lec,Advanced Heuristics_lec,Webprogrammeren en databases_lec,Calculus 2_tut
-Bioinformatica_lec,Collectieve Intelligentie_lec,Reflectie op de digitale cultuur_tut,Heuristieken 1_tut,Moderne Databases_tut,Webprogrammeren en databases_tut,Advanced Heuristics_prac
-Architectuur en computerorganisatie_lec,Data Mining_tut,Technology for games_tut,Informatie- en organisatieontwerp_prac,Programmeren in Java 2_prac,Heuristieken 2_tut,Zoeken sturen en bewegen_prac
-Bioinformatica_lec,Reflectie op de digitale cultuur_tut,Moderne Databases_prac,Technology for games_tut,Collectieve Intelligentie_prac,Calculus 2_tut,Programmeren in Java 2_prac
->>>>>>> 9d0216d37a9d40f1b08ed65c27092a58804d2609
 Informatie- en organisatieontwerp_prac
 
 Woensdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-<<<<<<< HEAD
 Databases 2_tut,Moderne Databases_prac,Calculus 2_tut,Webprogrammeren en databases_tut,Technology for games_tut,Compilerbouw_tut,Software Engineering_prac
 Programmeren in Java 2_prac,Heuristieken 2_tut,Moderne Databases_prac,Databases 2_tut,Informatie- en organisatieontwerp_prac,Algoritmen en complexiteit_tut,Software Engineering_tut
 Webprogrammeren en databases_tut,Compilerbouw_prac,Algoritmen en complexiteit_tut,Heuristieken 2_tut,Zoeken sturen en bewegen_prac,Collectieve Intelligentie_tut,Moderne Databases_tut
@@ -53,26 +39,20 @@ Collectieve Intelligentie_prac,Informatie- en organisatieontwerp_tut,,,,,
 Collectieve Intelligentie_tut,,,,,,
 Collectieve Intelligentie_tut,,,,,,
 Collectieve Intelligentie_tut
-=======
-Reflectie op de digitale cultuur_tut,Collectieve Intelligentie_tut,Webprogrammeren en databases_prac,Autonomous Agents 2_prac,Compilerbouw (practicum)_prac,Algoritmen en complexiteit_prac,Netwerken en systeembeveiliging_prac
-Data Mining_prac,Programmeren in Java 2_prac,Software Engineering_tut,Compilerbouw (practicum)_prac,Bioinformatica_prac,Informatie- en organisatieontwerp_tut,Autonomous Agents 2_tut
-Collectieve Intelligentie_tut,Programmeren in Java 2_prac,Bioinformatica_tut,Zoeken sturen en bewegen_prac,Software Engineering_prac,Moderne Databases_prac,Technology for games_tut
-Data Mining_prac,Compilerbouw_tut,Webprogrammeren en databases_tut,Project Numerical Recipes_prac,Moderne Databases_tut,Informatie- en organisatieontwerp_tut,Advanced Heuristics_prac
-Collectieve Intelligentie_tut
 
 Donderdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-Data Mining_tut,Webprogrammeren en databases_prac,Autonomous Agents 2_prac,Advanced Heuristics_prac,Bioinformatica_tut,Software Engineering_prac,Compilerbouw (practicum)_prac
-Collectieve Intelligentie_prac,Algoritmen en complexiteit_tut,Compilerbouw_prac,Informatie- en organisatieontwerp_prac,Zoeken sturen en bewegen_prac,Databases 2_tut,Moderne Databases_tut
-Project Genetic Algorithms_prac,Compilerbouw_prac,Netwerken en systeembeveiliging_prac,Data Mining_tut,Project Numerical Recipes_prac,Moderne Databases_prac,Software Engineering_tut
-Collectieve Intelligentie_prac,Algoritmen en complexiteit_prac,Programmeren in Java 2_prac,Informatie- en organisatieontwerp_tut,Databases 2_tut,Bioinformatica_prac,Autonomous Agents 2_tut
-Collectieve Intelligentie_tut
+Collectieve Intelligentie_tut,Machine Learning_lec,,Technology for games_tut,Reflectie op de digitale cultuur_lec,Compilerbouw_prac,Zoeken sturen en bewegen_prac
+Analysemethoden en -technieken_lec,Informatie- en organisatieontwerp_prac,Advanced Heuristics_prac,Data Mining_tut,Project Numerical Recipes_prac,Moderne Databases_tut,Interactie-ontwerp_lec
+Software Engineering_prac,Bioinformatica_prac,Collectieve Intelligentie_prac,Autonomous Agents 2_prac,Informatie- en organisatieontwerp_prac,Algoritmen en complexiteit_prac,Webprogrammeren en databases_prac
+Project Genetic Algorithms_prac,Data Mining_tut,Zoeken sturen en bewegen_prac,Moderne Databases_prac,Lineaire Algebra_lec,Compilerbouw_tut,
+""
 
 Vrijdag
 C0.110,A1.04,A1.06,A1.08,A1.10,B0.201,C1.112
-Project Genetic Algorithms_prac,Netwerken en systeembeveiliging_prac,Data Mining_prac,Compilerbouw_tut,Heuristieken 2_tut,Heuristieken 1_tut,
-Collectieve Intelligentie_prac,Algoritmen en complexiteit_tut,,,,,
-Project Numerical Recipes_prac,,,,,,
-Project Genetic Algorithms_prac,,,,,,
+Reflectie op de digitale cultuur_tut,Algoritmen en complexiteit_prac,Webprogrammeren en databases_tut,Moderne Databases_prac,Technology for games_tut,Collectieve Intelligentie_prac,Autonomous Agents 2_prac
+Webprogrammeren en databases_prac,Advanced Heuristics_prac,Collectieve Intelligentie_prac,Reflectie op de digitale cultuur_tut,Heuristieken 1_tut,Architectuur en computerorganisatie_lec,Compilerbouw_tut
+Informatie- en organisatieontwerp_tut,Compilerbouw (practicum)_prac,,Project Numerical Recipes_prac,Programmeren in Java 2_prac,Data Mining_prac,
+Kansrekenen 2_lec,,Collectieve Intelligentie_tut,Autonomous Agents 2_tut,Netwerken en systeembeveiliging_prac,Reflectie op de digitale cultuur_tut,Lineaire Algebra_lec
 ""
 >>>>>>> 9d0216d37a9d40f1b08ed65c27092a58804d2609
