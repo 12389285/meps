@@ -52,18 +52,18 @@ def lecfirst_random_queue(courses):
     """
 
     # create first queue which still is alphabetic
-    alphabetic_queue = alphabetic_queue(courses)
+    alphab_queue = alphabetic_queue(courses)
 
     lectures = []
     others = []
     queue = []
 
     # seperate the lectures from other activities in lists
-    for i in range(len(alphabetic_queue)):
-        if '_lec' in alphabetic_queue[i]:
-            lectures.append(alphabetic_queue[i])
+    for i in range(len(alphab_queue)):
+        if '_lec' in alphab_queue[i]:
+            lectures.append(alphab_queue[i])
         else:
-            others.append(alphabetic_queue[i])
+            others.append(alphab_queue[i])
 
     # randomize the order
     shuffle(lectures)
@@ -83,10 +83,10 @@ def alphabetic_queue(courses):
     This function returns a queue of all activities in alphabetic order.
     """
 
-    alphabetic_queue = []
+    alphab_queue = []
 
     for course in courses:
         for i in range(len(course.activities)):
-            alphabetic_queue.append(course.activities[i])
+            alphab_queue.append(course.activities[i])
 
-    return(alphabetic_queue)
+    return(alphab_queue)

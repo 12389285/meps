@@ -8,8 +8,6 @@ from code.algorithms.start_schedule_algorithm import create_start_schedule as sa
 from code.classes.schedule import Schedule
 from code.schedule.schedulemaker import csvconverter
 from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
-from code.algorithms.hillclimber_deterministisch import hillclimber_deterministisch
-from code.algorithms.simulated_annealing import simulated_annealing
 from code.algorithms.algorithm_deterministic import algorithm as algorithm_deterministic
 from code.algorithms.algorithm import algorithm
 from code.algorithms.scorefunction_show import scorefunction_show
