@@ -72,11 +72,18 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     schedule_save = copy.deepcopy(schedule)
     temp = 150
 
+
     for bigloop in range(iterations):
         temp = temp * 0.75
         for i in range(len(schedule)):
             for j in range(len(schedule[i])):
                 for k in range(len(schedule[i][j])):
+
+                    list_scores = []
+                    array_day = []
+                    array_timelock = []
+                    array_roomlock = []
+
                     list_scores, array_day, array_timelock, array_roomlock = swap_with_every(schedule, i, j, k, courses, rooms, overlap_dict)
 
                     if simulated_annealing_true == True:
@@ -98,23 +105,17 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                         chosen_swap = hillclimber(list_scores, score_current)
                         if chosen_swap != False:
                             schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
+                        schedule_save = schedule
                         malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
-                        # print(f"score: ", malus)
+                        print(f"score: ", malus)
+
 
     return schedule
 
 def hillclimber(list_scores, score):
-<<<<<<< HEAD
     """""
     Hillclimber determines the swap index
-=======
-<<<<<<< HEAD
-    """
-=======
-    """"
->>>>>>> 9d0216d37a9d40f1b08ed65c27092a58804d2609
     Hillclimber determines the swap
->>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
 
     This function takes as input arguments:
     - list_scores
@@ -124,13 +125,8 @@ def hillclimber(list_scores, score):
     - The minimum of scorelist is determined
     - If the minimum score is lower than the current score:
       The minimum score is looked up in the score list and the corresponding index number is returned
-<<<<<<< HEAD
     - If the minimum score is not lower than the current score false is returned
     """""
-=======
-    - Else, False is returned
-    """
->>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
     min_score = min(list_scores)
 
     if min_score < score:
@@ -141,33 +137,22 @@ def hillclimber(list_scores, score):
         return False
 
 
+
 def simulated_annealing(list_scores, temp):
-<<<<<<< HEAD
     """"
     Simulated annealing determines the swap index
-=======
-    """
-    Simulated annealing determines the swap
->>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
 
     This function takes as input arguments:
     - list_scores
     - temperature
 
     This function works as follows:
-<<<<<<< HEAD
-    - Of all scores in list_scores the e_score is calculated and added to e-score list.
+    - Of all scores in list_scores the e_scores are calculated and added to e-score list.
     - All e-scores are added to e_score sum.
     - A float between 0 and 1 is extracted from the uniform distribution (probability)
     - Loop over every e-score in list e-score:
       The e-score probability in comparison to the other e-scores is calculated and added to p-sum.
     - The iteration where p-sum becomes bigger than probability, the index of that e-score is returned.
-=======
-    - The minimum of scorelist is determined
-    - If the minimum score is lower than the current score:
-      The minimum score is looked up in the score list and the corresponding index number is returned
-    - Else, False is returned
->>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
     """
 
     e_scores = []
@@ -192,6 +177,24 @@ def simulated_annealing(list_scores, temp):
             return n
 
 def swap_with_every(schedule, i, j, k, courses, rooms, overlap_dict):
+    """
+    This function swaps every roomlock in the schedule with the given roomlock
+    and calculates the score
+
+    This function takes as input arguments:
+        - the schedule
+        - the daylock i, timelock j and roomlock k (where the algorithm iteration is)
+        - the courses (classes)
+        - the roomlist
+        - the overlapping dictionary
+
+    This function works as follows:
+    - It loops over every roomlock in the schedule and swaps it with the givgen roomlock
+    - It calculates the score of each swap and adds it to the score_list
+    - Of each swap the daylock, timelock and roomlock are added to their assigned array
+      (this is done such that in the swap function the activity beloning to the swap can be found)
+    """
+
     list_scores = []
     array_day = []
     array_timelock = []
@@ -211,6 +214,7 @@ def swap_with_every(schedule, i, j, k, courses, rooms, overlap_dict):
                 array_roomlock.append(c)
 
     return [list_scores, array_day, array_timelock, array_roomlock]
+
 
 
 def swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k):
@@ -239,5 +243,6 @@ def swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j,
     temporary = schedule[i][j][k]
     schedule[i][j][k] = schedule[a][b][c]
     schedule[a][b][c] = temporary
+
 
     return schedule

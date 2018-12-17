@@ -11,10 +11,13 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
     This algorithm runs the non-deterministic algorithms
 
     This function takes as input arguments:
-        - the courselist (classes)
-        - the empty schedule
+        - the filled in schedule (hard constraints are satisfied, but furthermore not an optimal schedule)
+        - the number of iterations requested by the user
         - the roomlist
+        - the courselist (classes)
         - the overlapping dictionary
+        - boolean for Simulated Annealing or Hillclimber (boolean)
+
 
     This function works as follows:
     - It makes a alphabetical courselist (by calling the alphabetic_queue function)

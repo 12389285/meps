@@ -28,12 +28,7 @@ def scorefunction_show(schedule, courses, rooms, overlap_dict):
                     malus = malus + 600
 
 
-<<<<<<< HEAD
     print(f'points ditribution: ',distribution(schedule, courses))
-=======
-    # print(f"distribution", distribution(schedule,coureses))
-    # print(f'points ditribution: ',distribution(schedule, courses))
->>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
     malus = malus + distribution(schedule, courses)
 
     return malus
