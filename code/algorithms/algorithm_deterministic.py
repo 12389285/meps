@@ -122,11 +122,8 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     return schedule
 
 def hillclimber(list_scores, score):
-<<<<<<< HEAD
+
     """
-=======
-    """"
->>>>>>> 9d0216d37a9d40f1b08ed65c27092a58804d2609
     Hillclimber determines the swap
 
     This function takes as input arguments:
@@ -139,6 +136,7 @@ def hillclimber(list_scores, score):
       The minimum score is looked up in the score list and the corresponding index number is returned
     - Else, False is returned
     """
+
     min_score = min(list_scores)
 
     if min_score < score:

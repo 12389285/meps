@@ -1,23 +1,19 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
-
-
-
-def plot_scores():
-
-    points = []
-
-    title = 
+def plot_scores(points, iterations, title):
+    """
+    This function takes the list of scores and iterations and retrun a plot.
+    """
 
     # plot figure
-    ymin = min(points)
-    ymax = max(points)
-    xmin = min(iterations)
-    xmax = max(iterations)
-    plt.plot(iterations, points)
+    ymin = 0
+    ymax = max(points) + 100
+    xmin = 0
+    xmax = iterations
+    plt.plot(range(0, iterations), points)
     plt.axis([xmin, xmax, ymin, ymax])
     plt.title(title)
     plt.xlabel('Iterations')
     plt.ylabel('Points')
 
-return plt.show()
+    return plt.show()
