@@ -1,9 +1,5 @@
 class Schedule(object):
 
-    """
-    Classifies an empty schedule.
-    """
-
     def __init__(self):
         self.empty_schedule = self.create()
 
