@@ -1,9 +1,3 @@
-# Meps lectures
-# Eefje Roelsema – 10993673
-# Pascalle Veltman – 11025646
-# Max Simons – 12389285
-# Converts 3D list to csv file.
-
 import csv
 
 def csvconverter(schedule):
@@ -17,10 +11,7 @@ def csvconverter(schedule):
     # add rooms
     headers = ["C0.110", "A1.04", "A1.06", "A1.08", "A1.10", "B0.201", "C1.112"]
 
-    # add time locks
-    # time_locks = ["09:00-11:00", "11:00-13:00", "13:00-15:00", "15:00-17:00"]
-
-    with open('schedule.csv', 'w', newline='') as fp:
+    with open('results/schedule.csv', 'w', newline='') as fp:
 
         a = csv.writer(fp)
 
