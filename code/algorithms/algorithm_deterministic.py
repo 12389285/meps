@@ -22,14 +22,14 @@ def make_random_schedule(courses, schedule, rooms, overlap_dict):
     return schedule
 
 
-def algorithm(courses, schedule_2, rooms, overlap_dict, simulated_annealing_true):
+def algorithm(courses, schedule_2, iterations, rooms, overlap_dict, simulated_annealing_true):
 
     schedule = make_random_schedule(courses, schedule_2, rooms, overlap_dict)
     score_save = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
     temp = 150
 
-    for bigloop in range(15):
+    for bigloop in range(iterations):
         temp = temp * 0.75
         for i in range(len(schedule)):
             for j in range(len(schedule[i])):
