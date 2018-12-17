@@ -13,6 +13,7 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
     temp_number = 0
     swaps_number = 0
     temp = 20
+    score_plot_list = []
 
     for i in range(number_iterations):
         score_current = scorefunction(schedule, rooms, courses)
@@ -32,6 +33,7 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
             score_swap = scorefunction(schedule_swap, rooms, courses)
 
             if simulated_annealing_true == True:
+                title_plot = 'Simulated Annealing'
                 swaps_number += 1
                 if swaps_number == 1000:
                     temp = temp * 0.75
@@ -45,14 +47,17 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
                     score_save = score_now
                     schedule_save = schedule
 
-                # print(f'score: ', score_now)
-                # print(f'minimum score', score_save)
+                score_plot_list.append(score_save)
 
                 temp_number =+ 1
+
             else:
+                title_plot = 'Hillclimber'
                 schedule = hillclimber(schedule, schedule_swap, score_current, score_swap)
                 schedule_save = schedule
-                # print(f'score: ', scorefunction(schedule, rooms, courses))
+                score_plot_list.append(scorefunction(schedule, rooms, courses))
+
+    plot_scores(score_plot_list, number_iterations, title_plot)
 
     return schedule_save
 
