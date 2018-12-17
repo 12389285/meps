@@ -11,13 +11,10 @@ from code.constraints.queue import lecfirst_random_queue
 from code.constraints.order import order
 from .scorefunction import scorefunction
 
-def make_queue(courses, schedule, rooms, overlap_dict):
+def create_start_schedule(courses, schedule, rooms, overlap_dict):
 
     queue = lecfirst_random_queue(courses)
 
-    return(create_schedule(courses, schedule, rooms, overlap_dict, queue))
-
-def create_schedule(courses, schedule, rooms, overlap_dict, queue):
     i = 0
     # check if queue is not empy
     malus = 0
