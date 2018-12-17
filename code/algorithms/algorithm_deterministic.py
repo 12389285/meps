@@ -55,11 +55,9 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     - The algorithm is run as many times as instructed by the user.
     - Every loop the temperature drops with a certain amount (only needed in the simulated annealing).
     - The algorithm iterates through every roomlock in the schedule (first),
-    - At this roomlock (chosen by first iteration), the algorithm iterates again through the entire schedule
-      and at every roomlock it swaps it with the roomlock of the first iteration.
-    - Of every swap (175 for each roomlock in the first iteration), the score is calculated and put in list_scores
-    - The daylock, roomlock and timelock indexes of each swap are put in a list,
-      so when the swap is determined, the appurtenant activity can be found.
+    - Then the function swap_with_every is called, which swaps this roomlock with every roomlock
+      in the schedule. This swap function returns a score_list, an array_day,
+      an array_timelock and an array_roomlock such that in a later stadium the activity of the swap can be found.
 
     - If the user instructed simulated annealing: the simulated annealing function determines the index of swap.
     - The swap function swaps with the chosen swap index.
@@ -80,23 +78,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
         for i in range(len(schedule)):
             for j in range(len(schedule[i])):
                 for k in range(len(schedule[i][j])):
-                    list_scores = []
-                    array_day = []
-                    array_timelock = []
-                    array_roomlock = []
-
-                    for a in range(len(schedule)):
-                        for b in range(len(schedule[a])):
-                            for c in range(len(schedule[a][b])):
-                                schedule_copy = copy.deepcopy(schedule)
-                                schedule_copy[i][j][k] = schedule[a][b][c]
-                                schedule_copy[a][b][c] = schedule[i][j][k]
-                                score = scorefunction_deterministic(schedule_copy, courses, rooms, overlap_dict)
-                                list_scores.append(score)
-
-                                array_day.append(a)
-                                array_timelock.append(b)
-                                array_roomlock.append(c)
+                    list_scores, array_day, array_timelock, array_roomlock = swap_with_every(schedule, i, j, k, courses, rooms, overlap_dict)
 
                     if simulated_annealing_true == True:
                         chosen_swap = simulated_annealing(list_scores, temp)
@@ -124,7 +106,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
 
 def hillclimber(list_scores, score):
     """""
-    Hillclimber determines the swap
+    Hillclimber determines the swap index
 
     This function takes as input arguments:
     - list_scores
@@ -134,7 +116,7 @@ def hillclimber(list_scores, score):
     - The minimum of scorelist is determined
     - If the minimum score is lower than the current score:
       The minimum score is looked up in the score list and the corresponding index number is returned
-    - Else, False is returned
+    - If the minimum score is not lower than the current score false is returned
     """""
     min_score = min(list_scores)
 
@@ -148,18 +130,20 @@ def hillclimber(list_scores, score):
 
 def simulated_annealing(list_scores, temp):
     """"
-    Simulated annealing determines the swap
+    Simulated annealing determines the swap index
 
     This function takes as input arguments:
     - list_scores
-    - current score of unswapped schedule
+    - temperature
 
     This function works as follows:
-    - The minimum of scorelist is determined
-    - If the minimum score is lower than the current score:
-      The minimum score is looked up in the score list and the corresponding index number is returned
-    - Else, False is returned
-    """"
+    - Of all scores in list_scores the e_score is calculated and added to e-score list.
+    - All e-scores are added to e_score sum.
+    - A float between 0 and 1 is extracted from the uniform distribution (probability)
+    - Loop over every e-score in list e-score:
+      The e-score probability in comparison to the other e-scores is calculated and added to p-sum.
+    - The iteration where p-sum becomes bigger than probability, the index of that e-score is returned.
+    """
 
     e_scores = []
     e_score_sum = 0
@@ -182,8 +166,47 @@ def simulated_annealing(list_scores, temp):
         if p_sum > probability:
             return n
 
+def swap_with_every(schedule, i, j, k, courses, rooms, overlap_dict):
+    list_scores = []
+    array_day = []
+    array_timelock = []
+    array_roomlock = []
+
+    for a in range(len(schedule)):
+        for b in range(len(schedule[a])):
+            for c in range(len(schedule[a][b])):
+                schedule_copy = copy.deepcopy(schedule)
+                schedule_copy[i][j][k] = schedule[a][b][c]
+                schedule_copy[a][b][c] = schedule[i][j][k]
+                score = scorefunction_deterministic(schedule_copy, courses, rooms, overlap_dict)
+                list_scores.append(score)
+
+                array_day.append(a)
+                array_timelock.append(b)
+                array_roomlock.append(c)
+
+    return [list_scores, array_day, array_timelock, array_roomlock]
+
 
 def swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k):
+    """
+    This function swaps 2 activities
+
+    This function takes as input arguments:
+    - schedule
+    - chosen swap index (from hillclimber of simulated annealing)
+    - array_day
+    - array_timelock
+    - array_roomlock
+    - i (day of roomlock)
+    - j (timelock of roomlock)
+    - k (roomlock)
+
+    This function works as follows:
+    - The day, timelock and roomlock of chosen swap are determined with the arrays
+    - The activity is saved in temporary
+    - The activities are swapped
+    """
     a = array_day[chosen_swap]
     b = array_timelock[chosen_swap]
     c = array_roomlock[chosen_swap]
