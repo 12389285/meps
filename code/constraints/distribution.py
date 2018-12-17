@@ -169,6 +169,7 @@ def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
         if day_pr[i] in total_lecs:
             double = double + 1
     double_frac = double / len(day_pr)
+
     malus = malus + double_frac * 10
 
     # count bonus points for perfectly spread activities
@@ -177,9 +178,8 @@ def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
         all_days = []
         all_days.extend(total_lecs)
         all_days.append(day_pr[i])
-        bonus = bonus + spread_bonus(number_activities, all_days)
-        # /
-        # len(day_pr)
+        bonus = bonus + spread_bonus(number_activities, all_days) / len(day_pr)
+
     malus = malus + bonus
 
     return(malus)
