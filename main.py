@@ -114,21 +114,20 @@ class Main():
 
         return overlap_dict
 
-
-    def fill_schedule(self):
-
-        """
-        This function fills an empty schedule.
-        """
-
-        print(self.schedule[1][2][4])
+    #
+    # def fill_schedule(self):
+    #
+    #     """
+    #     This function fills an empty schedule.
+    #     """
+    #
+    #     print(self.schedule[1][2][4])
 
 
 if __name__ == "__main__":
 
     main = Main()
     overlap_dict = main.overlap
-    print(sys.argv)
     if len(sys.argv) != 3:
         print('Not enough input arguments')
         exit(1)
@@ -139,26 +138,26 @@ if __name__ == "__main__":
         schedule_begin = sa(main.courses, main.schedule, main.rooms, overlap_dict)
         if algorithm_input == 'hillclimber':
             schedule = algorithm(schedule_begin, int(number_swaps), main.rooms, main.courses, overlap_dict, False)
-            print(schedule)
+            # print(schedule)
             scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
             csvconverter(schedule)
         elif algorithm_input == 'simulated_annealing':
             schedule = algorithm(schedule_begin, int(number_swaps), main.rooms, main.courses, overlap_dict, True)
-            print(schedule)
+            # print(schedule)
             scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
             csvconverter(schedule)
     elif algorithm_input == 'simulated_annealing_deterministic':
         schedule = algorithm_deterministic(main.courses, main.schedule, int(number_swaps), main.rooms, overlap_dict, True)
-        print(schedule)
+        # print(schedule)
         scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
         csvconverter(schedule)
     elif algorithm_input == 'hillclimber_deterministic':
         schedule = algorithm_deterministic(main.courses, main.schedule, int(number_swaps), main.rooms, overlap_dict, False)
-        print(schedule)
+        # print(schedule)
         csvconverter(schedule)
         scorefunction_show(schedule, main.courses, main.rooms, overlap_dict)
 
     else:
         print('Algorithm does not exist.')
 
-    print(schedule)
+    # print(schedule)

@@ -43,6 +43,7 @@ def order(schedule, activity, daylock, timelock):
 
             str1 = course + '_prac'
             str2 = course + '_tut'
+            str3 = course + '_lec'
 
 
             for i in range(0, timelock):
@@ -57,5 +58,8 @@ def order(schedule, activity, daylock, timelock):
                         return False
                     elif str2 in schedule[j][k]:
                         return False
+
+            if str3 in schedule[daylock][timelock]:
+                return False
 
         return True

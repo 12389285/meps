@@ -6,7 +6,7 @@ from code.algorithms.start_schedule_algorithm import alphabetic_queue
 from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
 
 def make_random_schedule(courses, schedule, rooms, overlap_dict):
-    """""
+    """
     This function makes a random schedule (no hard constraints satisfied)
 
     This function takes as input arguments:
@@ -20,10 +20,9 @@ def make_random_schedule(courses, schedule, rooms, overlap_dict):
     - It iterates over every roomlock in the empty schedule, at each empty roomlock it places a random course acitivty.
     - Then it removes the chosen acitivy from the courselist.
     This proces is repeated untill the courselist is empty.
-    """""
+    """
 
     course_list_alphabetic = alphabetic_queue(courses)
-    print(course_list_alphabetic)
 
     for i in range(len(schedule)):
         for j in range(len(schedule[i])):
@@ -37,7 +36,7 @@ def make_random_schedule(courses, schedule, rooms, overlap_dict):
 
 
 def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulated_annealing_true):
-    """""
+    """
     This algorithm runs the deterministic algorithms
 
     This algorithm takes as input arguments:
@@ -67,7 +66,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     - When the user instructed hillclimber: the hillclimber function determines the index of swap.
     - The swap function swaps with the chosen swap index.
     - Then the score is printed.
-    """""
+    """
     schedule = make_random_schedule(courses, schedule_empty, rooms, overlap_dict)
     score_save = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
@@ -90,9 +89,9 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                             score_save = malus
                             schedule_save = schedule
 
-                        print(bigloop)
-                        print(f"scorecheck: ", malus)
-                        print(f"scoresave: ", score_save)
+                        # print(bigloop)
+                        # print(f"scorecheck: ", malus)
+                        # print(f"scoresave: ", score_save)
 
                     else:
                         score_current = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
@@ -100,13 +99,22 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                         if chosen_swap != False:
                             schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
                         malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
-                        print(f"score: ", malus)
+                        # print(f"score: ", malus)
 
     return schedule
 
 def hillclimber(list_scores, score):
+<<<<<<< HEAD
     """""
     Hillclimber determines the swap index
+=======
+<<<<<<< HEAD
+    """
+=======
+    """"
+>>>>>>> 9d0216d37a9d40f1b08ed65c27092a58804d2609
+    Hillclimber determines the swap
+>>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
 
     This function takes as input arguments:
     - list_scores
@@ -116,8 +124,13 @@ def hillclimber(list_scores, score):
     - The minimum of scorelist is determined
     - If the minimum score is lower than the current score:
       The minimum score is looked up in the score list and the corresponding index number is returned
+<<<<<<< HEAD
     - If the minimum score is not lower than the current score false is returned
     """""
+=======
+    - Else, False is returned
+    """
+>>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
     min_score = min(list_scores)
 
     if min_score < score:
@@ -129,20 +142,32 @@ def hillclimber(list_scores, score):
 
 
 def simulated_annealing(list_scores, temp):
+<<<<<<< HEAD
     """"
     Simulated annealing determines the swap index
+=======
+    """
+    Simulated annealing determines the swap
+>>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
 
     This function takes as input arguments:
     - list_scores
     - temperature
 
     This function works as follows:
+<<<<<<< HEAD
     - Of all scores in list_scores the e_score is calculated and added to e-score list.
     - All e-scores are added to e_score sum.
     - A float between 0 and 1 is extracted from the uniform distribution (probability)
     - Loop over every e-score in list e-score:
       The e-score probability in comparison to the other e-scores is calculated and added to p-sum.
     - The iteration where p-sum becomes bigger than probability, the index of that e-score is returned.
+=======
+    - The minimum of scorelist is determined
+    - If the minimum score is lower than the current score:
+      The minimum score is looked up in the score list and the corresponding index number is returned
+    - Else, False is returned
+>>>>>>> 73c470775b86004e2e7403e6a66f0562960f3069
     """
 
     e_scores = []

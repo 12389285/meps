@@ -1,14 +1,4 @@
-# Meps lectures
-# Eefje Roelsema – 10993673
-# Pascalle Veltman – 11025646
-# Max Simons – 12389285
-# Classifies a schedule.
-
 class Schedule(object):
-
-    """
-    Classifies an empty schedule.
-    """
 
     def __init__(self):
         self.empty_schedule = self.create()
