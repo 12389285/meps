@@ -73,6 +73,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     score_save = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
     temp = 150
+    score_plot_list = []
 
     for bigloop in range(iterations):
         temp = temp * 0.75
@@ -98,6 +99,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                                 array_roomlock.append(c)
 
                     if simulated_annealing_true == True:
+                        title_plot = 'Simulated Annealing Deterministic'
                         chosen_swap = simulated_annealing(list_scores, temp)
                         schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
 
@@ -107,17 +109,18 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                             score_save = malus
                             schedule_save = schedule
 
-                        # print(bigloop)
-                        # print(f"scorecheck: ", malus)
-                        # print(f"scoresave: ", score_save)
+                        score_plot_list.append(score_save)
 
                     else:
+                        title_plot = 'Hillclimber Deterministic'
                         score_current = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
                         chosen_swap = hillclimber(list_scores, score_current)
                         if chosen_swap != False:
                             schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
                         malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
-                        # print(f"score: ", malus)
+                        score_plot_list.append(malus)
+
+    plot_scores(score_plot_list, number_iterations, title_plot)
 
     return schedule
 
