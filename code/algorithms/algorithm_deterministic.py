@@ -2,7 +2,7 @@ import random
 import copy
 import time
 import math
-from code.constraints.queue import alphabetic_queue
+from code.algorithms.start_schedule_algorithm import alphabetic_queue
 from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
 
 def make_random_schedule(courses, schedule, rooms, overlap_dict):

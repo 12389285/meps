@@ -1,11 +1,21 @@
-#
-#   Calculates and returns the malus points caused by spreading activities over the week
-#
-
 from itertools import permutations, repeat
 import numpy
 
 def distribution(schedule, courses):
+    """
+    This function calculates the malus points regarding the spread of course
+    activities over the week.
+
+    This function takes as input arguments:
+        - the schedule
+        - list of courses
+
+    This function works as follows:
+        - makes lists with days on which lectures, tutorials and practica
+          are given
+        - calculates bonus and malus points regarding the best spread
+          combinations of tutorials, lectures and practica
+    """
 
     # make lists to see on what day the different activities are scheduled
     for i in range(len(courses)):
@@ -27,6 +37,7 @@ def distribution(schedule, courses):
                             if 'lec' in sort:
                                 if day_lec_1 == None:
                                     day_lec_1 = i
+                                    # add to lecture and total list
                                     total_lecs.append(i)
                                     total_days.append(i)
                                 else:
@@ -37,8 +48,10 @@ def distribution(schedule, courses):
                                     else:
                                         double_lec = 1
                             elif 'tut' in sort:
+                                # add to tutorial days list
                                 day_tut.append(i)
                             elif 'pr' in sort:
+                                # add to practica days list
                                 day_pr.append(i)
 
         # in case there are both practica and tutorials
@@ -56,6 +69,10 @@ def distribution(schedule, courses):
     return malus
 
 def tut_and_prac(tut, prac, total_days, number_activities):
+    """
+    This function calculates bonus and malus points regarding the best spread
+    combinations of tutorials, lectures and practica.
+    """
 
     # set variables and lists
     malus = 0
@@ -103,6 +120,10 @@ def tut_and_prac(tut, prac, total_days, number_activities):
     return(malus)
 
 def only_tut(day_tut, total_days, total_lecs, double_lec, number_activities):
+    """
+    This function calculates bonus and malus points regarding the best spread
+    combinations of tutorials and lectures.
+    """
 
     malus = 0
     double = 0
@@ -118,7 +139,7 @@ def only_tut(day_tut, total_days, total_lecs, double_lec, number_activities):
     double_frac = double / len(day_tut)
     malus = malus + double_frac * 10
 
-    # count bonus points
+    # count bonus points for perfectly spread activities
     bonus = 0
     for i in range(len(day_tut)):
         all_days = []
@@ -130,6 +151,10 @@ def only_tut(day_tut, total_days, total_lecs, double_lec, number_activities):
     return(malus)
 
 def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
+    """
+    This function calculates bonus and malus points regarding the best spread
+    combinations of lectures and practica.
+    """
 
     malus = 0
     double = 0
@@ -145,7 +170,7 @@ def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
     double_frac = double / len(day_pr)
     malus = malus + double_frac * 10
 
-    # count bonus points
+    # count bonus points for perfectly spread activities
     bonus = 0
     for i in range(len(day_pr)):
         all_days = []
@@ -157,7 +182,10 @@ def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
     return(malus)
 
 def spread_malus(number_activities, diff_days):
-    # returns the malus points if not enough spread
+    """
+    This function returns malus points if activities are not spread well
+    enough.
+    """
 
     malus = 0
 
@@ -171,7 +199,9 @@ def spread_malus(number_activities, diff_days):
     return malus
 
 def spread_bonus(number_activities, diff_days):
-    # returns the bonus points if spread perfectly
+    """
+    This function returns bonus points if activities are perfectly spread.
+    """
 
     malus = 0
 
