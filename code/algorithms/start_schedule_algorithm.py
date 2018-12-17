@@ -1,8 +1,4 @@
-#
-#   Algorithm for create schedule by queue
-#
 from code.constraints.overlap import overlapping
-from code.constraints.capacity import capacity
 from code.constraints.order import order
 from .scorefunction import scorefunction
 import operator
@@ -10,13 +6,22 @@ from operator import attrgetter
 from random import shuffle
 
 def create_start_schedule(courses, schedule, rooms, overlap_dict):
+    """
+    This function returns a schedule that satisfies the hard constraints.
+
+    This function takes as input arguments:
+        - list of Courses
+        - empty schedule
+        - list of rooms
+        - overlap matrix
+
+    This function works as follows:
+        - puts activity of queue one by one in first possible room day_lock
+    """
 
     queue = lecfirst_random_queue(courses)
 
-    i = 0
     # check if queue is not empy
-    malus = 0
-
     while queue != []:
         # select day i
         for i in range(len(schedule)):
@@ -40,27 +45,31 @@ def create_start_schedule(courses, schedule, rooms, overlap_dict):
     return(schedule)
 
 def lecfirst_random_queue(courses):
-    # creates a queue with lectures first in random order
+    """
+    This function returns a queue:
+        - first all lectures of the courses in random order
+        - after that all tutorials and practica in random order
+    """
 
-    alphabetic_queue = []
-
-    for course in courses:
-        for i in range(len(course.activities)):
-            alphabetic_queue.append(course.activities[i])
+    # create first queue which still is alphabetic
+    alphabetic_queue = alphabetic_queue(courses)
 
     lectures = []
     others = []
     queue = []
 
+    # seperate the lectures from other activities in lists
     for i in range(len(alphabetic_queue)):
         if '_lec' in alphabetic_queue[i]:
             lectures.append(alphabetic_queue[i])
         else:
             others.append(alphabetic_queue[i])
 
+    # randomize the order
     shuffle(lectures)
     shuffle(others)
 
+    # create queue woth lectures first
     for i in range(len(lectures)):
         queue.append(lectures[i])
 
@@ -68,3 +77,16 @@ def lecfirst_random_queue(courses):
         queue.append(others[i])
 
     return queue
+
+def alphabetic_queue(courses):
+    """
+    This function returns a queue of all activities in alphabetic order.
+    """
+
+    alphabetic_queue = []
+
+    for course in courses:
+        for i in range(len(course.activities)):
+            alphabetic_queue.append(course.activities[i])
+
+    return(alphabetic_queue)
