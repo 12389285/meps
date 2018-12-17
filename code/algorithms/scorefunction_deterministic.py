@@ -4,7 +4,7 @@ from code.constraints.order import order
 import time
 from code.constraints.distribution import distribution
 
-def scorefunction2(schedule, courses, rooms, overlap_dict):
+def scorefunction_deterministic(schedule, courses, rooms, overlap_dict):
     # this scorefunction calculates the malus points for a schedule,
     # where the hard constraints are not necessarily satisfied
 

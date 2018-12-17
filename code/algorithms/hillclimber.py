@@ -83,7 +83,7 @@ def hillclimber(schedule, number_swaps, rooms, courses, overlap_dict):
         score_data = scorefunction(schedule, rooms, courses)
         score.append(score_data)
 
-        # print(score_data)
+        print(score_data)
 
 
     print(schedule)

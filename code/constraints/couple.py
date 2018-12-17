@@ -41,7 +41,6 @@ def couples(tut, prac, total_days, number_activities):
             tot.extend(total_days)
             tot.extend(best_comb[i][j])
             tot = list(set(tot))
-            print(tot)
             points_m = spread_malus(number_activities, tot)
             points_b = spread_bonus(number_activities, tot)
             points_tot = points_tot + (points_m + points_b) / len(best_comb[i])
@@ -51,5 +50,6 @@ def couples(tut, prac, total_days, number_activities):
     best_points = numpy.min(points_list)
     best_points_index = numpy.argmin(points_list)
     couples = best_comb[best_points_index]
+    malus = best_points
 
     return(malus)

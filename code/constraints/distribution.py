@@ -46,22 +46,19 @@ def distribution(schedule, courses):
                             elif 'pr' in sort:
                                 day_pr.append(i)
 
-        # if the lectures are on te same day it costs points
-        if double_lec == 1:
-            malus = malus + 10
-
         # set variable to count double days that cost points
         double = 0
 
         # in case there are both practica and tutorials
         if day_pr and day_tut:
-            print('both')
             points = couples(day_tut, day_pr, total_days, number_activities)
             malus = malus + points
 
         # in case there are only tutorials and no practica
         elif day_tut and not day_pr:
-            print('only tut')
+            # if the lectures are on te same day it costs points
+            if double_lec == 1:
+                malus = malus + 10
             # count malus points
             for i in range(len(day_tut)):
                 total_days.append(day_tut[i])
@@ -80,7 +77,9 @@ def distribution(schedule, courses):
 
         # in case there are only practica and no tutorials
         elif day_pr and not day_tut:
-            print('only pr')
+            # if the lectures are on te same day it costs points
+            if double_lec == 1:
+                malus = malus + 10
             day_pr = list(set(day_pr))
             for i in range(len(day_pr)):
                 total_days.append(day_pr[i])
@@ -96,7 +95,5 @@ def distribution(schedule, courses):
                 all_days.append(day_pr[i])
                 bonus = bonus + spread_bonus(number_activities, all_days)
             malus = malus + bonus
-
-    print(malus)
 
     return malus

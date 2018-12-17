@@ -3,7 +3,7 @@ import copy
 import time
 import math
 from code.constraints.queue import alphabetic_queue
-from code.algorithms.scorefunction2 import scorefunction2
+from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
 
 
 def make_random_schedule(courses, schedule, rooms, overlap_dict):
@@ -25,7 +25,7 @@ def make_random_schedule(courses, schedule, rooms, overlap_dict):
 def algorithm(courses, schedule_2, rooms, overlap_dict, simulated_annealing_true):
 
     schedule = make_random_schedule(courses, schedule_2, rooms, overlap_dict)
-    score_save = scorefunction2(schedule, courses, rooms, overlap_dict)
+    score_save = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
     temp = 150
 
@@ -45,7 +45,7 @@ def algorithm(courses, schedule_2, rooms, overlap_dict, simulated_annealing_true
                                 schedule_copy = copy.deepcopy(schedule)
                                 schedule_copy[i][j][k] = schedule[a][b][c]
                                 schedule_copy[a][b][c] = schedule[i][j][k]
-                                score = scorefunction2(schedule_copy, courses, rooms, overlap_dict)
+                                score = scorefunction_deterministic(schedule_copy, courses, rooms, overlap_dict)
                                 list_scores.append(score)
 
                                 array_day.append(a)
@@ -56,7 +56,7 @@ def algorithm(courses, schedule_2, rooms, overlap_dict, simulated_annealing_true
                         chosen_swap = simulated_annealing(list_scores, temp)
                         schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
 
-                        malus = score = scorefunction2(schedule, courses, rooms, overlap_dict)
+                        malus = score = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
 
                         if malus < score_save:
                             score_save = malus
@@ -70,7 +70,7 @@ def algorithm(courses, schedule_2, rooms, overlap_dict, simulated_annealing_true
                         chosen_swap = hillclimber(list_scores, score)
                         if chosen_swap != False:
                             schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
-                        malus = score = scorefunction2(schedule, courses, rooms, overlap_dict)
+                        malus = score = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
                         print(bigloop)
                         print(f"score: ", malus)
 

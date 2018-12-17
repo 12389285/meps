@@ -3,7 +3,7 @@ import copy
 import time
 import math
 from code.constraints.queue import alphabetic_queue
-from code.algorithms.scorefunction2 import scorefunction2
+from code.algorithms.scorefunction_deterministic import scorefunction_deterministic
 from code.algorithms.scorefunction_show import scorefunction_show
 import matplotlib.pyplot as plt
 
@@ -41,7 +41,7 @@ def hillclimber_deterministisch(courses, schedule, rooms, overlap_dict):
                     course_list_alphabetic.remove(course_list_alphabetic[list_place])
 
     # determine score is maluspoints of the random filled in schedule, (hard constraints are not satisfied, so given a lot of malus points to)
-    score = scorefunction2(schedule, courses, rooms, overlap_dict)
+    score = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     # make a copy of the random schedule
     schedule_save = copy.deepcopy(schedule)
 
@@ -79,7 +79,7 @@ def hillclimber_deterministisch(courses, schedule, rooms, overlap_dict):
                                 schedule_copy[i][j][k] = schedule[a][b][c]
                                 schedule_copy[a][b][c] = schedule[i][j][k]
                                 # caluclate score of swapped schedule
-                                score = scorefunction2(schedule_copy, courses, rooms, overlap_dict)
+                                score = scorefunction_deterministic(schedule_copy, courses, rooms, overlap_dict)
                                 # append score to list scores
                                 list_scores.append(score)
                                 # save inex of day, timelock and roomlock in the lists
