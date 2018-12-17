@@ -24,8 +24,6 @@ pip install -r requirements.txt
 
 ### Structure
 
-In our Github we have different kind of folders.
-
 #### Code
 In the code folder you'll find al our codes including the algorithms and the constraints we used. Also all the classes and the converter to get the schedule are stored in the folder code.
 
@@ -33,11 +31,11 @@ In the code folder you'll find al our codes including the algorithms and the con
 In the data folder you'll find all the CSV files we imported for the data including the rooms, courses and overlapping of the courses.
 
 #### Results
-In the result folder you'll find the results of some testing, the state space and score function in the readme.
+In the result folder you'll find the results of some testing, the state space and score function in the readme. The final schedule is also stored in this folder.
 
 ### Testing
 
-To run our code with the settings of your choice, execute the following instruction in your terminal. We have set a range for iterations and number of swaps. The run time for the deterministic algorithms takes longer than the hillclimber and simulated annealing.
+To run our code with the settings of your choice, execute the following instruction in your terminal. We have set a range for iterations and number of swaps. The run time for the deterministic algorithms takes a lot longer than the hillclimber and simulated annealing.
 
 Hillclimber:
 ```
@@ -61,7 +59,7 @@ python main.py simulated_annealing_deterministic [1, 20]
 
 ### Results
 
-To see the visualization of the schedule, open in the main folder schedule.csv.
+The schedule is stored in the results folder with the name schedule.csv. Matplotlib is making a plot of the number of iterations and the amount of points given for the schedule.
 
 ## Authors
 

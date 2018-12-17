@@ -6,7 +6,12 @@ def plot_scores(points, iterations, title):
     """
 
     # plot figure
-    ymin = 0
+    if min(points) > 0:
+        print("ja")
+        ymin = 0
+    if min(points) < 0:
+        print("nee")
+        ymin = min(points)
     ymax = max(points) + 100
     xmin = 0
     xmax = len(points)
