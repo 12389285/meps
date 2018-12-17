@@ -71,7 +71,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
     schedule = make_random_schedule(courses, schedule_empty, rooms, overlap_dict)
     score_save = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
     schedule_save = copy.deepcopy(schedule)
-    temp = 150
+    temp = 5
     score_plot_list = []
 
 
@@ -98,6 +98,8 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                         if malus < score_save:
                             score_save = malus
                             schedule_save = schedule
+                        print(f'score: ', malus)
+                        print(f'score save ', score_save)
 
                         score_plot_list.append(score_save)
 
@@ -109,6 +111,7 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                             schedule = swap(schedule, chosen_swap, array_day, array_timelock, array_roomlock, i, j, k)
                         schedule_save = schedule
                         malus = scorefunction_deterministic(schedule, courses, rooms, overlap_dict)
+                        print(f'score: ', malus)
                         score_plot_list.append(malus)
 
     plot_scores(score_plot_list, iterations, title_plot)

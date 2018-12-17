@@ -2,8 +2,10 @@ from code.constraints.capacity import capacity
 from code.constraints.distribution import distribution
 
 def scorefunction(schedule, rooms, courses):
-    # this scorefunction calculates the malus points for a schedule,
-    # where the hard constraints are already satisfied and accounted for
+    """
+    this scorefunction calculates the malus points for a schedule,
+    where the hard constraints are satisfied
+    """
 
     # check if queue is not empy
     malus = 0

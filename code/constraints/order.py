@@ -1,4 +1,3 @@
-
 def order(schedule, activity, daylock, timelock):
     """
     This function returns True if the lectures are given before the tutorials
