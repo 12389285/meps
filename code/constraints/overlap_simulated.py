@@ -16,8 +16,11 @@ def overlapping(activity, timelock, overlap_dict, roomlock):
     else:
         # check if two lectures are given in timelock
         if '_lec' in activity:
-            if activity in timelock:
-                return False
+            for i in range(len(timelock)):
+                if i == roomlock:
+                    continue
+                if activity in timelock:
+                    return False
         # check if no other overlap-course is given in the same time lock
         activity = activity.split('_')
         for i in range(len(timelock)):
@@ -25,7 +28,6 @@ def overlapping(activity, timelock, overlap_dict, roomlock):
             if activity_timelock != None:
                 if i == roomlock:
                     continue
-
                 activity_timelock = timelock[i].split('_')
                 activity_timelock = activity_timelock[0]
             if activity_timelock in overlap_dict[activity[0]]:
