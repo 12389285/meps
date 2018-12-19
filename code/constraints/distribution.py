@@ -69,7 +69,7 @@ def distribution(schedule, courses):
 
         else:
             if double_lec == 1:
-                malus = malus - 10
+                malus = malus + 10
 
     return malus
 

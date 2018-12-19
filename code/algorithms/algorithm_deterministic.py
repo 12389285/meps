@@ -98,8 +98,6 @@ def algorithm(courses, schedule_empty, iterations, rooms, overlap_dict, simulate
                         if malus < score_save:
                             score_save = malus
                             schedule_save = schedule
-                        print(f'score: ', malus)
-                        print(f'score save ', score_save)
 
                         score_plot_list.append(score_save)
 
