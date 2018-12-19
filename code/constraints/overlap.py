@@ -14,10 +14,10 @@ def overlapping(activity, timelock, overlap_dict):
         return True
 
     else:
-        # check if two lectures are given in timelock
-        if '_lec' in activity:
-            if activity in timelock:
-                return False
+        # # check if two lectures are given in timelock
+        # if '_lec' in activity:
+        #     if activity in timelock:
+        #         return False
 
         # check if no other overlap-course is given in the same time lock
         activity = activity.split('_')
