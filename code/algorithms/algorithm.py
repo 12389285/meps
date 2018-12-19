@@ -53,6 +53,7 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
         daylock2, timelock2, roomlock2 = random_numbers()
         activity1 = schedule[daylock1][timelock1][roomlock1]
         activity2 = schedule[daylock2][timelock2][roomlock2]
+        print(activity1, activity2)
 
         schedule_swap = copy.deepcopy(schedule)
 
@@ -81,6 +82,7 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
                     schedule_save = schedule
 
                 temp_number =+ 1
+
 
             else:
                 title_plot = 'Hillclimber'

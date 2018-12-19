@@ -16,6 +16,7 @@ def distribution(schedule, courses):
         - calculates bonus and malus points regarding the best spread
           combinations of tutorials, lectures and practica
     """
+    malus = 0
 
     # make lists to see on what day the different activities are scheduled
     for i in range(len(courses)):
@@ -56,15 +57,19 @@ def distribution(schedule, courses):
 
         # in case there are both practica and tutorials
         if day_pr and day_tut:
-            malus = tut_and_prac(day_tut, day_pr, total_days, number_activities)
+            malus = malus + tut_and_prac(day_tut, day_pr, total_days, number_activities)
 
         # in case there are only tutorials and no practica
         elif day_tut and not day_pr:
-            malus = only_tut(day_tut, total_days, total_lecs, double_lec, number_activities)
+            malus = malus + only_tut(day_tut, total_days, total_lecs, double_lec, number_activities)
 
         # in case there are only practica and no tutorials
         elif day_pr and not day_tut:
-            malus = only_prac(day_pr, total_days, total_lecs, double_lec, number_activities)
+            malus = malus + only_prac(day_pr, total_days, total_lecs, double_lec, number_activities)
+
+        else:
+            if double_lec == 1:
+                malus = malus - 10
 
     return malus
 
@@ -117,7 +122,7 @@ def tut_and_prac(tut, prac, total_days, number_activities):
     couples = best_comb[best_points_index]
     malus = best_points
 
-    return(malus)
+    return malus
 
 def only_tut(day_tut, total_days, total_lecs, double_lec, number_activities):
     """
@@ -145,11 +150,10 @@ def only_tut(day_tut, total_days, total_lecs, double_lec, number_activities):
         all_days = []
         all_days.extend(total_lecs)
         all_days.append(day_tut[i])
-        bonus = bonus + spread_bonus(number_activities, all_days)
-        # / len(day_tut)
+        bonus = bonus + (spread_bonus(number_activities, all_days) / len(day_tut))
     malus = malus + bonus
 
-    return(malus)
+    return malus
 
 def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
     """
@@ -169,7 +173,6 @@ def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
         if day_pr[i] in total_lecs:
             double = double + 1
     double_frac = double / len(day_pr)
-
     malus = malus + double_frac * 10
 
     # count bonus points for perfectly spread activities
@@ -178,11 +181,11 @@ def only_prac(day_pr, total_days, total_lecs, double_lec, number_activities):
         all_days = []
         all_days.extend(total_lecs)
         all_days.append(day_pr[i])
-        bonus = bonus + spread_bonus(number_activities, all_days) / len(day_pr)
-
+        bonus_this = (spread_bonus(number_activities, all_days) / len(day_pr))
+        bonus = bonus + bonus_this
     malus = malus + bonus
 
-    return(malus)
+    return malus
 
 def spread_malus(number_activities, diff_days):
     """
