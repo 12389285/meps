@@ -82,13 +82,15 @@ def algorithm(schedule, number_iterations, rooms, courses, overlap_dict, simulat
 
                 temp_number =+ 1
 
+                score_plot_list.append(scorefunction(schedule, rooms, courses))
+
 
             else:
                 title_plot = 'Hillclimber'
                 schedule = hillclimber(schedule, schedule_swap, score_current, score_swap)
                 schedule_save = schedule
 
-        score_plot_list.append(scorefunction(schedule_save, rooms, courses))
+                score_plot_list.append(scorefunction(schedule_save, rooms, courses))
 
     plot_scores(score_plot_list, number_iterations, title_plot)
 
